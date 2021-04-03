@@ -1,0 +1,40 @@
+.detail {
+
+}
+
+.detail .operation {
+    height: 48px;
+    margin: 0 auto;
+    padding: 48px 0;
+    width: 1000px;
+}
+
+.detail .con-detail {
+}
+
+.detail .con-detail .box-detail {
+    margin: 0 auto;
+    padding: 48px 0;
+    width: 756px;
+}
+
+.detail .con-detail .box-detail .detail-li {
+    height: 48px;
+    margin-bottom: 24px;
+}
+
+.detail .con-detail .box-detail .detail-li .detail-input {
+    float: left;
+}
+
+.detail .con-detail .box-detail .detail-li .detail-input .sel-1 {
+
+}
+
+.detail .con-detail .box-detail .detail-li .detail-del {
+    float: right;
+}
+
+.detail .con-detail .box-detail .detail-add {
+
+}

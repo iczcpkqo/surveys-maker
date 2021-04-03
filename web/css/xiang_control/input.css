@@ -1,0 +1,30 @@
+.xiang-control {
+
+}
+
+/* block */
+.xiang-control .txt-1,
+.xiang-control .sel-1 {
+    border: solid 1px #999;
+    border-radius: 5px;
+    color: #666;
+    display: block;
+    height: 48px;
+    outline: none;
+    padding: 0 12px;
+    width: 593px;
+}
+
+.xiang-control .txt-1 {
+}
+
+.xiang-control .txt-1:focus {
+    border: solid 1px #06c;
+    box-shadow: 0 0 2px #0cf;
+    color: #000;
+}
+
+.xiang-control .sel-1 {
+    cursor: pointer;
+    width: 618px;
+}

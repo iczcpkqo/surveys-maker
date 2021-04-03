@@ -1,0 +1,10 @@
+.xiang-control {
+
+}
+
+/*block*/
+.xiang-control .con-detail {
+    border: solid 1px #999;
+    margin: 0 auto;
+    width: 1000px;
+}
