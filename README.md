@@ -7,6 +7,7 @@
 ## Directory 
 
 * `design`. pictures, photos, prototypes, sketches...
+    - **prototype**. version 1.0, open 'design/prototype.html' to view it.
 
 * `doc`. documents, papers, reports...
 
