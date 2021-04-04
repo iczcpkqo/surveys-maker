@@ -73,9 +73,9 @@ function onSurveysPageLoad(p_data){
     // Init tit
     surTit.setAttribute('value', p_data.surveys_name);
     // Init select list
-    for(let i in p_data.sel){
+    for(let i in p_data.sels){
         let li = createTopicsSel(p_data.topics);
-        li = setTopicSel(li, p_data.sel[i].id);
+        li = setTopicSel(li, p_data.sels[i].id);
         liBox.appendChild(li);
     }
 }
@@ -85,7 +85,7 @@ function onSurveysPageLoad(p_data){
  * @param p_data = {
  *                      'surveys_name': String,
  *                      // 主题库中的所有主题
- *                      'topic': [
+ *                      'topics': [
  *                          {
  *                              'id': int,
  *                              'tit': String
@@ -113,7 +113,7 @@ window.onload = function(){
                 'tit': 'hhhhh'
             }
         ],
-        'sel': [
+        'sels': [
             {
                 'id': 222,
                 'tit': 'dfsdfsdfsdfsd'

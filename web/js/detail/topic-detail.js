@@ -60,6 +60,8 @@ function onTopicPageLoad(p_data){
 /**
  *
  * @param p_data = {
+ *                      // 该主题的名字
+ *                      'topic_name': String,
  *                      // 该主题中的所有问题
  *                      'quizes': [
  *                          {
