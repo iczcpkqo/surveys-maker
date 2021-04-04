@@ -84,6 +84,7 @@ function onSurveysPageLoad(p_data){
  *
  * @param p_data = {
  *                      'surveys_name': String,
+ *                      'time': String,
  *                      // 主题库中的所有主题
  *                      'topics': [
  *                          {
@@ -104,6 +105,7 @@ function onSurveysPageLoad(p_data){
 window.onload = function(){
     let p_data = {
         'surveys_name': 'Corporate Employee Happiness Survey.',
+        'time': '',
         'topics': [
             {
                 'id': 111,
@@ -126,6 +128,6 @@ window.onload = function(){
             }
         ]
     }
-
+    p_data = g_jsp_data || p_data;
     onSurveysPageLoad(p_data);
 }

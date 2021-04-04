@@ -74,6 +74,7 @@ function onTopicPageLoad(p_data){
 window.onload = function(){
     let p_data = {
         'topic_name': 'Legal Compliance',
+        'time': '',
         'quizes':[
             {
                 'id': 1,
@@ -90,6 +91,6 @@ window.onload = function(){
             }
         ]
     }
-
+    p_data = g_jsp_data || p_data;
     onTopicPageLoad(p_data);
 }
