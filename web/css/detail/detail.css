@@ -9,6 +9,12 @@
     width: 1000px;
 }
 
+.detail .operation a.btn-2,
+.detail .operation a.btn-4 {
+    float: right;
+    margin-left: 48px;
+}
+
 .detail .con-detail {
 }
 

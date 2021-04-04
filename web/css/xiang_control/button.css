@@ -4,7 +4,8 @@
 /* block control*/
 .xiang-control .btn-1,
 .xiang-control .btn-2,
-.xiang-control .btn-3 {
+.xiang-control .btn-3,
+.xiang-control .btn-4 {
     border-radius: 5px;
     cursor: pointer;
     display: block;
@@ -31,14 +32,16 @@
     background-color: #f36;
 }
 
-.xiang-control .btn-2 {
+.xiang-control .btn-2,
+.xiang-control .btn-4 {
     background-color: #0c9;
     border: solid 1px #06c;
     color: #fff;
     font-size: 16px;
     width: 297px;
 }
-.xiang-control .btn-2:before {
+.xiang-control .btn-2:before,
+.xiang-control .btn-4:before {
     border: none;
     border-radius: 5px 0 0 5px;
     background-color: #099;
@@ -48,12 +51,14 @@
     height: 48px;
     width: 48px;
 }
-.xiang-control .btn-2:hover {
+.xiang-control .btn-2:hover,
+.xiang-control .btn-4:hover {
     box-shadow: 0 0 5px #0066cc;
     text-shadow: 0 0 5px #0066cc;
 }
 
 .xiang-control .btn-3 {
+    background-color: #fff;
     border: dashed 2px #aaa;
     color: #aaa;
     width: 614px;
@@ -65,5 +70,9 @@
 .xiang-control .btn-3:hover {
     background-color: #eee;
     color: #999;
+}
+
+.xiang-control .btn-4:before {
+    content: '💾';
 }
 

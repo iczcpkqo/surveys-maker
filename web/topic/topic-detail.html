@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="../css/detail/detail.css">
     <link rel="stylesheet" href="../css/detail/topic-detail.css">
 
+    <!--    script-->
+    <script src="../js/base.js"></script>
+    <script src="../js/detail/detail.js"></script>
+    <script src="../js/detail/topic-detail.js"></script>
 </head>
 <body class="xiang-control detail">
 
@@ -27,26 +31,32 @@
     </div>
 </div>
 
+<div class="operation">
+    <a id="submit-topic" class="btn-4">Save</a>
+</div>
+
 <!--详情-->
 <div class="con-detail">
-    <div class="box-detail">
-
-        <div class="detail-li">
-            <div class="detail-input">
-                <input class="txt-1" type="text" placeholder="Please input your Question.">
-            </div>
-            <div class="detail-del">
-                <a class="btn-1">Delete</a>
-            </div>
+    <form id="topic-form" class="box-detail" action="topic-detail.html" >
+        <div class="box-li">
+<!--            问题结构-->
+<!--            <div class="detail-li">-->
+<!--                <div class="detail-input">-->
+<!--                    <input class="txt-1" type="text" placeholder="Please input your Question.">-->
+<!--                </div>-->
+<!--                <div class="detail-del">-->
+<!--                    <a class="btn-1">Delete</a>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
 
         <!--        重复-->
         <!--        重复 END-->
 
         <div class="detail-add">
-            <a class="btn-3">Add A Topic</a>
+            <a class="btn-3 add-quiz-btn">Add A Topic</a>
         </div>
-    </div>
+    </form>
 </div>
 
 
