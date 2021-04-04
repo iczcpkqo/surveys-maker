@@ -1,0 +1,54 @@
+.detail {
+
+}
+
+.detail .operation {
+    height: 48px;
+    margin: 0 auto;
+    padding: 48px 0;
+    width: 1000px;
+}
+
+.detail .operation a.btn-2,
+.detail .operation a.btn-4 {
+    float: right;
+    margin-left: 48px;
+}
+
+.detail .con-detail {
+}
+
+.detail .con-detail .box-detail {
+    margin: 0 auto;
+    padding: 96px 0;
+    position: relative;
+    width: 756px;
+}
+
+.detail .con-detail .box-detail .tit {
+    /*border: solid 1px #f00;*/
+    left: -122px;
+    position: absolute;
+    top: 0;
+}
+
+.detail .con-detail .box-detail .detail-li {
+    height: 48px;
+    margin-bottom: 24px;
+}
+
+.detail .con-detail .box-detail .detail-li .detail-input {
+    float: left;
+}
+
+.detail .con-detail .box-detail .detail-li .detail-input .sel-1 {
+
+}
+
+.detail .con-detail .box-detail .detail-li .detail-del {
+    float: right;
+}
+
+.detail .con-detail .box-detail .detail-add {
+
+}
