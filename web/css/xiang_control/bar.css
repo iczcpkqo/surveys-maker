@@ -3,7 +3,7 @@
 }
 
 .xiang-control .bar-top-1 {
-    background-color: #369;
+    background-color: var(--v1-clr-a1);
     height: 96px;
     margin: 0 auto;
     padding: 0;
@@ -46,7 +46,7 @@
 }
 
 .xiang-control .bar-top-1 .nav-con .nav-li {
-    background-color: #099;
+    background-color: var(--v1-clr-b1);
     border-radius: 5px 5px 0 0;
     color: #fff;
     display: block;
@@ -59,6 +59,6 @@
     width: 144px;
 }
 .xiang-control .bar-top-1 .nav-con .nav-li.sel {
-    background-color: #0c9;
+    background-color: var(--v1-clr-b2);
     font-weight: bold;
 }

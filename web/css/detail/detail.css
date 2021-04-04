@@ -20,8 +20,16 @@
 
 .detail .con-detail .box-detail {
     margin: 0 auto;
-    padding: 48px 0;
+    padding: 96px 0;
+    position: relative;
     width: 756px;
+}
+
+.detail .con-detail .box-detail .tit {
+    /*border: solid 1px #f00;*/
+    left: -122px;
+    position: absolute;
+    top: 0;
 }
 
 .detail .con-detail .box-detail .detail-li {

@@ -4,7 +4,7 @@
 
 /*block*/
 .xiang-control .con-detail {
-    border: solid 1px #999;
+    border: solid 1px var(--v1-clr-e1);
     margin: 0 auto;
     width: 1000px;
 }

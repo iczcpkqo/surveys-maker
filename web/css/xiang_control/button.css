@@ -22,20 +22,20 @@
 }
 
 .xiang-control .btn-1 {
-    background-color: #06c;
+    background-color: var(--v1-clr-a2);
     border: 0;
     color: #fff;
     width: 114px;
 }
 
 .xiang-control .btn-1:hover {
-    background-color: #f36;
+    background-color: var(--v1-clr-d2);
 }
 
 .xiang-control .btn-2,
 .xiang-control .btn-4 {
-    background-color: #0c9;
-    border: solid 1px #06c;
+    background-color: var(--v1-clr-b2);
+    border: solid 1px var(--v1-clr-a2);
     color: #fff;
     font-size: 16px;
     width: 297px;
@@ -44,7 +44,7 @@
 .xiang-control .btn-4:before {
     border: none;
     border-radius: 5px 0 0 5px;
-    background-color: #099;
+    background-color: var(--v1-clr-b1);
     content: '👁';
     float: left;
     font-size: 24px;
@@ -53,14 +53,14 @@
 }
 .xiang-control .btn-2:hover,
 .xiang-control .btn-4:hover {
-    box-shadow: 0 0 5px #0066cc;
-    text-shadow: 0 0 5px #0066cc;
+    box-shadow: 0 0 5px var(--v1-clr-a2);
+    text-shadow: 0 0 5px var(--v1-clr-a2);
 }
 
 .xiang-control .btn-3 {
     background-color: #fff;
-    border: dashed 2px #aaa;
-    color: #aaa;
+    border: dashed 2px var(--v1-clr-e2);
+    color: var(--v1-clr-e2);
     width: 614px;
 }
 .xiang-control .btn-3:before {
@@ -68,7 +68,7 @@
     margin-right: 24px;
 }
 .xiang-control .btn-3:hover {
-    background-color: #eee;
+    background-color: var(--v1-clr-e2);
     color: #999;
 }
 

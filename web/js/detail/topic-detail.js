@@ -37,6 +37,7 @@ function onTopicPageLoad(p_data){
     let liBox = document.getElementsByClassName('box-li')[0];
     let btnAddItem = document.getElementsByClassName('add-quiz-btn')[0];
     let subTopic = document.getElementById('submit-topic');
+    let topicTit = document.getElementById('topic-tit');
 
     // Bind everything
     btnAddItem.addEventListener('click',function(){
@@ -46,6 +47,8 @@ function onTopicPageLoad(p_data){
         document.getElementById('topic-form').submit();
     });
 
+    // Init tit
+    topicTit.setAttribute('value', p_data.topic_name);
     // Init select list
     for(let i in p_data.quizes){
         let li = createQuizInput(p_data.quizes[i].tit);
@@ -68,6 +71,7 @@ function onTopicPageLoad(p_data){
  */
 window.onload = function(){
     let p_data = {
+        'topic_name': 'Legal Compliance',
         'quizes':[
             {
                 'id': 1,

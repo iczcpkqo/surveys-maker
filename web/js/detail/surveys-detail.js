@@ -60,6 +60,7 @@ function onSurveysPageLoad(p_data){
     let liBox = document.getElementsByClassName('box-li')[0];
     let btnAddItem = document.getElementsByClassName('add-topic-btn')[0];
     let subSurveys = document.getElementById('submit-surveys');
+    let surTit = document.getElementById('surveys-tit');
 
     // Bind everything
     btnAddItem.addEventListener('click',function(){
@@ -69,6 +70,8 @@ function onSurveysPageLoad(p_data){
         document.getElementById('surveys-form').submit();
     });
 
+    // Init tit
+    surTit.setAttribute('value', p_data.surveys_name);
     // Init select list
     for(let i in p_data.sel){
         let li = createTopicsSel(p_data.topics);
@@ -80,6 +83,7 @@ function onSurveysPageLoad(p_data){
 /**
  *
  * @param p_data = {
+ *                      'surveys_name': String,
  *                      // 主题库中的所有主题
  *                      'topic': [
  *                          {
@@ -99,6 +103,7 @@ function onSurveysPageLoad(p_data){
  */
 window.onload = function(){
     let p_data = {
+        'surveys_name': 'Corporate Employee Happiness Survey.',
         'topics': [
             {
                 'id': 111,
