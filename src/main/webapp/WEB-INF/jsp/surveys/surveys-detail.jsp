@@ -49,7 +49,7 @@
 <!--导航-->
 <div class="bar-top-1">
     <a class="tit" href="../index.html">Surveys Maker System</a>
-    <div class="account">Xiang.Mao@aaaaaaaaa</div>
+    <div class="account">Xiang.Mao@</div>
     <div class="nav-con">
         <a class="nav-li sel" href="../surveys/surveys-detail.html">Surveys List</a>
         <a class="nav-li" href="../topic/topic-detail.html">Topic List</a>
