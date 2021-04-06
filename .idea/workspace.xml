@@ -33,15 +33,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="localRepository" value="D:\onedrive\project\warehouse" />
-        <option name="mavenHome" value="D:\onedrive\project\apache-maven-3.6.3" />
-        <option name="userSettingsFile" value="D:\onedrive\project\apache-maven-3.6.3\conf\settings.xml" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="1qes2YyBfHc8W30Cd77D5TDPHL6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -94,6 +85,13 @@
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SurveysApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.surveys.SurveysApplication" />
+      <module name="surveys" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -159,6 +157,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
