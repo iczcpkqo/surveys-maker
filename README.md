@@ -11,7 +11,20 @@
 
 * `doc`. documents, papers, reports...
 
+<<<<<<< HEAD
 * `web`. programs...
+=======
+* ~`web`. programs...~
+
+* `src\mian`. programs
+
+
+* `env`: 
+    - mvnw
+    - pom.xml
+    - mvnw.cmd
+    - .mvn
+>>>>>>> zhengxiangyu2
 
 ## Version control
 
