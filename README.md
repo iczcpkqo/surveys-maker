@@ -11,16 +11,13 @@
 
 * `doc`. documents, papers, reports...
 
-* ~`web`. programs...~
+* `src/mian`. programs
 
-* `src\mian`. programs
-
-
-* `env`: 
+* environment: 
+    - .mvn/
     - mvnw
-    - pom.xml
     - mvnw.cmd
-    - .mvn
+    - pom.xml
 
 ## Version control
 
