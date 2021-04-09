@@ -1,6 +1,5 @@
 package com.util;
 
-import org.jfree.chart.ChartColor;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
@@ -59,7 +58,7 @@ public class ChartUtil {
 
     private DefaultPieDataset getPieDataSet(Map<String, Integer> params) {
         DefaultPieDataset dataset = new DefaultPieDataset();
-        String[] sum = {"green", "yellow", "red"};
+        String[] sum = {"green", "amber", "red"};
         for (String item : sum) {
             if (params.containsKey(item)) {
                 dataset.setValue(item, params.get(item));
