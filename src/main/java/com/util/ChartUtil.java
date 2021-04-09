@@ -9,19 +9,24 @@ import org.jfree.chart.plot.PiePlot;
 
 import org.jfree.chart.ui.RectangleEdge;
 import org.jfree.data.general.DefaultPieDataset;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class ChartUtil {
 
     private static final String KEY1 = "Datum 1";
     public static final String KEY2 = "Datum 2";
     private static final String path = "D:/";
+
+    @Autowired
+    private firebaseUtil firebaseUtil;
 
     public String createPie(Map<String, Integer> params, String title) {
         DefaultPieDataset data = getPieDataSet(params);
@@ -41,9 +46,8 @@ public class ChartUtil {
         try {
             File tempFile = File.createTempFile(title, ".jpg");
             ChartUtils.saveChartAsJPEG(tempFile, 1.0f, chart, 400, 400, null);
-            StorateUtil storateUtil = new StorateUtil();
-            storateUtil.uploadImage(tempFile.getAbsolutePath(),title + ".jpg");
-            storateUtil.downloadPDF("1111");
+            firebaseUtil.uploadImage(tempFile.getAbsolutePath(),title + ".jpg");
+            firebaseUtil.downloadPDF("1111");
             return filePath;
         } catch (Exception e) {
             e.printStackTrace();

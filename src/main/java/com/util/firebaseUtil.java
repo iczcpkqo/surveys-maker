@@ -5,16 +5,18 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QuerySnapshot;
+import com.google.cloud.storage.*;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+import com.google.firebase.cloud.StorageClient;
+import com.google.gson.JsonObject;
 import com.po.Result;
 import org.springframework.stereotype.Component;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -22,6 +24,16 @@ import java.util.concurrent.ExecutionException;
 public class firebaseUtil {
 
     private static final String FIREBASE_SERVICE_ACCOUNT = "src/main/resources/survey-service-account.json";
+
+    private static String storageBucket = "survey-dfcd5.appspot.com";
+
+    private static String projectId = "survey-dfcd5";
+
+    private static Bucket bucket;
+
+    private static Storage service;
+
+    private static String image = "images/";
 
     private static Firestore db;
 
@@ -42,10 +54,18 @@ public class firebaseUtil {
         }
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setCredentials(credentials)
+                .setStorageBucket(storageBucket)
                 .build();
         FirebaseApp.initializeApp(options);
 
         db = FirestoreClient.getFirestore();
+
+        StorageOptions build = StorageOptions.newBuilder()
+                .setCredentials(credentials)
+                .build();
+
+        bucket = StorageClient.getInstance().bucket();
+        service = build.getService();
 
     }
 
@@ -73,6 +93,31 @@ public class firebaseUtil {
             return new Result("false", "failed to add data", null);
         }
         return new Result("true", "add data successful", null);
+    }
+
+    public Result uploadImage(String imagePath, String imageName) {
+
+        try {
+            bucket.create(image + imageName, Files.readAllBytes(Paths.get(imagePath)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Result downloadPDF(String PDFName) {
+        File tempFile;
+        try {
+            tempFile = File.createTempFile(PDFName, ".jpg");
+            Blob blob = service.get(BlobId.of(storageBucket, "images/1111.jpg"));
+            blob.downloadTo(Paths.get(tempFile.getAbsolutePath()));
+        } catch (IOException e) {
+            return new Result("false", "failed to create file", null);
+        }
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("filePath",tempFile.getAbsolutePath());
+        return new Result("true", tempFile.getAbsolutePath(), jsonObject);
+
     }
 
 }

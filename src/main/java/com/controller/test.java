@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -21,12 +22,12 @@ public class test {
     @Autowired
     private firebaseUtil firebaseUtil;
 
-//    @RequestMapping("/index")
-//    public String index(HttpServletRequest request) throws ExecutionException, InterruptedException {
+    @RequestMapping("/index")
+    public String index(HttpServletRequest request) throws ExecutionException, InterruptedException {
 //        List<Map<String, Object>> resultData = firebaseUtil.queryByName("surveys");
 //        request.setAttribute("surveys", resultData);
-//        return "index";
-//    }
+        return "index";
+    }
 
     @RequestMapping("/add")
     public String add(HttpServletRequest request, HttpServletResponse response) throws ExecutionException, InterruptedException, IOException, ServletException {

@@ -23,6 +23,7 @@ public class SurveyService {
     @Autowired
     private firebaseUtil firebaseUtil;
 
+
     public Result queryAllSurveys() {
         QuerySnapshot surveys;
         QuerySnapshot topics;
@@ -49,7 +50,7 @@ public class SurveyService {
         List<Map<String, Object>> resultArray = new ArrayList<>();
         for (QueryDocumentSnapshot document : topics.getDocuments()) {
             Map<String, Object> data = document.getData();
-            data.put("id",document.getId());
+            data.put("id", document.getId());
             resultArray.add(data);
         }
         String s = gson.toJson(resultArray);
@@ -61,11 +62,16 @@ public class SurveyService {
         List<Map<String, Object>> resultArray = new ArrayList<>();
         for (QueryDocumentSnapshot document : surveys.getDocuments()) {
             Map<String, Object> data = document.getData();
-            data.put("id",document.getId());
+            data.put("id", document.getId());
             resultArray.add(data);
         }
         String s = gson.toJson(resultArray);
         JsonElement jsonElement = jsonParser.parseString(s);
         return jsonElement;
+    }
+
+
+    public Result getPersonalPDF() {
+        return firebaseUtil.downloadPDF("1111");
     }
 }
