@@ -1,0 +1,57 @@
+.xiang-control {
+
+}
+
+.xiang-control .bar-chart-1 {
+}
+.xiang-control .bar-chart-1 .bar-con{
+    height: 256px;
+    position: relative;
+    width: 408px;
+}
+.xiang-control .bar-chart-1 .label {
+    float: left;
+    width: 48px;
+}
+.xiang-control .bar-chart-1 .label a,
+.xiang-control .bar-chart-1 .label p {
+    border: solid 2px var(--v1-clr-c1);
+    border-radius: 44px;
+    color: var(--v1-clr-c1);
+    font-weight: bolder;
+    height: 44px;
+    line-height: 44px;
+    margin: 56px 0;
+    text-align: center;
+    width: 44px;
+}
+.xiang-control .bar-chart-1 .label a:first-child,
+.xiang-control .bar-chart-1 .label p:first-child {
+    border-color: var(--v1-clr-b2);
+    color: var(--v1-clr-b2);
+    margin-top: 0;
+}
+.xiang-control .bar-chart-1 .label a:last-child,
+.xiang-control .bar-chart-1 .label p:last-child {
+    border-color: var(--v1-clr-d2);
+    color: var(--v1-clr-d2);
+    margin-bottom: 0;
+}
+
+.xiang-control .bar-chart-1 .bar {
+    height: 442px;
+    float: right;
+    left: 40px;
+    position: absolute;
+    top: -88px;
+    width: 422px;
+}
+
+.xiang-control .pie-chart-1 {
+
+}
+.xiang-control .pie-chart-1 .pie-con {
+    height: 356px;
+    margin: -2px 0 0 -2px;
+    width: 356px;
+}
