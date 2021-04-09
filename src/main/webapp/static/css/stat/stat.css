@@ -1,0 +1,87 @@
+.stat .green {
+
+}
+.stat .amber {
+
+}
+.stat .red {
+
+}
+
+.stat .page-contain {
+    margin: 0 auto;
+    width: 1000px;
+}
+.stat .page-contain .opera-contain {
+    height: 48px;
+    margin: 48px 0 48px 0;
+    width: 100%;
+}
+.stat .page-contain .opera-contain .opera-download {
+    float: right;
+}
+
+.stat .page-contain .content-contain {
+    width: 100%;
+}
+.stat .page-contain .content-contain .topic-con {
+
+}
+.stat .page-contain .content-contain .topic-con.green .tit-topic,
+.stat .page-contain .content-contain .topic-con.green .quiz-con .tit-quiz {
+    color: var(--v1-clr-b2);
+}
+.stat .page-contain .content-contain .topic-con.green .quiz-con .tit-quiz:before {
+    content: 'Your bussiness has this in place / You are happy with our approach / You feel that you have sufficient knowledge.';
+}
+.stat .page-contain .content-contain .topic-con.amber .tit-topic,
+.stat .page-contain .content-contain .topic-con.amber .quiz-con .tit-quiz {
+    color: var(--v1-clr-c1);
+}
+.stat .page-contain .content-contain .topic-con.amber .quiz-con .tit-quiz:before {
+    content: 'Your business has something in place, but you feel it could be improved / you feel that you would need some support if this situation arose.';
+}
+.stat .page-contain .content-contain .topic-con.red .tit-topic,
+.stat .page-contain .content-contain .topic-con.red .quiz-con .tit-quiz {
+    color: var(--v1-clr-d2);
+}
+.stat .page-contain .content-contain .topic-con.red .quiz-con .tit-quiz:before {
+    content: 'Your business does not have provision for this / You feel unprepared for this situation.';
+}
+
+.stat .page-contain .content-contain .topic-con .quiz-con .tit-quiz {
+    margin: 48px 48px 0 48px;
+}
+.stat .page-contain .content-contain .topic-con .quiz-con .tit-quiz a,
+.stat .page-contain .content-contain .topic-con .quiz-con .tit-quiz p {
+    margin: 0;
+}
+.stat .page-contain .content-contain .topic-con .quiz-con .charts-quiz,
+.stat .page-contain .content-contain .topic-con .quiz-con .opera-quiz {
+    padding-top: 48px;
+    margin: 0 auto;
+}
+.stat .page-contain .content-contain .topic-con .quiz-con .charts-quiz {
+    height: 360px;
+    width: 808px;
+}
+.stat .page-contain .content-contain .topic-con .quiz-con .charts-quiz .chart-left {
+    float: left;
+}
+.stat .page-contain .content-contain .topic-con .quiz-con .charts-quiz .chart-right {
+    float: right;
+    margin-top: 48px;
+}
+
+.stat .page-contain .content-contain .topic-con .quiz-con .opera-quiz {
+    width:904px;
+    height: 96px;
+}
+.stat .page-contain .content-contain .topic-con .quiz-con .opera-quiz .previous-opera {
+   float: left;
+}
+
+.stat .page-contain .content-contain .topic-con .quiz-con .opera-quiz .next-opera {
+    float: right;
+}
+

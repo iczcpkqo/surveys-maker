@@ -62,3 +62,24 @@
     background-color: var(--v1-clr-b2);
     font-weight: bold;
 }
+
+.xiang-control .bar-top-2 {
+    background-color: var(--v1-clr-a1);
+    border-radius: 0 0 5px 5px;
+    height: 96px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.xiang-control .bar-top-2 .tit {
+    color: #fff;
+    font-size: 26px;
+    font-weight: bolder;
+    padding: 24px 0 0 24px;
+}
+.xiang-control .bar-top-2 .tit a,
+.xiang-control .bar-top-2 .tit p {
+    margin: 0;
+    padding: 0;
+}
+

@@ -57,17 +57,17 @@ function setTopicSel(selObj, val){
  */
 function onSurveysPageLoad(p_data){
     // Get DOM
-    let liBox = document.getElementsByClassName('box-li')[0];
-    let btnAddItem = document.getElementsByClassName('add-topic-btn')[0];
-    let subSurveys = document.getElementById('submit-surveys');
-    let surTit = document.getElementById('surveys-tit');
+    let liBox = $('.box-li')[0];
+    let btnAddItem = $('.add-topic-btn')[0];
+    let subSurveys = $('submit-surveys');
+    let surTit = $('surveys-tit');
 
     // Bind everything
     btnAddItem.addEventListener('click',function(){
         addTopic(p_data.topics);
     });
     subSurveys.addEventListener('click',function(){
-        document.getElementById('surveys-form').submit();
+        $('surveys-form').submit();
     });
 
     // Init tit
@@ -126,6 +126,8 @@ window.onload = function(){
             }
         ]
     }
-
+    let _jsp = g_jsp_data;
+    let p_stat = new DataDetail(_jsp);
+    p_data = p_stat.p_data;
     onSurveysPageLoad(p_data);
 }

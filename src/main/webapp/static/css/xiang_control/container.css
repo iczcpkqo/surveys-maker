@@ -3,8 +3,38 @@
 }
 
 /*block*/
-.xiang-control .con-detail {
+.xiang-control .con-detail,
+.xiang-control .con-stat,
+.xiang-control .con-stat>.tit {
     border: solid 1px var(--v1-clr-e1);
     margin: 0 auto;
     width: 1000px;
+}
+
+.xiang-control .con-stat,
+.xiang-control .con-stat>.tit {
+    border-radius: 5px 5px 0 0;
+}
+.xiang-control .con-stat>.tit {
+    border-width: 0;
+    border-bottom-width: 1px;
+    color: var(--v1-clr-b1);
+    font-size: 18px;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 24px;
+    width: 952px;
+}
+.xiang-control .con-stat>.tit .label a,
+.xiang-control .con-stat>.tit .label p,
+.xiang-control .con-stat>.tit .process a,
+.xiang-control .con-stat>.tit .process p{
+    margin: 0;
+    padding: 0;
+}
+.xiang-control .con-stat>.tit .label {
+    float: left;
+}
+.xiang-control .con-stat>.tit .process {
+    float: right;
 }
