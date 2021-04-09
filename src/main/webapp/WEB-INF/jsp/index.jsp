@@ -21,6 +21,13 @@ add:
     survey：<input name="surveyName" value=""/><br>
     <input type="submit" value="submit">
 </form>
+
+</br>
+downloadPDF:
+<form action="surveys/downloadPDF" method="post">
+    survey：<input name="surveyName" value=""/><br>
+    <input type="submit" value="download">
+</form>
 </html>
 <%
     HttpSession sess = request.getSession();

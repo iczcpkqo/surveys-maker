@@ -2,12 +2,14 @@ package com.util;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
+import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Map;
 
+@Component
 public class PDFUtil {
 
     // 利用模板生成pdf
