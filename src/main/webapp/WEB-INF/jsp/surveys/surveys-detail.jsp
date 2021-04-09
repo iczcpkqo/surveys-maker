@@ -68,7 +68,7 @@
     <form id="surveys-form" class="box-detail" action="test.jsp">
 
         <div class="tit">
-            <input id="surveys-tit" class="txt-2" type="text" placeholder="Please input surveys name.">
+            <input id="surveys-tit" name="surveys-tit" class="txt-2" type="text" placeholder="Please input surveys name.">
         </div>
 
         <div class="box-li">

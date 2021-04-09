@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    control-->
+    <link rel="stylesheet" href="../../../static/css/xiang_control/base.css">
+    <link rel="stylesheet" href="../../../static/css/xiang_control/bar.css">
+    <link rel="stylesheet" href="../../../static/css/xiang_control/container.css">
+    <link rel="stylesheet" href="../../../static/css/xiang_control/button.css">
+    <link rel="stylesheet" href="../../../static/css/xiang_control/input.css">
+    <link rel="stylesheet" href="../../../static/css/xiang_control/text.css">
+    <link rel="stylesheet" href="../../../static/css/xiang_control/chart.css">
+
+    <!--   page -->
+    <link rel="stylesheet" href="../../../static/css/client/client.css">
+    <link rel="stylesheet" href="../../../static/css/view/view.css">
+
+    <!-- js -->
+    <script src="../../../static/js/xiang_control/base.js"></script>
+    <script src="../../../static/js/data_processing/data-processing.js"></script>
+    <script src="../../../static/js/xiang_control/xiang_chart.js"></script>
+    <script src="../../../static/js/stat/client-stat.js"></script>
+    <script>
+        var g_jsp_data = {
+            "surveys": [{
+                "selectedTopic": {
+                    "wQm8fAHUCtPFrRGCA7md": {
+                        "topicId": "wQm8fAHUCtPFrRGCA7md",
+                        "createTime": {"seconds": 1617490800, "nanos": 0},
+                        "questions": {
+                            "0": {
+                                "red": 1, "green": 3, "questionTitle": "question1", "amber": 1
+                            }, "1": {
+                                "red": 0, "green": 1, "questionTitle": "question1", "amber": 0
+                            }, "2": {
+                                "red": 0, "green": 1, "questionTitle": "question1", "amber": 0
+                            }
+                        },
+                        "topicTitle": "topic1"
+                    },
+                    "dsfsdfsdf": {
+                        "topicId": "dsfsdfsdf",
+                        "createTime": {"seconds": 1617490800, "nanos": 0},
+                        "questions": {"0": {"red": 0, "green": 1, "questionTitle": "qqqqq2222", "amber": 1}},
+                        "topicTitle": "tottt222"
+                    }
+                },
+                "createTime": {"seconds": 1617490800, "nanos": 0},
+                "id": "ebJcAKNLV52a0okYrXFw",
+                "surveyTitle": "survey1"
+            }],
+            "topics": [{
+                "createTime": {"seconds": 1617490800, "nanos": 0},
+                "questions": {"0": {"questionTitle": "question1"}},
+                "id": "wQm8fAHUCtPFrRGCA7md",
+                "topicTitle": "topic1"
+            }]
+        }
+    </script>
+</head>
+<body class="xiang-control view client">
+<div class="page-contain">
+    <div class="bar-top-2 tit-contain">
+        <div class="tit tit-bar">
+            <div class="tit-label">
+                <p id="surveys-tit">
+                    Corporate Employee Happiness Survey.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-contain">
+        <div class="surveys-con">
+            <div id="chart-0" class="topic-con con-stat red">
+                <div class="tit-topic tit">
+                    <div class="label-tit-topic label">
+                        <p id="cur-topic-tit">
+                            Hours of Work and Leave
+                        </p>
+                    </div>
+                    <div class="process-tit-topic process">
+                        <p>
+                            <a id="cur-index">1</a>/<a id="topics-amount">8</ida>
+                        </p>
+                    </div>
+                </div>
+                <div class="quiz-con">
+                    <div class="tit-quiz">
+                        <p>
+                        </p>
+                    </div>
+                    <div class="charts-quiz">
+                        <div class="chart-left pie-chart-1">
+                            <div id="pie-chart-1" class="pie-con">
+                                <!-- pie chart -->
+                            </div>
+                        </div>
+                        <div class="chart-right bar-chart-1">
+                            <div class="bar-con">
+                                <div class="label">
+                                    <p>
+                                        G
+                                    </p>
+                                    <p>
+                                        A
+                                    </p>
+                                    <p>
+                                        R
+                                    </p>
+                                </div>
+                                <div id="bar-chart-1" class="bar">
+                                    <!-- bar chart -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="opera-quiz">
+                        <div class="previous-opera">
+                            <a class="btn-6">Previous</a>
+                        </div>
+                        <div class="next-opera">
+                            <a class="btn-6">Next</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+</body>
+</html>
