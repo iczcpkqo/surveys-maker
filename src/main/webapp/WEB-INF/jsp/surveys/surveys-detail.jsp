@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/detail/surveys-detail.css">
 
 <!--    script-->
-    <script src="${pageContext.request.contextPath}/static/js/base.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/xiang_control/base.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/detail/detail.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/detail/surveys-detail.js"></script>
     <script type="text/javascript">
