@@ -56,23 +56,25 @@ function setTopicSel(selObj, val){
  * @param p_data, json, from page load
  */
 function onSurveysPageLoad(p_data){
+    console.log(p_data);
     // Get DOM
     let liBox = $('.box-li')[0];
     let btnAddItem = $('.add-topic-btn')[0];
-    let subSurveys = $('submit-surveys');
-    let surTit = $('surveys-tit');
+    let subSurveys = $('#submit-surveys');
+    let surTit = $('#surveys-tit');
 
     // Bind everything
     btnAddItem.addEventListener('click',function(){
         addTopic(p_data.topics);
     });
     subSurveys.addEventListener('click',function(){
-        $('surveys-form').submit();
+        $('#surveys-form').submit();
     });
 
     // Init tit
     surTit.setAttribute('value', p_data.surveys_name);
     // Init select list
+    console.log(p_data.topics);
     for(let i in p_data.sels){
         let li = createTopicsSel(p_data.topics);
         li = setTopicSel(li, p_data.sels[i].id);
@@ -92,7 +94,7 @@ function onSurveysPageLoad(p_data){
  *                          }
  *                      ],
  *                      // 该问卷已经选择的主题
- *                      'sel': [
+ *                      'sels': [
  *                          {
  *                              'id': int,
  *                              'tit': String
