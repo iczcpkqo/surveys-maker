@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="../../../static/css/detail/surveys-detail.css">
 
 <!--    script-->
-    <script src="../../../static/js/base.js"></script>
+    <script src="../../../static/js/xiang_control/base.js"></script>
+    <script src="../../../static/js/data_processing/data-processing.js"></script>
     <script src="../../../static/js/detail/detail.js"></script>
     <script src="../../../static/js/detail/surveys-detail.js"></script>
     <script type="text/javascript">
@@ -36,6 +37,53 @@
         //         }
         //     ]
         // }
+
+        var g_jsp_data = {
+            "surveys": [{
+                "selectedTopic": {
+                    "wQfAHUCtPFrRGCA7md": {
+                        "topicId": "wQfAHUCtPFrRGCA7md",
+                        "createTime": {"seconds": 1617490800, "nanos": 0},
+                        "questions": {"0": {"red": 0, "green": 3, "questionTitle": "question1", "amber": 1}},
+                        "topicTitle": "top222222222"
+                    }
+                },
+                "createTime": {"seconds": 1617490800, "nanos": 0},
+                "id": "ebJcAKNLV52a0okYrXFw",
+                "surveyTitle": "survey1 js"
+            }],
+            "topics": [{
+                "createTime": {"seconds": 1617490800, "nanos": 0},
+                "questions": {"0": {"questionTitle": "question1"}},
+                "id": "wQm8fAHUCtPFrRGCA7md",
+                "topicTitle": "topic1"
+            },{
+                "createTime": {"seconds": 1617490800, "nanos": 0},
+                "questions": {"0": {"questionTitle": "question1"}},
+                "id": "wQfAHUCtPFrRGCA7md",
+                "topicTitle": "top222222222"
+            }]
+        };
+
+
+        // var g_jasp_data = {
+        //     "surveys": [{
+        //         "selectedTopic": {
+        //             "wQm8fAHUCtPFrRGCA7md": {
+        //                 "topicId": "wQm8fAHUCtPFrRGCA7md",
+        //                 "createTime": {"seconds": 1617490800, "nanos": 0},
+        //                 "questions": {"0": {"red": 0, "green": 3, "questionTitle": "question1", "amber": 1}},
+        //                 "topicTitle": "topic1"
+        //             }
+        //         },
+        //         "createTime": {"seconds": 1617490800, "nanos": 0},
+        //         "id": "ebJcAKNLV52a0okYrXFw",
+        //         "surveyTitle": "survey1"
+        //     }],
+        //     "topics": ['s','sdf'],
+        //     'tt': ['s','sdf']
+        // };
+
     </script>
 
 </head>
