@@ -1,0 +1,47 @@
+.xiang-control .ico-1-green,
+.xiang-control .ico-1-amber,
+.xiang-control .ico-1-red {
+    border: solid 2px var(--v1-clr-b2);
+    border-radius: 44px;
+    color: var(--v1-clr-b2);
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bolder;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    width: 44px;
+}
+.xiang-control .ico-1-green {
+}
+.xiang-control .ico-1-green:hover {
+    background-color: var(--v1-clr-b2);
+    color: white;
+}
+.xiang-control .ico-1-green:before {
+    content: 'G';
+}
+
+.xiang-control .ico-1-amber {
+    border-color: var(--v1-clr-c1);
+    color: var(--v1-clr-c1);
+}
+.xiang-control .ico-1-amber:hover {
+    background-color: var(--v1-clr-c1);
+    color: white;
+}
+.xiang-control .ico-1-amber:before {
+    content: 'A';
+}
+
+.xiang-control .ico-1-red {
+    border-color: var(--v1-clr-d2);
+    color: var(--v1-clr-d2);
+}
+.xiang-control .ico-1-red:hover {
+    background-color: var(--v1-clr-d2);
+    color: white;
+}
+.xiang-control .ico-1-red:before {
+    content: 'R';
+}

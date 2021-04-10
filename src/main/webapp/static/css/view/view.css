@@ -1,0 +1,46 @@
+.view .page-contain {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.view .page-contain .content-contain {
+    margin-top: 48px;
+}
+
+.view .page-contain .content-contain .quiz-con {
+
+}
+
+.view .page-contain .content-contain .quiz-con .quiz-list {
+
+}
+
+.view .page-contain .content-contain .quiz-con .quiz-list .quiz-li {
+    padding-left: 48px;
+    padding-top: 48px;
+}
+.view .page-contain .content-contain .quiz-con .quiz-list .quiz-li .radio-box-1 .rb-1-con .rb-1-li:nth-child(2) .rb-1-right {
+    line-height: 24px;
+}
+
+.view .page-contain .content-contain .quiz-con .opera-quiz {
+    height: 48px;
+    padding: 48px;
+}
+
+.view .page-contain .content-contain .quiz-con .opera-quiz .previous-opera {
+    float: left;
+}
+
+.view .page-contain .content-contain .quiz-con .opera-quiz .next-opera {
+    float: right;
+}
+
+
+
+
+
+
+
+
+

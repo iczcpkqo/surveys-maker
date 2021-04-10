@@ -2,5 +2,11 @@
 }
 
 .xiang-control .label-1 {
-
+    color: var(--v1-clr-f2);
+    font-size: 18px;
+    font-weight: bold;
+}
+.xiang-control .label-2 {
+    color: var(--v1-clr-e1);
+    font-size: 13px;
 }
