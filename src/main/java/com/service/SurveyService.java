@@ -34,7 +34,7 @@ public class SurveyService {
     private PDFUtil pdfUtil;
 
 
-    public Result queryAllSurveys(String surveyId) {
+    public Result getSurveyByIdandTopics(String surveyId) {
         Map<String, Object> surveys = new HashMap<>();
         QuerySnapshot topics;
         try {
@@ -109,7 +109,7 @@ public class SurveyService {
     }
 
     public Result getPersonalPDF(String id) {
-        Map<String, Object> personalSurvey = firebaseUtil.getByDocumentId("personalSurvey", id);
+        Map<String, Object> personalSurvey = firebaseUtil.getByDocumentId("personalSurveys", id);
         if (personalSurvey.size() <= 0) {
             return new Result("false", "there is no data", null);
         }
@@ -134,7 +134,7 @@ public class SurveyService {
             topicFiles.add(topicFile);
         }
 
-        if(topicFiles.size()<=0){
+        if (topicFiles.size() <= 0) {
             return new Result("false", "no data", null);
         }
 
@@ -197,5 +197,119 @@ public class SurveyService {
         }
 
         return colors;
+    }
+
+    public Result queryAllSurveys(String collection) {
+        firebaseUtil.getAllDocuments(collection);
+        return null;
+    }
+
+    public Result queryAllDocumentPage(String collection, Integer page, Integer number) {
+        List<Map<String, Object>> results = firebaseUtil.getAllDocuments(collection);
+
+        if (results.size() <= 0) {
+            return new Result("false", "no data", null);
+        }
+
+        if (number == null || results.size() <= number) {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.add("data", gson.toJsonTree(results));
+            return new Result("true", "query successful", jsonObject);
+        }
+
+        if (page == null || page < 1) {
+            page = 1;
+        }
+
+        int start = (page - 1) * number;
+        int end = page * number - 1;
+        if (results.size() < end) {
+            end = results.size() - 1;
+        }
+
+        List<Map<String, Object>> subResults = results.subList(start, end);
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.add("data", gson.toJsonTree(subResults));
+        jsonObject.addProperty("total", results.size());
+        return new Result("true", "query successful", jsonObject);
+    }
+
+    public Result getTopicById(String topicId) {
+        Map<String, Object> topic = firebaseUtil.getByDocumentId("topics", topicId);
+        JsonObject jsonObject = new JsonObject();
+        List<Map<String, Object>> result = new ArrayList<>();
+        result.add(topic);
+        JsonElement resultJsonElement = gson.toJsonTree(result);
+        jsonObject.add("data", resultJsonElement);
+        return new Result("true", "query successful", jsonObject);
+    }
+
+    public Result saveTopic(String topicName, String[] questions) {
+        List<Map<String, Object>> dataByField = firebaseUtil.getDataByField("topics", "topicTitle", topicName);
+        if (dataByField.size() > 0) {
+            topicName = topicName + "(" + (dataByField.size() + 1) + ")";
+        }
+
+        List<String> quesionList = new ArrayList<>(Arrays.asList(questions));
+
+        UUID uuid = UUID.randomUUID();
+        Map<String, Object> docData = new HashMap<>();
+        docData.put("topicTitle", topicName);
+        docData.put("questions", quesionList);
+        docData.put("topicId", uuid.toString());
+        docData.put("createTime", new Date());
+        Result result = firebaseUtil.saveDocument("topics", UUID.randomUUID().toString(), docData);
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("id", uuid.toString());
+        result.setData(jsonObject);
+        return new Result("true", "save successful", jsonObject);
+    }
+
+    public Result startAnswer(String surveyId) {
+        Map<String, Object> survey = firebaseUtil.getByDocumentId("surveys", surveyId);
+        if (survey.size() <= 0) {
+            return new Result("false", "no survey", null);
+        }
+
+        UUID uuid = UUID.randomUUID();
+        survey.put("clientId", uuid.toString());
+        survey.put("createTime", new Date());
+        Result result = firebaseUtil.saveDocument("personalSurveys", uuid.toString(), survey);
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("id", uuid.toString());
+        result.setData(jsonObject);
+        return new Result("true", "save successful", jsonObject);
+    }
+
+    public Result surveySummit(String clientId, String topicIndex, String[] answers) {
+        Map<String, Object> personalSurveys = firebaseUtil.getByDocumentId("personalSurveys", clientId);
+        if (personalSurveys.size() <= 0) {
+            return new Result("false", "no survey", null);
+        }
+        Object selectedTopics = personalSurveys.get("selectedTopics");
+        List topicsList = gson.fromJson(selectedTopics.toString(), List.class);
+        if (topicsList == null || topicsList.size() <= 0) {
+            return new Result("false", "no topics", null);
+        }
+        Object topic = topicsList.get(Integer.valueOf(topicIndex));
+        JsonObject topicJson = (JsonObject) gson.toJsonTree(topic);
+        List quesionList = gson.fromJson(topicJson.get("questions"), List.class);
+        if (topicsList == null || topicsList.size() <= 0) {
+            return new Result("false", "no questions", null);
+        }
+        List<JsonObject> saveQuestions = new ArrayList<>();
+        for (int i = 0; i < quesionList.size(); i++) {
+            Object o = quesionList.get(i);
+            JsonObject jsonObject = (JsonObject) gson.toJsonTree(o);
+            jsonObject.addProperty("answer", answers[i]);
+            saveQuestions.add(jsonObject);
+        }
+        topicJson.add("questions", gson.toJsonTree(saveQuestions));
+        topicsList.remove(Integer.valueOf(topicIndex));
+        Object object = topicJson;
+        topicsList.add(Integer.valueOf(topicIndex), object);
+        Object updateFiled = topicsList;
+        firebaseUtil.updateDocument("personalSurveys", clientId, "selectedTopics", updateFiled);
+        return new Result("true", "update successful", null);
     }
 }

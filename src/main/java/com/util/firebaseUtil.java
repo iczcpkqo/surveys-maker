@@ -121,8 +121,8 @@ public class firebaseUtil {
 
     }
 
-    public List<Map<String, Object>> getDataByField(String collection, String fieldName, String name) {
-        ApiFuture<QuerySnapshot> future = db.collection("survey").whereEqualTo(fieldName, name).get();
+    public List<Map<String, Object>> getDataByField(String collection, String fieldName, String fieldValue) {
+        ApiFuture<QuerySnapshot> future = db.collection(collection).whereEqualTo(fieldName, fieldValue).get();
         List<QueryDocumentSnapshot> documents;
         try {
             documents = future.get().getDocuments();
@@ -177,4 +177,35 @@ public class firebaseUtil {
     }
 
 
+    public List<Map<String, Object>> getAllDocuments(String collection) {
+        ApiFuture<QuerySnapshot> future = db.collection(collection).orderBy("createTime").get();
+        List<Map<String, Object>> result = new ArrayList<>();
+        List<QueryDocumentSnapshot> documents;
+        try {
+            documents = future.get().getDocuments();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return result;
+        }
+
+        if (documents.size() <= 0) {
+            return result;
+        }
+
+        for (QueryDocumentSnapshot document : documents) {
+            result.add(document.getData());
+        }
+        return result;
+    }
+
+    public void updateDocument(String collection,String document,String updateFiled,Object value) {
+        DocumentReference docRef = db.collection(collection).document(document);
+
+        ApiFuture<Void> futureTransaction = db.runTransaction(transaction -> {
+            // retrieve document and increment population field
+            DocumentSnapshot snapshot = transaction.get(docRef).get();
+            transaction.update(docRef, updateFiled, value);
+            return null;
+        });
+    }
 }
