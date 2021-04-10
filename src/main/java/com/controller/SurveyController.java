@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 
@@ -21,19 +23,52 @@ public class SurveyController {
     private SurveyService surveyService;
 
     @RequestMapping("surveys/surveys-detail")
-    public String surveysDetail(HttpServletRequest request) throws ExecutionException, InterruptedException {
-        Result resultData = surveyService.queryAllSurveys();
-        request.getSession().setAttribute("data", resultData.getData());
-        request.getSession().setAttribute("status", resultData.getStatus());
-        request.getSession().setAttribute("message", resultData.getMessage());
+    public String surveysDetail(HttpServletRequest request){
+        Result result = surveyService.queryAllSurveys("");
+        request.getSession().setAttribute("data", result.getData());
+        request.getSession().setAttribute("status", result.getStatus());
+        request.getSession().setAttribute("message", result.getMessage());
         return "surveys/surveys-detail";
     }
+
+    @RequestMapping("surveys/surveys-view")
+    public String surveysView(HttpServletRequest request){
+        String surveyId  = request.getParameter("survey-id");
+        Result result = surveyService.queryAllSurveys(surveyId);
+        request.getSession().setAttribute("data", result.getData());
+        request.getSession().setAttribute("status", result.getStatus());
+        request.getSession().setAttribute("message", result.getMessage());
+        return "surveys/surveys-view";
+    }
+
+
+    @RequestMapping("surveys/saveSurvey")
+    public String saveSurvey(HttpServletRequest request,HttpServletResponse response){
+        String surveyName = request.getParameter("surveys-tit");
+        String[] topicIds = request.getParameterValues("sel-topic");
+        if(StringUtils.isEmpty(surveyName) || topicIds == null){
+            return "surveys/surveys-detail";
+        }
+        Result result = surveyService.saveSurvey(surveyName,topicIds);
+        request.getSession().setAttribute("id",result.getData().get("id"));
+        try {
+            request.getRequestDispatcher("surveys/surveys-view") .forward(request,response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "surveys/surveys-detail";
+        }
+        return "surveys/surveys-view";
+    }
+
 
 
     @RequestMapping("surveys/downloadPDF")
     public String downloadPDF(HttpServletRequest request) {
-        String survey_id = request.getParameter("survey_id");
-        Result result = surveyService.getPersonalPDF();
+        String id = request.getParameter("client-id");
+        if (StringUtils.isEmpty(id)) {
+            return "surveys/downloadPDF";
+        }
+        Result result = surveyService.getPersonalPDF(id);
         request.getSession().setAttribute("status", result.getStatus());
         request.getSession().setAttribute("message", result.getMessage());
         if(result.getData()!=null){
@@ -41,18 +76,6 @@ public class SurveyController {
             request.getSession().setAttribute("fileName", result.getData().get("fileName"));
         }
 
-//        if (StringUtils.isEmpty(survey_id)) {
-//            String personal_survey_id = request.getParameter("personal_survey_id");
-//            if (StringUtils.isEmpty(personal_survey_id)) {
-//                request.getSession().setAttribute("status", "false");
-//                request.getSession().setAttribute("message", "survey_id and personal_survey_id both empty");
-//                return "surveys/surveys-detail";
-//            }else{
-//
-//            }
-//        } else {
-//
-//        }
         return "surveys/downloadPDF";
     }
 }
