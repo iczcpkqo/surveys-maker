@@ -46,3 +46,80 @@
     cursor: pointer;
     width: 618px;
 }
+
+.xiang-control .radio-box-1 {
+    display: inline-block;
+    width: 904px;
+}
+
+.xiang-control .radio-box-1 .rb-1-tit {
+    text-align: left;
+    font-size: 18px;
+}
+.xiang-control .radio-box-1 .rb-1-tit a {
+    text-align: left;
+}
+.xiang-control .radio-box-1 .rb-1-con {
+
+}
+.xiang-control .radio-box-1 .rb-1-con .rb-1-li {
+    cursor: pointer;
+    height: 48px;
+    margin-top: 48px;
+}
+.xiang-control .radio-box-1 .rb-1-con .rb-1-li:hover .rb-1-left .ico-1-green,
+.xiang-control .radio-box-1 .rb-1-con .rb-1-li .rb-1-left .ico-1-green.sel {
+    background-color: var(--v1-clr-b2);
+    color: white;
+    font-size: 24px;
+    text-shadow: 2px 2px var(--v1-clr-a1);
+}
+.xiang-control .radio-box-1 .rb-1-con .rb-1-li:active .rb-1-left .ico-1-green {
+    box-shadow: 0 0 7px var(--v1-clr-b2);
+    border-color: var(--v1-clr-b3);
+}
+.xiang-control .radio-box-1 .rb-1-con .rb-1-li:hover .rb-1-left .ico-1-amber,
+.xiang-control .radio-box-1 .rb-1-con .rb-1-li .rb-1-left .ico-1-amber.sel {
+    background-color: var(--v1-clr-c1);
+    color: white;
+    font-size: 24px;
+    text-shadow: 2px 2px var(--v1-clr-a1);
+}
+.xiang-control .radio-box-1 .rb-1-con .rb-1-li:active .rb-1-left .ico-1-amber {
+    box-shadow: 0 0 7px var(--v1-clr-c1);
+    border-color: var(--v1-clr-c2);
+}
+.xiang-control .radio-box-1 .rb-1-con .rb-1-li:hover .rb-1-left .ico-1-red,
+.xiang-control .radio-box-1 .rb-1-con .rb-1-li .rb-1-left .ico-1-red.sel {
+    background-color: var(--v1-clr-d2);
+    color: white;
+    font-size: 24px;
+    text-shadow: 2px 2px var(--v1-clr-a1);
+}
+.xiang-control .radio-box-1 .rb-1-con .rb-1-li:active .rb-1-left .ico-1-red {
+    box-shadow: 0 0 7px var(--v1-clr-d2);
+    border-color: var(--v1-clr-d1);
+}
+
+.xiang-control .radio-box-1 .rb-1-con .rb-1-li .rb-1-left {
+    float: left;
+    margin-left: 48px;
+}
+.xiang-control .radio-box-1 .rb-1-con .rb-1-li .rb-1-right {
+    float: left;
+    line-height: 48px;
+    margin-left: 48px;
+    width: 698px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
