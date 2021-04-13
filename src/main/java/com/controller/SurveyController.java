@@ -45,7 +45,8 @@ public class SurveyController {
             return "surveys/surveys-detail";
         }
         Result result = surveyService.saveSurvey(surveyName, topicIds);
-        request.getSession().setAttribute("id", result.getData().get("id"));
+        //TODO
+//        request.getSession().setAttribute("id", result.getData().get("id"));
         try {
             request.getRequestDispatcher("surveys/surveys-view").forward(request, response);
         } catch (Exception e) {
@@ -66,8 +67,9 @@ public class SurveyController {
         request.getSession().setAttribute("status", result.getStatus());
         request.getSession().setAttribute("message", result.getMessage());
         if (result.getData() != null) {
-            request.getSession().setAttribute("filePath", result.getData().get("filePath"));
-            request.getSession().setAttribute("fileName", result.getData().get("fileName"));
+            //TODO
+//            request.getSession().setAttribute("filePath", result.getData().get("filePath"));
+//            request.getSession().setAttribute("fileName", result.getData().get("fileName"));
         }
 
         return "surveys/downloadPDF";
@@ -80,7 +82,8 @@ public class SurveyController {
         request.getSession().setAttribute("status", result.getStatus());
         request.getSession().setAttribute("message", result.getMessage());
         request.getSession().setAttribute("data", result.getData());
-        request.getSession().setAttribute("total", result.getData().get("total"));
+        //TODO
+//        request.getSession().setAttribute("total", result.getData().get("total"));
         return "surveys/surveysList";
     }
 
@@ -91,7 +94,8 @@ public class SurveyController {
             return null;
         }
         Result result = surveyService.startAnswer(surveyId);
-        request.getSession().setAttribute("clientId", result.getData().get("id"));
+        //TODO
+//        request.getSession().setAttribute("clientId", result.getData().get("id"));
         try {
             request.getRequestDispatcher("surveys/surveys-answer").forward(request, response);
         } catch (Exception e) {

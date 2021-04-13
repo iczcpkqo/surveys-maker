@@ -200,8 +200,8 @@ public class SurveyService {
     }
 
     public Result queryAllSurveys(String collection) {
-        firebaseUtil.getAllDocuments(collection);
-        return null;
+        List<Map<String, Object>> allDocuments = firebaseUtil.getAllDocuments(collection);
+        return new Result("true", "query successful", allDocuments);
     }
 
     public Result queryAllDocumentPage(String collection, Integer page, Integer number) {

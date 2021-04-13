@@ -23,7 +23,8 @@ public class TopicController {
         request.getSession().setAttribute("status", result.getStatus());
         request.getSession().setAttribute("message", result.getMessage());
         request.getSession().setAttribute("data", result.getData());
-        request.getSession().setAttribute("total", result.getData().get("total"));
+        //TODO
+//        request.getSession().setAttribute("total", result.getData().get("total"));
         return "topics/topicList";
     }
 
@@ -47,7 +48,8 @@ public class TopicController {
         }
 
         Result result = surveyService.saveTopic(topicName,questions);
-        request.getSession().setAttribute("id", result.getData().get("id"));
+        //TODO
+//        request.getSession().setAttribute("id", result.getData().get("id"));
         try {
             request.getRequestDispatcher("topics/topics-view").forward(request, response);
         } catch (Exception e) {

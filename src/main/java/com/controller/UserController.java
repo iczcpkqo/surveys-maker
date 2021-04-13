@@ -27,7 +27,8 @@ public class UserController {
         Result result = userService.saveUser(email,password);
         request.getSession().setAttribute("status", result.getStatus());
         request.getSession().setAttribute("message", result.getMessage());
-        request.getSession().setAttribute("id", result.getData().get("id"));
+        //TODO
+//        request.getSession().setAttribute("id", result.getData().get("id"));
         request.getSession().setAttribute("email",email);
         return "surveys/surveysList";
     }
@@ -44,7 +45,8 @@ public class UserController {
         request.getSession().setAttribute("status", result.getStatus());
         request.getSession().setAttribute("message", result.getMessage());
         if("true".equals(result.getStatus())){
-            request.getSession().setAttribute("id", result.getData().get("id"));
+            //TODO
+//            request.getSession().setAttribute("id", result.getData().get("id"));
             request.getSession().setAttribute("email",email);
             return "surveys/surveysList";
         }

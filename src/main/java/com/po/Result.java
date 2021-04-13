@@ -7,12 +7,12 @@ public class Result {
 
     String status;
     String message;
-    JsonObject data;
+    Object data;
 
-    public Result(String status, String message, JsonObject jsonObject) {
+    public Result(String status, String message, Object object) {
         this.status = status;
         this.message = message;
-        this.data = jsonObject;
+        this.data = object;
     }
 
     public void setStatus(String status) {
@@ -31,7 +31,7 @@ public class Result {
         return status;
     }
 
-    public JsonObject getData() {
+    public Object getData() {
         return data;
     }
 
