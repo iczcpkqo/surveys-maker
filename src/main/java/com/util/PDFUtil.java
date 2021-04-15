@@ -3,6 +3,7 @@ package com.util;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import javafx.util.Pair;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -13,15 +14,17 @@ import java.util.UUID;
 @Component
 public class PDFUtil {
 
+    @Autowired
+    private firebaseUtil firebaseUtil;
 
     public File createPDF(List<Pair<String, File>> topicFiles) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
+        File tempFile;
+        Document document = null;
         try {
             BaseFont baseFont = BaseFont.createFont();
-
-            Document document = new Document(PageSize.A4);
-            PdfWriter writer = PdfWriter.getInstance(document, baos);
+            document = new Document(PageSize.A4);
+            tempFile = File.createTempFile(UUID.randomUUID().toString(), ".pdf");
+            PdfWriter.getInstance(document, new FileOutputStream(tempFile));
             document.setMargins(64, 64, 36, 36);
             document.open();
             Paragraph paragraph = new Paragraph("survey report", new Font(baseFont, 36, Font.BOLD));
@@ -32,21 +35,19 @@ public class PDFUtil {
                 paragraph.setAlignment(Element.ALIGN_CENTER);
                 document.add(p);
                 Image image = Image.getInstance(topicFile.getValue().getAbsolutePath());
-                image.setAbsolutePosition(400, 430);
                 document.add(image);
             }
-
-            File tempFile = File.createTempFile(UUID.randomUUID().toString(), ".pdf");
-            BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(tempFile));
-            baos.writeTo(out);
-            out.close();
-            baos.close();
-            writer.close();
+            document.close();
+            firebaseUtil.uploadFile("pdfs", tempFile.getAbsolutePath(), tempFile.getName());
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        } finally {
+            if (document != null) {
+                document.close();
+            }
         }
 
-        return null;
+        return tempFile;
     }
 }

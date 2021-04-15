@@ -8,28 +8,24 @@ import org.jfree.chart.plot.PiePlot;
 
 import org.jfree.chart.ui.RectangleEdge;
 import org.jfree.data.general.DefaultPieDataset;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.io.File;
 import java.text.DecimalFormat;
-import java.util.HashMap;
 import java.util.Map;
 
 @Component
 public class ChartUtil {
 
-    private static final String path = "D:/";
-
-    @Autowired
-    private firebaseUtil firebaseUtil;
-
     public File createPie(Map<String, Integer> params, String title) {
         DefaultPieDataset data = getPieDataSet(params);
-        JFreeChart chart = ChartFactory.createPieChart(title, data, true, false, false);
+        JFreeChart chart = ChartFactory.createPieChart("", data, true, false, false);
         chart.getTitle().setFont(new Font("Helvetica", Font.BOLD, 20));
         PiePlot piePlot = (PiePlot) chart.getPlot();
+        piePlot.setSectionPaint("green", Color.GREEN);
+        piePlot.setSectionPaint("amber", Color.YELLOW);
+        piePlot.setSectionPaint("red", Color.RED);
         piePlot.setCircular(true);
         piePlot.setBackgroundAlpha(0f);
         piePlot.setLabelGenerator(null);
@@ -42,7 +38,6 @@ public class ChartUtil {
         try {
             File tempFile = File.createTempFile(title, ".jpg");
             ChartUtils.saveChartAsJPEG(tempFile, 1.0f, chart, 400, 400, null);
-            firebaseUtil.uploadImage(tempFile.getAbsolutePath(),title + ".jpg");
             return tempFile;
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,13 +60,5 @@ public class ChartUtil {
         return dataset;
     }
 
-    public static void main(String[] args) {
-        ChartUtil chartUtil = new ChartUtil();
-        Map<String, Integer> params = new HashMap<>();
-        params.put("green", 5);
-        params.put("yellow", 1);
-        params.put("red", 3);
-        chartUtil.createPie(params, "1111");
-    }
 
 }

@@ -116,7 +116,7 @@ public class SurveyService {
 
         Object fileName = personalSurvey.get("fileName");
         if (fileName != null) {
-            return firebaseUtil.downloadPDF(fileName.toString());
+            return firebaseUtil.downloadPDF("pdfs", fileName.toString());
         }
 
         return createPDFByPersonalSurvey(personalSurvey, id);
@@ -139,8 +139,12 @@ public class SurveyService {
         }
 
         File file = pdfUtil.createPDF(topicFiles);
-
-        return null;
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("filePath", file.getAbsolutePath());
+        jsonObject.addProperty("fileName", file.getName());
+        personalSurvey.put("fileName", file.getName());
+        firebaseUtil.updateDocument("personalSurveys", id, "fileName", file.getName());
+        return new Result("true", "create file successful", jsonObject);
     }
 
     private List<Pair<String, Map<String, Integer>>> calculateAnswers(Map<String, Object> personalSurvey) {
@@ -152,7 +156,7 @@ public class SurveyService {
         }
         for (Object o : topicsList) {
             JsonObject topicObject = (JsonObject) gson.toJsonTree(o);
-            Pair<String, Map<String, Integer>> topicResultPair = new Pair<>(topicObject.get("topicTitle").toString(), countAnswers(topicObject.get("questions")));
+            Pair<String, Map<String, Integer>> topicResultPair = new Pair<>(topicObject.get("topicTitle").toString().replace("\"", ""), countAnswers(topicObject.get("questions")));
             answers.add(topicResultPair);
         }
         return answers;
@@ -166,7 +170,7 @@ public class SurveyService {
         }
         for (Object question : list) {
             JsonObject questionObject = (JsonObject) gson.toJsonTree(question);
-            String answer = questionObject.getAsJsonObject("answer").toString();
+            String answer = questionObject.get("answer").toString().replace("\"", "");
             if (StringUtils.isEmpty(answer)) {
                 continue;
             }

@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <%
-        String fileName = "1111";
+        Object fileName = request.getSession().getAttribute("fileName");
         Object filePathObj = request.getSession().getAttribute("filePath");
         String filePath = null;
         if(filePathObj!=null){
@@ -34,7 +34,7 @@
             bos.write(data, 0, len);
         }
         OutputStream os = response.getOutputStream();
-        response.setHeader("content-disposition", "attachment;filename=" + fileName + ".jpg");
+        response.setHeader("content-disposition", "attachment;filename=" + fileName + ".pdf");
         os.write(bos.getBytes());
         os.flush();
         os.close();
