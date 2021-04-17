@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../../../static/css/login/login.css">
     <script src="../../../static/js/xiang_control/base.js"></script>
     <script src="../../../static/js/data_processing/data-processing.js"></script>
-    <script src="../../../static/js/login/login.js"></script>
+    <script src="../../../static/js/login/register.js"></script>
 </head>
 <body class="xiang-control login register">
 <div class="page-contain">
