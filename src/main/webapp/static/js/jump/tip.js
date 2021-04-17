@@ -20,6 +20,7 @@ function pageJump(type, pares){
     addr += '?';
     for (let i in pares)
         addr += i + '=' + pares[i] + '&';
+    addr = addr.substring(0, addr.length - 1);
 
     window.location.replace(addr);
 }
