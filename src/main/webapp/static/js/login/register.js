@@ -3,11 +3,11 @@ window.onload = function(){
     let sub = $('#login-button');
     let reg = $('#register-button');
 
-   sub.addEventListener('click', function(){
-       login_form.submit();
+    sub.addEventListener('click', function(){
+        window.location.href = 'index';
     });
     reg.addEventListener('click', function(){
-        window.location.href = '../register/register.html';
+        login_form.submit();
     });
 
 }
