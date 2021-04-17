@@ -15,6 +15,8 @@
 
     <!--   page -->
     <link rel="stylesheet" href="../../../static/css/login/login.css">
+
+    <!--js-->
     <script src="../../../static/js/xiang_control/base.js"></script>
     <script src="../../../static/js/data_processing/data-processing.js"></script>
     <script src="../../../static/js/login/register.js"></script>
