@@ -33,8 +33,6 @@ public class firebaseUtil {
 
     private static Storage service;
 
-    private static String image = "images/";
-
     private static Firestore db;
 
     static {
@@ -95,21 +93,21 @@ public class firebaseUtil {
         return new Result("true", "add data successful", null);
     }
 
-    public Result uploadImage(String imagePath, String imageName) {
+    public Result uploadFile(String bucketName, String path, String imageName) {
 
         try {
-            bucket.create(image + imageName, Files.readAllBytes(Paths.get(imagePath)));
+            bucket.create(bucketName + "/" + imageName, Files.readAllBytes(Paths.get(path)));
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public Result downloadPDF(String fileName) {
+    public Result downloadPDF(String bucket, String fileName) {
         File tempFile;
         try {
             tempFile = File.createTempFile(fileName, ".pdf");
-            Blob blob = service.get(BlobId.of(storageBucket, image + "/" + fileName + ".pdf"));
+            Blob blob = service.get(BlobId.of(storageBucket, bucket + "/" + fileName ));
             blob.downloadTo(Paths.get(tempFile.getAbsolutePath()));
         } catch (IOException e) {
             return new Result("false", "failed to create file", null);
@@ -166,9 +164,9 @@ public class firebaseUtil {
         return result;
     }
 
-    public Result saveDocument(String collection, String uuid, Map<String, Object> docData) {
+    public Result saveDocument(String collection, String id, Map<String, Object> docData) {
         try {
-            db.collection(collection).document(uuid).set(docData);
+            db.collection(collection).document(id).set(docData);
         } catch (Exception e) {
             e.printStackTrace();
             return new Result("false", "failed to save document", null);
@@ -198,8 +196,8 @@ public class firebaseUtil {
         return result;
     }
 
-    public void updateDocument(String collection,String document,String updateFiled,Object value) {
-        DocumentReference docRef = db.collection(collection).document(document);
+    public void updateDocument(String collection, String id, String updateFiled, Object value) {
+        DocumentReference docRef = db.collection(collection).document(id);
 
         ApiFuture<Void> futureTransaction = db.runTransaction(transaction -> {
             // retrieve document and increment population field

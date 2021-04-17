@@ -1,5 +1,8 @@
 package com.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.po.Result;
 import com.service.SurveyService;
 import org.apache.commons.lang3.StringUtils;
@@ -13,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class SurveyController {
+
+    private static Gson gson = new Gson();
 
     @Autowired
     private SurveyService surveyService;
@@ -68,8 +73,9 @@ public class SurveyController {
         request.getSession().setAttribute("message", result.getMessage());
         if (result.getData() != null) {
             //TODO
-//            request.getSession().setAttribute("filePath", result.getData().get("filePath"));
-//            request.getSession().setAttribute("fileName", result.getData().get("fileName"));
+            JsonObject jsonObject = (JsonObject) gson.toJsonTree(result.getData());
+            request.getSession().setAttribute("filePath", jsonObject.get("filePath"));
+            request.getSession().setAttribute("fileName", jsonObject.get("fileName"));
         }
 
         return "surveys/downloadPDF";

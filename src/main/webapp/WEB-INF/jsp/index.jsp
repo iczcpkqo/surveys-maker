@@ -25,7 +25,7 @@ add:
 </br>
 downloadPDF:
 <form action="surveys/downloadPDF" method="post">
-    survey：<input name="surveyName" value=""/><br>
+    survey：<input name="client-id" value=""/><br>
     <input type="submit" value="download">
 </form>
 </html>
