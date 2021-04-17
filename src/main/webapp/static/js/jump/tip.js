@@ -3,6 +3,7 @@ window.onload = function(){
 
     pageJump(p_data.type, p_data.pares);
 }
+
 function pageJump(type, pares){
     let addr = type;
 
@@ -24,3 +25,4 @@ function pageJump(type, pares){
 
     window.location.replace(addr);
 }
+

@@ -29,6 +29,16 @@
 
 </head>
 <body>
-1
+    <div class="contain">
+    <div id="tip-tit" class="tit">
+
+    </div>
+    <div id="tip-des" class="des">
+
+    </div>
+    <div id="tip-view" class="view">
+
+    </div>
+    </div>
 </body>
 </html>
