@@ -35,6 +35,7 @@ function pageJump(type, pares){
 }
 
 window.onload = function(){
+    console.log(g_jsp_data);
     let p_data = g_jsp_data;
 
     /*** temp ***/
