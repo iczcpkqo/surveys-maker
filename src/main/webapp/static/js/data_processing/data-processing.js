@@ -233,6 +233,10 @@ class DataBase{
         this.surveys = [];
         this.topics = [];
     }
+    set jsp_surveys(data){
+        for(let i in data)
+            this.surveys.push(Dob.clSurveys(data[i]));
+    }
 }
 
 class DataLogin {}
@@ -257,15 +261,47 @@ class DataDetail extends DataBase {
     }
 }
 
-class DataView extends DataBase {}
+class DataView extends DataBase {
+    constructor(jsp_data = '') {
+        super();
+        this.jsp_surveys = jsp_data.surveys;
+        this.topic_idx = jsp_data.topic_idx;
+    }
+
+    get quizes(){
+        let arr = [];
+        for (let i in this.surveys[0].topics[this.topic_idx].quizes){
+            arr.push(this.surveys[0].topics[this.topic_idx].quizes[i].tit)
+        }
+        return arr;
+    }
+
+    get txt(){
+        return {
+            surveys_name: this.surveys[0].tit,
+            amount: (function (s) {
+                let i = 0;
+                for (; i < s.topics.length; i++) ;
+                return i;
+            })(this.surveys[0]),
+            idx: this.topic_idx+1,
+            topic_name: this.surveys[0].topics[this.topic_idx].tit
+        }
+    }
+
+    get p_data(){
+        return {
+            quizes: this.quizes,
+            txt: this.txt
+        };
+    }
+}
 
 class DataStat extends DataBase {
     constructor(jsp_data='') {
         super();
+        // 获得 surveys
         this.jsp_surveys = jsp_data.surveys;
-        for(let i in this.jsp_surveys)
-            this.surveys.push(Dob.clSurveys(this.jsp_surveys[i]));
-        console.log(this.surveys[0]);
         // TODO: 第一个主题统计结果，需修改为当前页面展示的。
         this.topic = this.surveys[0].topics[0];
     }

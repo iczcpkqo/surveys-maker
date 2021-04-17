@@ -7,7 +7,8 @@
 .xiang-control .btn-3,
 .xiang-control .btn-4,
 .xiang-control .btn-5,
-.xiang-control .btn-6 {
+.xiang-control .btn-6,
+.xiang-control .btn-7 {
     border-radius: 5px;
     cursor: pointer;
     display: block;
@@ -37,7 +38,8 @@
 .xiang-control .btn-2,
 .xiang-control .btn-4,
 .xiang-control .btn-5,
-.xiang-control .btn-6 {
+.xiang-control .btn-6,
+.xiang-control .btn-7 {
     background-color: var(--v1-clr-b2);
     border: solid 1px var(--v1-clr-a2);
     color: #fff;
@@ -46,7 +48,8 @@
 }
 .xiang-control .btn-2:before,
 .xiang-control .btn-4:before,
-.xiang-control .btn-5:before {
+.xiang-control .btn-5:before,
+.xiang-control .btn-7:before {
     border: none;
     border-radius: 5px 0 0 5px;
     background-color: var(--v1-clr-b1);
@@ -58,7 +61,8 @@
 }
 .xiang-control .btn-2:hover,
 .xiang-control .btn-4:hover,
-.xiang-control .btn-5:hover {
+.xiang-control .btn-5:hover,
+.xiang-control .btn-7:hover {
     box-shadow: 0 0 5px var(--v1-clr-a2);
     text-shadow: 0 0 5px var(--v1-clr-a2);
 }
@@ -93,4 +97,60 @@
 .xiang-control .btn-6:hover {
     box-shadow: 0 0 5px var(--v1-clr-b1);
     text-shadow: 0 0 5px var(--v1-clr-b1);
+}
+
+.xiang-control .btn-7:before {
+    content: '➕';
+}
+
+.xiang-control .paging-1 {
+
+}
+.xiang-control .paging-1 .paging-previous,
+.xiang-control .paging-1 .paging-con,
+.xiang-control .paging-1 .paging-li,
+.xiang-control .paging-1 .paging-next {
+    border: solid 1px var(--v1-clr-e1);
+    color: var(--v1-clr-a2);
+    cursor: pointer;
+    float: left;
+    font-size: 18px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    text-decoration: none;
+}
+.xiang-control .paging-1 .paging-previous:hover,
+.xiang-control .paging-1 .paging-li:hover,
+.xiang-control .paging-1 .paging-next:hover {
+    background-color: var(--v1-clr-e3);
+}
+.xiang-control .paging-1 .paging-previous,
+.xiang-control .paging-1 .paging-next {
+    width: 96px;
+}
+.xiang-control .paging-1 .paging-previous {
+    border-radius: 8px 0 0 8px;
+    border-right: 0;
+}
+.xiang-control .paging-1 .paging-previous:before {
+    content: 'Previous';
+}
+
+.xiang-control .paging-1 .paging-con {
+    border: 0;
+}
+.xiang-control .paging-1 .paging-li {
+    width: 48px;
+    border-right: 0;
+}
+
+.xiang-control .paging-1 .paging-li {
+
+}
+.xiang-control .paging-1 .paging-next {
+    border-radius: 0 8px 8px 0;
+}
+.xiang-control .paging-1 .paging-next:before {
+    content: 'Next';
 }
