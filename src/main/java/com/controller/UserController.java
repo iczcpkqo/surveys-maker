@@ -16,12 +16,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("user/register")
+    @RequestMapping("register/register")
     public String register(HttpServletRequest request, HttpServletResponse response) {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         if(StringUtils.isEmpty(email) || StringUtils.isEmpty(password)){
-            return "user/registerPage";
+            return "register/register";
         }
 
         Result result = userService.saveUser(email,password);
@@ -34,23 +34,30 @@ public class UserController {
     }
 
     //login
-    @RequestMapping("user/login")
-    public String login(HttpServletRequest request, HttpServletResponse response){
+    @RequestMapping("/login/userLogin")
+    public String login(HttpServletRequest request){
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         if(StringUtils.isEmpty(email) || StringUtils.isEmpty(password)){
-            return "user/registerPage";
+            request.getSession().setAttribute("type","register/register");
+            request.getSession().setAttribute("tit","please register");
+            request.getSession().setAttribute("des","email or password error");
+            request.getSession().setAttribute("pares",null);
         }
         Result result = userService.login(email,password);
-        request.getSession().setAttribute("status", result.getStatus());
-        request.getSession().setAttribute("message", result.getMessage());
-        if("true".equals(result.getStatus())){
-            //TODO
-//            request.getSession().setAttribute("id", result.getData().get("id"));
-            request.getSession().setAttribute("email",email);
-            return "surveys/surveysList";
+
+        request.getSession().setAttribute("tit", result.getStatus());
+        request.getSession().setAttribute("des", result.getMessage());
+        if("login successful".equals(result.getStatus())){
+            request.getSession().setAttribute("type", "surveys/surveysList");
         }
-        return "user/registerPage";
+        request.getSession().setAttribute("type", "register/register");
+
+        return "";
+    }
+
+    @RequestMapping("login/login")
+    public void loginPage(HttpServletRequest request){
     }
 
 }

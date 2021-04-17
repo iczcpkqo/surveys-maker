@@ -38,14 +38,14 @@ public class UserService {
     public Result login(String email, String password) {
         List<Map<String, Object>> data = firebaseUtil.getDataByField("users", "email", email);
         if (data.size() <= 0) {
-            return new Result("false", "please register", null);
+            return new Result("please register", "user not exsits", null);
         }
 
         Map<String, Object> user = data.get(0);
         String passwordMD5 = DigestUtils.md5DigestAsHex(password.getBytes());
         if (!passwordMD5.equals(user.get("password"))) {
-            return new Result("false", "email or password is wrong", null);
+            return new Result("Please re-enter email or password", "email or password is wrong", null);
         }
-        return new Result("true", "login successful", null);
+        return new Result("login successful", "", null);
     }
 }

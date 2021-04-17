@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
+    <%
+        Object data = request.getSession().getAttribute("data");
+    %>
     <!--    control-->
     <link rel="stylesheet" href="../../../static/css/xiang_control/base.css">
     <link rel="stylesheet" href="../../../static/css/xiang_control/bar.css">
@@ -22,6 +24,7 @@
     <script src="../../../static/js/jump/tip.js"></script>
 
     <script>
+        var g_jsp_data = <% %>
     </script>
 
 </head>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <title>Title</title>
     <!--    control-->
@@ -20,6 +21,9 @@
     <script src="../../../static/js/xiang_control/base.js"></script>
     <script src="../../../static/js/data_processing/data-processing.js"></script>
     <script src="../../../static/js/login/login.js"></script>
+    <script>
+
+    </script>
 </head>
 <body class="xiang-control login">
     <div class="page-contain">
@@ -31,7 +35,7 @@
                     </a>
                 </div>
             </div>
-            <form id="login-form" class="input-con" action="login.html">
+            <form id="login-form" class="input-con" action="userLogin">
 
                 <div class="input-li">
                     <div class="input-label label-4">
