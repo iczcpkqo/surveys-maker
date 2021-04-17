@@ -1,12 +1,18 @@
-window.onload = function(){
-    let p_data = g_jsp_data;
+function setTit(txt){
+    $('#tip-tit').innerHTML = txt;
+}
 
-    pageJump(p_data.type, p_data.pares);
+function setDes(txt){
+    $('#tip-des').innerHTML = txt;
+}
+
+function setView(txt, idx){
+    // let o = () =>
+
 }
 
 function pageJump(type, pares){
     let addr = type;
-    alert(type);
     console.log(pares);
     // switch (type){
     //     case 'login':
@@ -25,5 +31,18 @@ function pageJump(type, pares){
     addr = addr.substring(0, addr.length - 1);
 
     window.location.replace(addr);
+}
+
+window.onload = function(){
+    let p_data = g_jsp_data;
+
+    /*** temp ***/
+    console.log(p_data);
+    $('#temp').addEventListener('click', () => {
+        pageJump(p_data.type, p_data.pares);
+    });
+    /*** temp END ***/
+
+    // pageJump(p_data.type, p_data.pares);
 }
 
