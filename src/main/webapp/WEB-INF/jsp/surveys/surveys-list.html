@@ -20,6 +20,93 @@
     <script src="../../../static/js/data_processing/data-processing.js"></script>
     <script src="../../../static/js/list/surveys-list.js"></script>
     <script type="text/javascript">
+        var g_jsp_data = {
+            "surveys": [{
+                "selectedTopic": {
+                    "wQm8fAHUCtPFrRGCA7md": {
+                        "topicId": "wQm8fAHUCtPFrRGCA7md",
+                        "createTime": {"seconds": 1617490800, "nanos": 0},
+                        "questions": [
+                            {
+                                "red": 1, "green": 3, "questionTitle": "question1", "amber": 1
+                            }, {
+                                "red": 0, "green": 1, "questionTitle": "question1", "amber": 0
+                            }, {
+                                "red": 0, "green": 1, "questionTitle": "question1", "amber": 0
+                            }
+                        ],
+                        "topicTitle": "topic1"
+                    },
+                    "dsfsdfsdf": {
+                        "topicId": "dsfsdfsdf",
+                        "createTime": {"seconds": 1617490800, "nanos": 0},
+                        "questions": {"0": {"red": 0, "green": 1, "questionTitle": "qqqqq2222", "amber": 1}},
+                        "topicTitle": "tottt222"
+                    }
+                },
+                "createTime": {"seconds": 1617490800, "nanos": 0},
+                "id": "ebJcAKNLV52a0okYrXFw",
+                "surveyTitle": "survey1"
+            },{
+                "selectedTopic": {
+                    "wQm8fAHUCtPFrRGCA7md": {
+                        "topicId": "wQm8fAHUCtPFrRGCA7md",
+                        "createTime": {"seconds": 1617490800, "nanos": 0},
+                        "questions": [
+                            {
+                                "red": 1, "green": 3, "questionTitle": "question1", "amber": 1
+                            }, {
+                                "red": 0, "green": 1, "questionTitle": "question1", "amber": 0
+                            }, {
+                                "red": 0, "green": 1, "questionTitle": "question1", "amber": 0
+                            }
+                        ],
+                        "topicTitle": "topic1"
+                    },
+                    "dsfsdfsdf": {
+                        "topicId": "dsfsdfsdf",
+                        "createTime": {"seconds": 1617490800, "nanos": 0},
+                        "questions": {"0": {"red": 0, "green": 1, "questionTitle": "qqqqq2222", "amber": 1}},
+                        "topicTitle": "tottt222"
+                    }
+                },
+                "createTime": {"seconds": 1617490800, "nanos": 0},
+                "id": "ebJsdfNLV52a0okYrXFw",
+                "surveyTitle": "survey2"
+            },{
+                "selectedTopic": {
+                    "wQm8fAHUCtPFrRGCA7md": {
+                        "topicId": "wQm8fAHUCtPFrRGCA7md",
+                        "createTime": {"seconds": 1617490800, "nanos": 0},
+                        "questions": [
+                            {
+                                "red": 1, "green": 3, "questionTitle": "question1", "amber": 1
+                            }, {
+                                "red": 0, "green": 1, "questionTitle": "question1", "amber": 0
+                            }, {
+                                "red": 0, "green": 1, "questionTitle": "question1", "amber": 0
+                            }
+                        ],
+                        "topicTitle": "topic1"
+                    },
+                    "dsfsdfsdf": {
+                        "topicId": "dsfsdfsdf",
+                        "createTime": {"seconds": 1617490800, "nanos": 0},
+                        "questions": {"0": {"red": 0, "green": 1, "questionTitle": "qqqqq2222", "amber": 1}},
+                        "topicTitle": "tottt222"
+                    }
+                },
+                "createTime": {"seconds": 1617490800, "nanos": 0},
+                "id": "ebJcAKNslkfla0okYrXFw",
+                "surveyTitle": "survey3"
+            }],
+            "topics": [{
+                "createTime": {"seconds": 1617490800, "nanos": 0},
+                "questions": [{"questionTitle": "question1"}],
+                "id": "wQmCsdfsPFrRGCA7md",
+                "topicTitle": "topic1"
+            }]
+        }
     </script>
 </head>
 <body class="xiang-control list">
@@ -43,7 +130,7 @@
 <div class="con-list">
 
     <div class="table-con">
-        <div class="tr-con">
+        <div id="surveys-box" class="tr-con">
 
             <div class="tr-li">
                 <div class="tr-left">
@@ -52,7 +139,7 @@
                 <div class="tr-right">
                     <div class="tr-r-con">
                         <div class="tr-r-link">
-                            <a>Corporate Employee Happiness Survey.</a>
+                            <a href="surveys-detail.html">Corporate Employee Happiness Survey.</a>
                         </div>
                         <div class="tr-r-del"></div>
                         <div class="tr-r-share"></div>
@@ -61,65 +148,65 @@
             </div>
 
             <!-- 重复 -->
-            <div class="tr-li">
-                <div class="tr-left">
-                    <a>1</a>
-                </div>
-                <div class="tr-right">
-                    <div class="tr-r-con">
-                        <div class="tr-r-link">
-                            <a>Corporate Employee Happiness Survey.</a>
-                        </div>
-                        <div class="tr-r-del"></div>
-                        <div class="tr-r-share"></div>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="tr-li">-->
+<!--                <div class="tr-left">-->
+<!--                    <a>1</a>-->
+<!--                </div>-->
+<!--                <div class="tr-right">-->
+<!--                    <div class="tr-r-con">-->
+<!--                        <div class="tr-r-link">-->
+<!--                            <a>Corporate Employee Happiness Survey.</a>-->
+<!--                        </div>-->
+<!--                        <div class="tr-r-del"></div>-->
+<!--                        <div class="tr-r-share"></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="tr-li">
-                <div class="tr-left">
-                    <a>1</a>
-                </div>
-                <div class="tr-right">
-                    <div class="tr-r-con">
-                        <div class="tr-r-link">
-                            <a>Corporate Employee Happiness Survey.</a>
-                        </div>
-                        <div class="tr-r-del"></div>
-                        <div class="tr-r-share"></div>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="tr-li">-->
+<!--                <div class="tr-left">-->
+<!--                    <a>1</a>-->
+<!--                </div>-->
+<!--                <div class="tr-right">-->
+<!--                    <div class="tr-r-con">-->
+<!--                        <div class="tr-r-link">-->
+<!--                            <a>Corporate Employee Happiness Survey.</a>-->
+<!--                        </div>-->
+<!--                        <div class="tr-r-del"></div>-->
+<!--                        <div class="tr-r-share"></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="tr-li">
-                <div class="tr-left">
-                    <a>1</a>
-                </div>
-                <div class="tr-right">
-                    <div class="tr-r-con">
-                        <div class="tr-r-link">
-                            <a>Corporate Employee Happiness Survey.</a>
-                        </div>
-                        <div class="tr-r-del"></div>
-                        <div class="tr-r-share"></div>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="tr-li">-->
+<!--                <div class="tr-left">-->
+<!--                    <a>1</a>-->
+<!--                </div>-->
+<!--                <div class="tr-right">-->
+<!--                    <div class="tr-r-con">-->
+<!--                        <div class="tr-r-link">-->
+<!--                            <a>Corporate Employee Happiness Survey.</a>-->
+<!--                        </div>-->
+<!--                        <div class="tr-r-del"></div>-->
+<!--                        <div class="tr-r-share"></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="tr-li">
-                <div class="tr-left">
-                    <a>1</a>
-                </div>
-                <div class="tr-right">
-                    <div class="tr-r-con">
-                        <div class="tr-r-link">
-                            <a>Corporate Employee Happiness Survey.</a>
-                        </div>
-                        <div class="tr-r-del"></div>
-                        <div class="tr-r-share"></div>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="tr-li">-->
+<!--                <div class="tr-left">-->
+<!--                    <a>1</a>-->
+<!--                </div>-->
+<!--                <div class="tr-right">-->
+<!--                    <div class="tr-r-con">-->
+<!--                        <div class="tr-r-link">-->
+<!--                            <a>Corporate Employee Happiness Survey.</a>-->
+<!--                        </div>-->
+<!--                        <div class="tr-r-del"></div>-->
+<!--                        <div class="tr-r-share"></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <!-- 重复 END -->
 
