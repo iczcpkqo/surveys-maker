@@ -12,7 +12,7 @@ function getSurveysItem(sur, idx){
 function addSurveysList(sures){
     // $('#surveys-box')
     for (let i in sures)
-        $('#surveys-box').innerHTML+=getSurveysItem(sures[i], (int)i+1);
+        $('#surveys-box').innerHTML+=getSurveysItem(sures[i], Number(i)+1);
 }
 
 function initPage(data){
