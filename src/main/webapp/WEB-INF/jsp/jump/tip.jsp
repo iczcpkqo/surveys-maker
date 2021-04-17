@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <%
-        Object data = request.getSession().getAttribute("data");
+        Object type = request.getSession().getAttribute("type");
+        Object tit = request.getSession().getAttribute("tit");
+        Object des = request.getSession().getAttribute("des");
     %>
     <!--    control-->
     <link rel="stylesheet" href="../../../static/css/xiang_control/base.css">
@@ -24,7 +26,11 @@
     <script src="../../../static/js/jump/tip.js"></script>
 
     <script>
-        var g_jsp_data = <% %>
+        var g_jsp_data = {
+            type:<%= type%>,
+            tit:<%= tit%>,
+            des:<%= des%>
+        }
     </script>
 
 </head>
