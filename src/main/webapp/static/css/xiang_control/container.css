@@ -38,3 +38,7 @@
 .xiang-control .con-stat>.tit .process {
     float: right;
 }
+
+.xiang-control .con-table-1 {
+    border: solid 1px var(--v1-clr-e1);
+}

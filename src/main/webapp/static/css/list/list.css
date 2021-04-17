@@ -1,0 +1,117 @@
+.list {
+
+}
+
+.list .operation {
+    height: 48px;
+    margin: 0 auto ;
+    padding: 48px 0;
+    width: 1000px;
+}
+.list .operation .label-3 {
+    float: left;
+}
+.list .operation .btn-7 {
+    float: right;
+}
+
+.list .con-list {
+    width: 1000px;
+    margin: 0 auto ;
+}
+
+.list .con-list .table-con {
+}
+.list .con-list .table-con .tr-con {
+
+}
+.list .con-list .table-con .tr-con:last-child {
+    border-bottom: solid 1px var(--v1-clr-e1);
+}
+.list .con-list .table-con .tr-li {
+    border: solid 1px var(--v1-clr-e1);
+    border-bottom: none;
+    height: 48px;
+    line-height: 48px;
+}
+.list .con-list .table-con .tr-li .tr-left {
+    border-right: solid 1px var(--v1-clr-e1);
+    float: left;
+    text-align: center;
+    width: 48px;
+}
+.list .con-list .table-con .tr-li .tr-left a {
+    color: var(--v1-clr-a2);
+}
+.list .con-list .table-con .tr-li .tr-right {
+    cursor: pointer;
+    float: right;
+    height: 48px;
+    padding-left: 24px;
+    width: 925px;
+}
+.list .con-list .table-con .tr-li .tr-right:hover {
+    background-color: var(--v1-clr-e3);
+    border-bottom: solid 1px var(--v1-clr-e1);
+}
+
+
+.list .con-list .table-con .tr-li .tr-right .tr-r-con {
+
+}
+.list .con-list .table-con .tr-li .tr-right .tr-r-con .tr-r-link {
+    float: left;
+}
+.list .con-list .table-con .tr-li .tr-right .tr-r-con .tr-r-link a {
+    color: var(--v1-clr-a2);
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.list .con-list .table-con .tr-li .tr-right .tr-r-con .tr-r-del,
+.list .con-list .table-con .tr-li .tr-right .tr-r-con .tr-r-share {
+    color: white;
+    cursor: pointer;
+    display: none;
+    font-size: 18px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    text-decoration: none;
+    margin-right: -1px;
+    width: 78px;
+}
+.list .con-list .table-con .tr-li .tr-right .tr-r-con .tr-r-del {
+    background-color: var(--v1-clr-d1);
+    float: right;
+}
+.list .con-list .table-con .tr-li .tr-right .tr-r-con .tr-r-del:hover {
+    background-color: var(--v1-clr-d2);
+}
+.list .con-list .table-con .tr-li .tr-right .tr-r-con .tr-r-del:before {
+    content: 'Delete';
+}
+.list .con-list .table-con .tr-li .tr-right .tr-r-con .tr-r-share {
+    background-color: var(--v1-clr-a1);
+    float: right;
+}
+.list .con-list .table-con .tr-li .tr-right .tr-r-con .tr-r-share:hover {
+    background-color: var(--v1-clr-a2);
+}
+.list .con-list .table-con .tr-li .tr-right .tr-r-con .tr-r-share:before {
+    content: 'Share';
+}
+
+.list .con-list .table-con .tr-li .tr-right:hover .tr-r-del,
+.list .con-list .table-con .tr-li .tr-right:hover .tr-r-share{
+    display: block;
+}
+
+.list .con-list .paging-contain {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+}
+.list .con-list .paging-contain .paging-1 {
+}
