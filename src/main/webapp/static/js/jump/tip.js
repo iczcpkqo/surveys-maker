@@ -6,7 +6,8 @@ window.onload = function(){
 
 function pageJump(type, pares){
     let addr = type;
-
+    alert(type);
+    console.log(pares);
     // switch (type){
     //     case 'login':
     //         addr += '../login/login.html';
