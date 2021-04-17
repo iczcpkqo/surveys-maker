@@ -25,10 +25,11 @@ function pageJump(type, pares){
     //         console.log('default');
     // }
 
-    addr += '?';
-    for (let i in pares)
-        addr += i + '=' + pares[i] + '&';
-    addr = addr.substring(0, addr.length - 1);
+    if(pares)
+        addr += '?';
+        for (let i in pares)
+            addr += i + '=' + pares[i] + '&';
+        addr = addr.substring(0, addr.length - 1);
 
     window.location.replace(addr);
 }
@@ -37,6 +38,7 @@ window.onload = function(){
     let p_data = g_jsp_data;
 
     /*** temp ***/
+    // p_data.pares = p_data.parse || ''
     console.log(p_data);
     $('#temp').addEventListener('click', () => {
         pageJump(p_data.type, p_data.pares);
