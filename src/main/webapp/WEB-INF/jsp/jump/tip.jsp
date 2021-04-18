@@ -36,7 +36,7 @@
     </script>
 
 </head>
-<body>
+<body class="tip">
     <div class="contain">
         <div id="tip-tit" class="tit">
 
