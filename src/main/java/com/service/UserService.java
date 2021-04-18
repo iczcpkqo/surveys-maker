@@ -28,7 +28,7 @@ public class UserService {
         saveData.put("password", DigestUtils.md5DigestAsHex(password.getBytes()));
         saveData.put("email", email);
         saveData.put("createTime", new Date());
-        Result result = firebaseUtil.saveDocument("users", UUID.randomUUID().toString(), saveData);
+        Result result = firebaseUtil.saveDocument("users", uuid.toString(), saveData);
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("id", uuid.toString());
         result.setData(jsonObject);

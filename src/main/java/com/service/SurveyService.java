@@ -269,7 +269,7 @@ public class SurveyService {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("id", uuid.toString());
         result.setData(jsonObject);
-        return new Result("true", "save successful", jsonObject);
+        return new Result("save successful", "save successful", jsonObject);
     }
 
     public Result startAnswer(String surveyId) {

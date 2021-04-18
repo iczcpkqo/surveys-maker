@@ -16,7 +16,7 @@ public class TopicController {
     @Autowired
     private SurveyService surveyService;
 
-    @RequestMapping("topics/topicList")
+    @RequestMapping("topic/topicList")
     public String topicList(HttpServletRequest request) {
         String page = request.getParameter("page");
         Result result = surveyService.queryAllDocumentPage("topics", Integer.valueOf(page), 10);
@@ -25,35 +25,42 @@ public class TopicController {
         request.getSession().setAttribute("data", result.getData());
         //TODO
 //        request.getSession().setAttribute("total", result.getData().get("total"));
-        return "topics/topicList";
+        return "topic/topicList";
     }
 
 
-    @RequestMapping("topics/topics-view")
+    @RequestMapping("topic/topic-detail")
     public String topicView(HttpServletRequest request) {
         String topicId = request.getParameter("topic-id");
+        if(StringUtils.isEmpty(topicId)){
+            return "topic/topic-detail";
+        }
         Result result = surveyService.getTopicById(topicId);
         request.getSession().setAttribute("data", result.getData());
         request.getSession().setAttribute("status", result.getStatus());
         request.getSession().setAttribute("message", result.getMessage());
-        return "surveys/surveys-view";
+        return "topic/topic-detail";
     }
 
-    @RequestMapping("topics/saveTopic")
-    public String saveTopic(HttpServletRequest request, HttpServletResponse response){
-        String topicName = request.getParameter("topics-tit");
-        String[] questions = request.getParameterValues("sel-question");
-        if (StringUtils.isEmpty(topicName) || questions == null) {
-            return "topics/topics-detail";
+    @RequestMapping("topic/save-topic")
+    public String saveTopic(HttpServletRequest request){
+        String topicName = request.getParameter("topic-tit");
+        String[] questions = request.getParameterValues("quiz-tit");
+        request.getSession().setAttribute("des", "");
+        if (StringUtils.isEmpty(topicName)) {
+            request.getSession().setAttribute("type", "../topic/topic-detail");
+            request.getSession().setAttribute("tit", "please enter topic name");
+            return "jump/tip";
         }
 
         Result result = surveyService.saveTopic(topicName,questions);
-        try {
-            request.getRequestDispatcher("topics/topics-view").forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "topics/topics-detail";
+        if("save successful".equals(result.getStatus())){
+            request.getSession().setAttribute("type", "../topic/topic-list");
+            request.getSession().setAttribute("tit", result.getStatus());
+        }else {
+            request.getSession().setAttribute("type", "../topic/topic-detail");
+            request.getSession().setAttribute("tit", result.getStatus());
         }
-        return "topics/topics-view";
+        return "jump/tip";
     }
 }
