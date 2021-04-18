@@ -25,9 +25,7 @@ public class firebaseUtil {
 
     private static final String FIREBASE_SERVICE_ACCOUNT = "src/main/resources/survey-service-account.json";
 
-    private static String storageBucket = "survey-dfcd5.appspot.com";
-
-    private static String projectId = "survey-dfcd5";
+    private static String storageBucket = "surveys-e1f19.appspot.com";
 
     private static Bucket bucket;
 
