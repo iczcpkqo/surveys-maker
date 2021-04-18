@@ -50,6 +50,7 @@ function initPage(data){
 window.onload = function(){
     let try_jsp_data = {
         page: 3,
+        page_amount: 7,
         surveys:[{
             tit: 'surrrr1111111',
             id: 'dfslkj3ljdsljfls'
@@ -65,7 +66,10 @@ window.onload = function(){
     // 原始数据
     let _jsp = g_jsp_data;
     //页面数据
-    let p_data = new DataStat(_jsp);
+    let p_data = new DataList(_jsp);
 
-    initPage(try_jsp_data);
+    console.log(p_data);
+
+    // initPage(try_jsp_data);
+    initPage(p_data);
 }
