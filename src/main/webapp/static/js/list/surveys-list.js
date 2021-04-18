@@ -36,7 +36,27 @@ function addSurveysList(sures){
 }
 
 function addPaging(page, page_amount){
+    let num = 3;
+    let page_con = $('#page-num');
+    let cls = '';
 
+    for (let i = page-num>0? page-num: 1; i<(page+num>page_amount? page_amount: page+num+1); i++) {
+        if (i === Number(page))
+            cls = 'paging-li sel';
+        else
+            cls = 'paging-li';
+
+        page_con.innerHTML += '<div class="'
+                                + cls
+                                + '">'
+                                + '<a href="'
+                                + 'surveys-list?page='
+                                + i
+                                +'">'
+                                + i
+                                + '</a>'
+                            + '</div>'
+    }
 }
 
 function initPage(data){
