@@ -145,8 +145,9 @@
     border-right: 0;
 }
 
-.xiang-control .paging-1 .paging-li {
-
+.xiang-control .paging-1 .paging-li.sel {
+    background-color: var(--v1-clr-a2);
+    color: white;
 }
 .xiang-control .paging-1 .paging-next {
     border-radius: 0 8px 8px 0;
