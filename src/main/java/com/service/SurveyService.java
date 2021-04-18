@@ -235,6 +235,7 @@ public class SurveyService {
         JsonObject jsonObject = new JsonObject();
         jsonObject.add("data", gson.toJsonTree(subResults));
         jsonObject.addProperty("total", results.size());
+        jsonObject.addProperty("pageAmount", results.size() / 20 + 1);
         return new Result("true", "query successful", jsonObject);
     }
 

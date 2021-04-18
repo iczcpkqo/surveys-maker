@@ -16,48 +16,62 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("register/register")
+    @RequestMapping("register/userRegister")
     public String register(HttpServletRequest request, HttpServletResponse response) {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        if(StringUtils.isEmpty(email) || StringUtils.isEmpty(password)){
-            return "register/register";
+        if (StringUtils.isEmpty(email) || StringUtils.isEmpty(password)) {
+            request.getSession().setAttribute("type", "../register/register");
+            request.getSession().setAttribute("tit", "please register");
+            request.getSession().setAttribute("des", "email or password error");
         }
 
-        Result result = userService.saveUser(email,password);
-        request.getSession().setAttribute("status", result.getStatus());
-        request.getSession().setAttribute("message", result.getMessage());
-        //TODO
-//        request.getSession().setAttribute("id", result.getData().get("id"));
-        request.getSession().setAttribute("email",email);
-        return "surveys/surveysList";
+        Result result = userService.saveUser(email, password);
+        if("register successful".equals(result.getStatus())){
+            request.getSession().setAttribute("tit", result.getStatus());
+            request.getSession().setAttribute("des", result.getMessage());
+            request.getSession().setAttribute("type", "../surveys/surveysList");
+        }else {
+            request.getSession().setAttribute("type", "../register/register");
+            request.getSession().setAttribute("tit", "please register");
+            request.getSession().setAttribute("des", "email or password error");
+        }
+        return "jump/tip";
     }
 
     //login
-    @RequestMapping("/login/userLogin")
-    public String login(HttpServletRequest request){
+    @RequestMapping("login/userLogin")
+    public String login(HttpServletRequest request, HttpServletResponse response) {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        if(StringUtils.isEmpty(email) || StringUtils.isEmpty(password)){
-            request.getSession().setAttribute("type","register/register");
-            request.getSession().setAttribute("tit","please register");
-            request.getSession().setAttribute("des","email or password error");
-            request.getSession().setAttribute("pares",null);
+        if (StringUtils.isEmpty(email) || StringUtils.isEmpty(password)) {
+            request.getSession().setAttribute("type", "../register/register");
+            request.getSession().setAttribute("tit", "please register");
+            request.getSession().setAttribute("des", "email or password error");
+
         }
-        Result result = userService.login(email,password);
+        Result result = userService.login(email, password);
 
         request.getSession().setAttribute("tit", result.getStatus());
         request.getSession().setAttribute("des", result.getMessage());
-        if("login successful".equals(result.getStatus())){
-            request.getSession().setAttribute("type", "surveys/surveysList");
+        if ("login successful".equals(result.getStatus())) {
+            request.getSession().setAttribute("type", "../surveys/surveysList");
+        }else{
+            request.getSession().setAttribute("type", "../register/register");
         }
-        request.getSession().setAttribute("type", "register/register");
-
-        return "";
+        return "jump/tip";
     }
 
     @RequestMapping("login/login")
-    public void loginPage(HttpServletRequest request){
+    public void loginPage(HttpServletRequest request) {
     }
 
+    @RequestMapping("jump/tip")
+    public void tip(HttpServletRequest request){
+    }
+
+    @RequestMapping("register/register")
+    public void register(HttpServletRequest request){
+
+    }
 }
