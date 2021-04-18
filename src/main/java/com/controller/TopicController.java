@@ -48,8 +48,6 @@ public class TopicController {
         }
 
         Result result = surveyService.saveTopic(topicName,questions);
-        //TODO
-//        request.getSession().setAttribute("id", result.getData().get("id"));
         try {
             request.getRequestDispatcher("topics/topics-view").forward(request, response);
         } catch (Exception e) {

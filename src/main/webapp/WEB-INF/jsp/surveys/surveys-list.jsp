@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <%
+        Object data = request.getSession().getAttribute("data");
+        Object currentPage = Integer.valueOf(request.getSession().getAttribute("page").toString());
+        Object pageAmount = Integer.valueOf(request.getSession().getAttribute("pageAmount").toString());
+    %>
     <meta charset="UTF-8">
     <title>Title</title>
     <!--    control-->
@@ -21,17 +26,9 @@
     <script src="../../../static/js/list/surveys-list.js"></script>
     <script type="text/javascript">
         let g_jsp_data = {
-            page: 3,
-            surveys:[{
-                tit: 'surrrr1111111',
-                id: 'dfslkj3ljdsljfls'
-            },{
-                tit: 'sur22222222',
-                id: 'dfslkj3lfls'
-            },{
-                tit: '3333333susssssj',
-                id: 'dfslk3ljdsls'
-            }]
+            page: <%= currentPage%>,
+            page_amount:<%= pageAmount%>,
+            surveys:<%= data%>
         };
     </script>
 </head>

@@ -1,7 +1,6 @@
 package com.controller;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.po.Result;
 import com.service.SurveyService;
@@ -50,8 +49,6 @@ public class SurveyController {
             return "surveys/surveys-detail";
         }
         Result result = surveyService.saveSurvey(surveyName, topicIds);
-        //TODO
-//        request.getSession().setAttribute("id", result.getData().get("id"));
         try {
             request.getRequestDispatcher("surveys/surveys-view").forward(request, response);
         } catch (Exception e) {
@@ -72,12 +69,10 @@ public class SurveyController {
         request.getSession().setAttribute("status", result.getStatus());
         request.getSession().setAttribute("message", result.getMessage());
         if (result.getData() != null) {
-            //TODO
             JsonObject jsonObject = (JsonObject) gson.toJsonTree(result.getData());
             request.getSession().setAttribute("filePath", jsonObject.get("filePath"));
             request.getSession().setAttribute("fileName", jsonObject.get("fileName"));
         }
-
         return "surveys/downloadPDF";
     }
 
@@ -89,8 +84,8 @@ public class SurveyController {
         }
         Result result = surveyService.queryAllDocumentPage("surveys", Integer.valueOf(page), 20);
         JsonObject data = (JsonObject) gson.toJsonTree(result.getData());
-        request.getSession().setAttribute("page_amount", data.get("pageAmount"));
-        request.getSession().setAttribute("page", page);
+        request.getSession().setAttribute("pageAmount", data.get("pageAmount"));
+        request.getSession().setAttribute("page", Integer.valueOf(page));
         request.getSession().setAttribute("data", data.get("data"));
         return "surveys/surveys-list";
     }
@@ -102,8 +97,6 @@ public class SurveyController {
             return null;
         }
         Result result = surveyService.startAnswer(surveyId);
-        //TODO
-//        request.getSession().setAttribute("clientId", result.getData().get("id"));
         try {
             request.getRequestDispatcher("surveys/surveys-answer").forward(request, response);
         } catch (Exception e) {

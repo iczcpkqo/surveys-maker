@@ -212,12 +212,14 @@ public class SurveyService {
         List<Map<String, Object>> results = firebaseUtil.getAllDocuments(collection);
 
         if (results.size() <= 0) {
-            return new Result("false", "no data", null);
+            return new Result("false", "no data", new JsonObject());
         }
 
         if (number == null || results.size() <= number) {
             JsonObject jsonObject = new JsonObject();
             jsonObject.add("data", gson.toJsonTree(results));
+            jsonObject.addProperty("total", results.size());
+            jsonObject.addProperty("pageAmount", results.size() / 20 + 1);
             return new Result("true", "query successful", jsonObject);
         }
 
