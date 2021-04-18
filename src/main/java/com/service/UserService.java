@@ -19,7 +19,7 @@ public class UserService {
     public Result saveUser(String email, String password) {
         List<Map<String, Object>> data = firebaseUtil.getDataByField("users", "email", email);
         if (data.size() > 0) {
-            return new Result("false", "the email allready exists", null);
+            return new Result("Please choose another email", "the email allready exists", null);
         }
 
         UUID uuid = UUID.randomUUID();
