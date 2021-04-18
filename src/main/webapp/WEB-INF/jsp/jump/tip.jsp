@@ -30,16 +30,15 @@
 </head>
 <body>
     <div class="contain">
-    <div id="tip-tit" class="tit">
+        <div id="tip-tit" class="tit">
 
-    </div>
-    <div id="tip-des" class="des">
+        </div>
+        <div id="tip-des" class="des">
 
-    </div>
-    <div id="tip-view" class="view">
+        </div>
+        <div id="tip-view" class="view">
 
+        </div>
     </div>
-    </div>
-    <input id="temp" type="button" value="临时按钮" >
 </body>
 </html>
