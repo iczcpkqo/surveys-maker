@@ -1,0 +1,31 @@
+.tip .contain {
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 150px;
+    width: 1000px;
+}
+
+.tip .contain .tit {
+    color: var(--v1-clr-a1);
+    font-size: 24px;
+    font-weight: bolder;
+    margin-bottom: 48px;
+}
+
+.tip .contain .des {
+    color: var(--v1-clr-a3);
+}
+
+.tip .contain .view {
+    border: solid 2px var(--v1-clr-a3);
+    border-radius: 48px;
+    color: var(--v1-clr-a3);
+    font-size: 18px;
+    font-weight: bolder;
+    line-height: 48px;
+    margin: 0 auto;
+    margin-top: 48px;
+    width: 48px;
+}
+
+
