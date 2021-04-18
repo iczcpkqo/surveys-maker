@@ -1,18 +1,39 @@
+function btnGetShareLink(){
+    let shareLink = 'share.html?id=' + this.id;
+    let msg = 'The link has been copied to the clipboard.';
+    copyToClip(shareLink, msg);
+}
+
 function getSurveysItem(sur, idx){
+    let jumpLink = 'surveys-detail.html';
+    let delLink = 'del.html'
+    let jumpPares = {
+        id: sur.id
+    };
+    let delPares = {
+        id: sur.id
+    };
 
     return '<div class="tr-li"><div class="tr-left"><a>'
                + idx
             +'</a></div><div class="tr-right"><div class="tr-r-con"><div class="tr-r-link"><a href="'
-                    + 'surveys-detail.html?id=' + sur.id
+                    + linkMaker( jumpLink, jumpPares)//'surveys-detail.html?id=' + sur.id
                     + '">'
                     + sur.tit
-                    +'</a> </div> <div class="tr-r-del"></div> <div class="tr-r-share"></div> </div> </div> </div>';
+                    + '</a> </div> <a class="tr-r-del" href="'
+                    + linkMaker(delLink, delPares)
+                    + '"></a> <div class="tr-r-share share-button" id="'
+                    + sur.id
+                    + '"></div> </div> </div> </div>';
 }
 
 function addSurveysList(sures){
     // $('#surveys-box')
     for (let i in sures)
         $('#surveys-box').innerHTML+=getSurveysItem(sures[i], Number(i)+1);
+    let shareBox = $('.share-button');
+    for (let i in shareBox)
+        shareBox[i].addEventListener('click', btnGetShareLink);
 }
 
 function initPage(data){
