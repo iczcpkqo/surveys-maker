@@ -5,8 +5,8 @@ function btnGetShareLink(){
 }
 
 function getSurveysItem(sur, idx){
-    let jumpLink = 'surveys-detail.html';
-    let delLink = 'del.html'
+    let jumpLink = 'surveys/surveys-detail';
+    let delLink = 'surveys/surveys-delete'
     let jumpPares = {
         id: sur.id
     };
@@ -17,7 +17,7 @@ function getSurveysItem(sur, idx){
     return '<div class="tr-li"><div class="tr-left"><a>'
                + idx
             +'</a></div><div class="tr-right"><div class="tr-r-con"><div class="tr-r-link"><a href="'
-                    + linkMaker( jumpLink, jumpPares)//'surveys-detail.html?id=' + sur.id
+                    + linkMaker(jumpLink, jumpPares)//'surveys-detail.html?id=' + sur.id
                     + '">'
                     + sur.tit
                     + '</a> </div> <a class="tr-r-del" href="'
@@ -28,16 +28,20 @@ function getSurveysItem(sur, idx){
 }
 
 function addSurveysList(sures){
-    // $('#surveys-box')
     for (let i in sures)
         $('#surveys-box').innerHTML+=getSurveysItem(sures[i], Number(i)+1);
     let shareBox = $('.share-button');
-    for (let i in shareBox)
+    for (let i=0; i<shareBox.length; i++)
         shareBox[i].addEventListener('click', btnGetShareLink);
+}
+
+function addPaging(page, page_amount){
+
 }
 
 function initPage(data){
     addSurveysList(data.surveys);
+    addPaging(data.page, data.page_amount);
 }
 
 /**

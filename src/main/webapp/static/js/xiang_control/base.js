@@ -51,7 +51,7 @@ function $(id){
 /**
  *
  * @param addr {string}, The http address of this link.
- * @param pares {json}, pares = {
+ * @param pares {{json}}, pares = {
  *                                  parameter 1: value of parameter 1,
  *                                  parameter 2: value of parameter 2
  *                                  ...
