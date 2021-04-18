@@ -51,7 +51,7 @@
 <div class="con-detail">
     <form id="topic-form" class="box-detail" action="topic-detail.html" >
         <div class="tit">
-            <input name="topic-tit" id="topic-tit" class="txt-2" type="text" placeholder="Please input topic name.">
+            <input id="topic-tit" class="txt-2" type="text" placeholder="Please input topic name.">
         </div>
 
         <div class="box-li">

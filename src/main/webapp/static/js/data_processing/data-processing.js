@@ -241,7 +241,15 @@ class DataBase{
 
 class DataLogin {}
 
-class DataList extends DataBase {}
+class DataList extends DataBase {
+    constructor(jsp_data = '') {
+        super();
+        this.jsp_surveys = jsp_data.surveys;
+        // this.topic_idx = jsp_data.topic_idx;
+        this.page = jsp_data.page;
+        this.page_amount = jsp_data.page_amount;
+    }
+}
 
 class DataDetail extends DataBase {
     constructor(jsp_data) {
@@ -341,3 +349,39 @@ class DataStat extends DataBase {
 //     }]
 // }
 
+
+
+// var g_jsp_data = {
+//     "surveys": [{
+//         "selectedTopic": [{
+//             "topicId": "wQfAHUCtPFrRGCA7md",
+//             "createTime": {"seconds": 1617490800, "nanos": 0},
+//             "questions": [{"red": 0, "green": 3, "questionTitle": "question1", "amber": 1}],
+//             "topicTitle": "top22222222"
+//         },{
+//             "topicId": "wQfAHUCtPFrRGCA7md",
+//             "createTime": {"seconds": 1617490800, "nanos": 0},
+//             "questions": [{"red": 0, "green": 3, "questionTitle": "question1", "amber": 1}],
+//             "topicTitle": "333333333"
+//         },{
+//             "topicId": "wQfAHUCtPFrRGCA7md",
+//             "createTime": {"seconds": 1617490800, "nanos": 0},
+//             "questions": [{"red": 0, "green": 3, "questionTitle": "question1", "amber": 1}],
+//             "topicTitle": "444444444"
+//         }],
+//         "createTime": {"seconds": 1617490800, "nanos": 0},
+//         "id": "ebJcAKNLV52a0okYrXFw",
+//         "surveyTitle": "survey1 js"
+//     }],
+//     "topics": [{
+//         "createTime": {"seconds": 1617490800, "nanos": 0},
+//         "questions": [{"questionTitle": "question1"}],
+//         "id": "wQm8fAHUCtPFrRGCA7md",
+//         "topicTitle": "topic1"
+//     },{
+//         "createTime": {"seconds": 1617490800, "nanos": 0},
+//         "questions": [{"questionTitle": "question1"}],
+//         "id": "wQfAHUCtPFrRGCA7md",
+//         "topicTitle": "top222222222"
+//     }]
+// };
