@@ -84,13 +84,15 @@ public class SurveyController {
     @RequestMapping("surveys/surveysList")
     public String surveysList(HttpServletRequest request) {
         String page = request.getParameter("page");
-        Result result = surveyService.queryAllDocumentPage("surveys", Integer.valueOf(page), 10);
-        request.getSession().setAttribute("status", result.getStatus());
-        request.getSession().setAttribute("message", result.getMessage());
-        request.getSession().setAttribute("data", result.getData());
-        //TODO
-//        request.getSession().setAttribute("total", result.getData().get("total"));
-        return "surveys/surveysList";
+        if (StringUtils.isEmpty(page)) {
+            page = "1";
+        }
+        Result result = surveyService.queryAllDocumentPage("surveys", Integer.valueOf(page), 20);
+        JsonObject data = (JsonObject) gson.toJsonTree(result.getData());
+        request.getSession().setAttribute("page_amount", data.get("pageAmount"));
+        request.getSession().setAttribute("page", page);
+        request.getSession().setAttribute("data", data.get("data"));
+        return "surveys/surveys-list";
     }
 
     @RequestMapping("surveys/startAnswer")

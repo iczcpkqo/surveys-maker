@@ -169,9 +169,9 @@ public class firebaseUtil {
             db.collection(collection).document(id).set(docData);
         } catch (Exception e) {
             e.printStackTrace();
-            return new Result("false", "failed to save document", null);
+            return new Result("failed to save document", "", null);
         }
-        return new Result("true", "save document successful", null);
+        return new Result("register successful", "", null);
     }
 
 

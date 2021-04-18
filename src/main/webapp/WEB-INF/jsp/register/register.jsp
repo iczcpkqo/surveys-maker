@@ -31,7 +31,7 @@
                 </a>
             </div>
         </div>
-        <form id="login-form" class="input-con">
+        <form id="login-form" class="input-con" action="userRegister">
 
             <div class="input-li">
                 <div class="input-label label-4">
