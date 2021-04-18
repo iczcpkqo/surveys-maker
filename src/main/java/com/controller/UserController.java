@@ -34,15 +34,15 @@ public class UserController {
     }
 
     //login
-    @RequestMapping("/login/userLogin")
-    public String login(HttpServletRequest request) {
+    @RequestMapping("login/userLogin")
+    public String login(HttpServletRequest request, HttpServletResponse response) {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         if (StringUtils.isEmpty(email) || StringUtils.isEmpty(password)) {
             request.getSession().setAttribute("type", "register/register");
             request.getSession().setAttribute("tit", "please register");
             request.getSession().setAttribute("des", "email or password error");
-            request.getSession().setAttribute("pares", null);
+
         }
         Result result = userService.login(email, password);
 
@@ -52,7 +52,6 @@ public class UserController {
             request.getSession().setAttribute("type", "surveys/surveysList");
         }
         request.getSession().setAttribute("type", "register/register");
-
         return "jump/tip";
     }
 
@@ -60,4 +59,7 @@ public class UserController {
     public void loginPage(HttpServletRequest request) {
     }
 
+    @RequestMapping("jump/tip")
+    public void tip(HttpServletRequest request){
+    }
 }
