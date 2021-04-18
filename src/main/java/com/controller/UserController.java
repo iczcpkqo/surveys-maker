@@ -39,7 +39,7 @@ public class UserController {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         if (StringUtils.isEmpty(email) || StringUtils.isEmpty(password)) {
-            request.getSession().setAttribute("type", "register/register");
+            request.getSession().setAttribute("type", "../register/register");
             request.getSession().setAttribute("tit", "please register");
             request.getSession().setAttribute("des", "email or password error");
 
@@ -49,9 +49,9 @@ public class UserController {
         request.getSession().setAttribute("tit", result.getStatus());
         request.getSession().setAttribute("des", result.getMessage());
         if ("login successful".equals(result.getStatus())) {
-            request.getSession().setAttribute("type", "surveys/surveysList");
+            request.getSession().setAttribute("type", "../surveys/surveysList");
         }
-        request.getSession().setAttribute("type", "register/register");
+        request.getSession().setAttribute("type", "../register/register");
         return "jump/tip";
     }
 
