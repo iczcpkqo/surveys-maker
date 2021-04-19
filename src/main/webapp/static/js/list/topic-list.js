@@ -2,10 +2,10 @@ function getTopicsItem(sur, idx){
     let jumpLink = 'topic/topic-detail';
     let delLink = 'topic/topic-delete'
     let jumpPares = {
-        id: sur.id
+        id: sur.topic_id
     };
     let delPares = {
-        id: sur.id
+        id: sur.topic_id
     };
 
     return '<div class="tr-li"><div class="tr-left"><a>'
@@ -13,15 +13,15 @@ function getTopicsItem(sur, idx){
             +'</a></div><div class="tr-right"><div class="tr-r-con"><div class="tr-r-link"><a href="'
                     + linkMaker(jumpLink, jumpPares)//'surveys-detail.html?id=' + sur.id
                     + '">'
-                    + sur.tit
+                    + sur.topic_tit
                     + '</a> </div> <a class="tr-r-del" href="'
                     + linkMaker(delLink, delPares)
                     + '"></a></div></div></div>';
 }
 
-function addTopicsList(sures){
-    for (let i in sures)
-        $('#topics-box').innerHTML += getTopicsItem(sures[i], Number(i)+1);
+function addTopicsList(topics){
+    for (let i in topics)
+        $('#topics-box').innerHTML += getTopicsItem(topics[i], Number(i)+1);
 }
 
 function addNewTopic(){
@@ -48,14 +48,14 @@ window.onload = function(){
         page: 24,
         page_amount: 48,
         topics:[{
-            tit: 'surrrr1111111',
-            id: 'dfslkj3ljdsljfls'
+            topic_tit: 'surrrr1111111',
+            topic_id: 'dfslkj3ljdsljfls'
         },{
-            tit: 'sur22222222',
-            id: 'dfslkj3lfls'
+            topic_tit: 'sur22222222',
+            topic_id: 'dfslkj3lfls'
         },{
-            tit: '3333333susssssj',
-            id: 'dfslk3ljdsls'
+            topic_tit: '3333333susssssj',
+            topic_id: 'dfslk3ljdsls'
         }]
     };
 
@@ -63,9 +63,10 @@ window.onload = function(){
     let _jsp = g_jsp_data;
     console.log(_jsp);
     //页面数据
-    let p_data = new DataList(_jsp);
+    let p_data = new TopicList(_jsp);
 
     console.log(p_data);
+    console.log(p_data.topics);
 
     // initPage(try_jsp_data);
     initPage(try_jsp_data);

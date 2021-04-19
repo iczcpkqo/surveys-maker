@@ -251,6 +251,19 @@ class DataList extends DataBase {
     }
 }
 
+
+class TopicList extends DataBase {
+    constructor(jsp_data = '') {
+        super();
+        this.jsp_topics = jsp_data.topics;
+        // this.topic_idx = jsp_data.topic_idx;
+        this.page = jsp_data.page;
+        this.page_amount = jsp_data.page_amount;
+
+        this.topics = this.jsp_topics;
+    }
+}
+
 class DataDetail extends DataBase {
     constructor(jsp_data) {
         super();
