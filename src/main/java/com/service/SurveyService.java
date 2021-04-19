@@ -99,11 +99,11 @@ public class SurveyService {
 
         UUID uuid = UUID.randomUUID();
         Map<String, Object> docData = new HashMap<>();
-        docData.put("surveyTitle", surveyName);
-        docData.put("selectedTopics", topics);
-        docData.put("surveyId", uuid.toString());
-        docData.put("createTime", new Date());
-        Result result = firebaseUtil.saveDocument("surveys", UUID.randomUUID().toString(), docData);
+        docData.put("surveys_tit", surveyName);
+        docData.put("sels_topic", topics);
+        docData.put("surveys_id", uuid.toString());
+        docData.put("time", new Date());
+        Result result = firebaseUtil.saveDocument("surveys", uuid.toString(), docData);
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("id", uuid.toString());
         result.setData(jsonObject);
@@ -205,15 +205,14 @@ public class SurveyService {
         return colors;
     }
 
-    public Result queryAllSurveys(String collection) {
-        List<Map<String, Object>> allDocuments = firebaseUtil.getAllDocuments(collection);
-        return new Result("true", "query successful", allDocuments);
-    }
 
     public Result queryAllDocumentPage(String collection, Integer page, Integer number) {
         List<Map<String, Object>> results = firebaseUtil.getAllDocuments(collection);
 
         if (results.size() <= 0) {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("total", results.size());
+            jsonObject.addProperty("pageAmount", results.size() / 20 + 1);
             return new Result("false", "no data", new JsonObject());
         }
 
@@ -245,12 +244,7 @@ public class SurveyService {
 
     public Result getTopicById(String topicId) {
         Map<String, Object> topic = firebaseUtil.getByDocumentId("topics", topicId);
-        JsonObject jsonObject = new JsonObject();
-        List<Map<String, Object>> result = new ArrayList<>();
-        result.add(topic);
-        JsonElement resultJsonElement = gson.toJsonTree(result);
-        jsonObject.add("data", resultJsonElement);
-        return new Result("true", "query successful", jsonObject);
+        return new Result("true", "query successful", gson.toJsonTree(topic));
     }
 
     public Result saveTopic(String topicName, String[] questions) {
@@ -263,11 +257,11 @@ public class SurveyService {
 
         UUID uuid = UUID.randomUUID();
         Map<String, Object> docData = new HashMap<>();
-        docData.put("topicTitle", topicName);
-        docData.put("questions", quesionList);
-        docData.put("topicId", uuid.toString());
-        docData.put("createTime", new Date());
-        Result result = firebaseUtil.saveDocument("topics", UUID.randomUUID().toString(), docData);
+        docData.put("topic_tit", topicName);
+        docData.put("quizes", quesionList);
+        docData.put("topic_id", uuid.toString());
+        docData.put("time", new Date());
+        Result result = firebaseUtil.saveDocument("topics", uuid.toString(), docData);
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("id", uuid.toString());
         result.setData(jsonObject);
@@ -281,8 +275,8 @@ public class SurveyService {
         }
 
         UUID uuid = UUID.randomUUID();
-        survey.put("clientId", uuid.toString());
-        survey.put("createTime", new Date());
+        survey.put("client_id", uuid.toString());
+        survey.put("time", new Date());
         Result result = firebaseUtil.saveDocument("personalSurveys", uuid.toString(), survey);
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("id", uuid.toString());
