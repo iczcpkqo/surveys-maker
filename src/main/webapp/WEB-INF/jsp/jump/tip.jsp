@@ -31,7 +31,7 @@
             type:"<%= type%>",
             tit:"<%= tit%>",
             des:"<%= des%>",
-            pares:"<%= pares%>"
+            pares:<%= pares%>
         }
     </script>
 

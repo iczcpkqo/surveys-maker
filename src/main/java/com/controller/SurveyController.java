@@ -44,7 +44,14 @@ public class SurveyController {
     public String saveSurvey(HttpServletRequest request, HttpServletResponse response) {
         String surveyName = request.getParameter("surveys-tit");
         String[] topicIds = request.getParameterValues("sel-topic");
-        if (StringUtils.isEmpty(surveyName) || topicIds == null) {
+        if (StringUtils.isEmpty(surveyName)) {
+            request.getSession().setAttribute("tit", "please enter survey name");
+            request.getSession().setAttribute("type", "../surveys/surveys-detail");
+            return "surveys/surveys-detail";
+        }
+        if (topicIds == null) {
+            request.getSession().setAttribute("tit", "please choose at least one topic");
+            request.getSession().setAttribute("type", "../surveys/surveys-detail");
             return "surveys/surveys-detail";
         }
         Result result = surveyService.saveSurvey(surveyName, topicIds);
@@ -86,7 +93,6 @@ public class SurveyController {
         request.getSession().setAttribute("data", data.get("data"));
         return "surveys/surveys-list";
     }
-
 
 
     @RequestMapping("surveys/surveys-delete")
