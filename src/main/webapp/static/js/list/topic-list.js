@@ -1,11 +1,11 @@
 function getTopicsItem(sur, idx){
-    let jumpLink = 'topic/topic-detail';
-    let delLink = 'topic/topic-delete'
+    let jumpLink = 'topic-detail';
+    let delLink = 'topic-delete'
     let jumpPares = {
-        id: sur.topic_id
+        topic_id: sur.topic_id
     };
     let delPares = {
-        id: sur.topic_id
+        topic_id: sur.topic_id
     };
 
     return '<div class="tr-li"><div class="tr-left"><a>'
