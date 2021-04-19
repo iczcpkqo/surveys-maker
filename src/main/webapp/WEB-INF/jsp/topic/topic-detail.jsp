@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <%
+        Object topic_name = request.getSession().getAttribute("topic_name");
+        Object quizes = request.getSession().getAttribute("quizes");
+        if (topic_name == null) {
+            topic_name = "";
+        }
+        if (quizes == null) {
+            quizes = "[]";
+        }
+        String replace = topic_name.toString().replace("\"", "");
+    %>
     <meta charset="UTF-8">
     <title>Title</title>
     <!--    control-->
@@ -20,6 +32,10 @@
     <script src="../../../static/js/detail/topic-detail.js"></script>
 
     <script type="text/javascript">
+        var g_jsp_data = {
+            topic_tit: "<%= replace%>",
+            quizes: <%= quizes%>
+        }
         // var g_jsp_data = {
         //     'topic_id': String,
         //     'topic_tit': String,
@@ -46,21 +62,21 @@
 
 <!--详情-->
 <div class="con-detail">
-    <form id="topic-form" class="box-detail" action="save-topic" >
+    <form id="topic-form" class="box-detail" action="save-topic">
         <div class="tit">
             <input name="topic-tit" id="topic-tit" class="txt-2" type="text" placeholder="Please input topic name.">
         </div>
 
         <div class="box-li">
-<!--            问题结构-->
-<!--            <div class="detail-li">-->
-<!--                <div class="detail-input">-->
-<!--                    <input class="txt-1" type="text" placeholder="Please input your Question.">-->
-<!--                </div>-->
-<!--                <div class="detail-del">-->
-<!--                    <a class="btn-1">Delete</a>-->
-<!--                </div>-->
-<!--            </div>-->
+            <!--            问题结构-->
+            <!--            <div class="detail-li">-->
+            <!--                <div class="detail-input">-->
+            <!--                    <input class="txt-1" type="text" placeholder="Please input your Question.">-->
+            <!--                </div>-->
+            <!--                <div class="detail-del">-->
+            <!--                    <a class="btn-1">Delete</a>-->
+            <!--                </div>-->
+            <!--            </div>-->
         </div>
 
         <!--        重复-->
@@ -71,10 +87,6 @@
         </div>
     </form>
 </div>
-
-
-
-
 
 
 </body>

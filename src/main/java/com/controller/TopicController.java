@@ -1,5 +1,7 @@
 package com.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.po.Result;
 import com.service.SurveyService;
 import org.apache.commons.lang3.StringUtils;
@@ -8,10 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class TopicController {
+
+    private static Gson gson = new Gson();
 
     @Autowired
     private SurveyService surveyService;
@@ -23,22 +26,20 @@ public class TopicController {
         request.getSession().setAttribute("status", result.getStatus());
         request.getSession().setAttribute("message", result.getMessage());
         request.getSession().setAttribute("data", result.getData());
-        //TODO
-//        request.getSession().setAttribute("total", result.getData().get("total"));
         return "topic/topicList";
     }
 
 
     @RequestMapping("topic/topic-detail")
     public String topicView(HttpServletRequest request) {
-        String topicId = request.getParameter("topic-id");
+        String topicId = request.getParameter("topic_id");
         if(StringUtils.isEmpty(topicId)){
             return "topic/topic-detail";
         }
         Result result = surveyService.getTopicById(topicId);
-        request.getSession().setAttribute("data", result.getData());
-        request.getSession().setAttribute("status", result.getStatus());
-        request.getSession().setAttribute("message", result.getMessage());
+        JsonObject jsonObject = (JsonObject) gson.toJsonTree(result.getData());
+        request.getSession().setAttribute("topic_name", jsonObject.get("topic_tit"));
+        request.getSession().setAttribute("quizes", jsonObject.get("quizes"));
         return "topic/topic-detail";
     }
 
