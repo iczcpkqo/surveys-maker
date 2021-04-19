@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 @Controller
 public class SurveyController {
@@ -91,6 +93,14 @@ public class SurveyController {
         request.getSession().setAttribute("pageAmount", data.get("pageAmount"));
         request.getSession().setAttribute("page", Integer.valueOf(page));
         request.getSession().setAttribute("data", data.get("data"));
+        String localAddr = null;
+        try {
+            localAddr = InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        int serverPort = request.getServerPort();
+        request.getSession().setAttribute("host", "http://" + localAddr + ":" + serverPort);
         return "surveys/surveys-list";
     }
 
