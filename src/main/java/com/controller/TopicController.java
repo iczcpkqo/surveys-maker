@@ -19,14 +19,17 @@ public class TopicController {
     @Autowired
     private SurveyService surveyService;
 
-    @RequestMapping("topic/topicList")
+    @RequestMapping("topic/topic-list")
     public String topicList(HttpServletRequest request) {
         String page = request.getParameter("page");
+        if (StringUtils.isEmpty(page)) {
+            page = "1";
+        }
         Result result = surveyService.queryAllDocumentPage("topics", Integer.valueOf(page), 10);
         request.getSession().setAttribute("status", result.getStatus());
         request.getSession().setAttribute("message", result.getMessage());
         request.getSession().setAttribute("data", result.getData());
-        return "topic/topicList";
+        return "topic/topic-list";
     }
 
 
