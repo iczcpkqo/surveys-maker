@@ -5,6 +5,7 @@
         Object data = request.getSession().getAttribute("data");
         Object currentPage = Integer.valueOf(request.getSession().getAttribute("page").toString());
         Object pageAmount = Integer.valueOf(request.getSession().getAttribute("pageAmount").toString());
+        Object host = request.getSession().getAttribute("host");
     %>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -28,7 +29,8 @@
         let g_jsp_data = {
             page: <%= currentPage%>,
             page_amount:<%= pageAmount%>,
-            surveys:<%= data%>
+            surveys:<%= data%>,
+            host:"<%= host%>"
         };
     </script>
 </head>
