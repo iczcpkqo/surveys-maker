@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
@@ -241,6 +243,7 @@ public class SurveyService {
         jsonObject.addProperty("pageAmount", results.size() / 20 + 1);
         return new Result("true", "query successful", jsonObject);
     }
+
 
     public Result getTopicById(String topicId) {
         Map<String, Object> topic = firebaseUtil.getByDocumentId("topics", topicId);
