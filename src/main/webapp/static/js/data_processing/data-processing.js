@@ -195,18 +195,18 @@ class Dob {
      */
     static clOneTopics(obj, idx=0){
         let topic = new Topic();
-        topic.id = obj.id;
-        topic.tit = obj.topicTitle;
+        topic.id = obj.topic_id;
+        topic.tit = obj.topic_tit;
         topic.idx = idx;
         topic.quizes = (function(quizes){
             let qs = [];
             for(let i in quizes){
                 qs.push(new Quiz());
-                qs[i].tit = quizes[i].questionTitle;
+                qs[i].tit = quizes[i].quiz_tit;
                 qs[i].idx = i;
             }
             return qs;
-        })(obj.questions);
+        })(obj.quizes);
         return topic;
     }
 

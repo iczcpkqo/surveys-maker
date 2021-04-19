@@ -27,19 +27,19 @@
     <script type="text/javascript">
         var g_jsp_data = <%=data %>
         // var g_jsp_data = {
-        //     'surveys_name': String,
+        //     'surveys_tit': String,
         //     // 主题库中的所有主题
         //     'topics': [
         //         {
-        //             'id': int,
-        //             'tit': String
+        //             'topic_id': int,
+        //             'topic_tit': String
         //         }
         //     ],
         //     // 该问卷已经选择的主题们
         //     'sels': [
         //         {
-        //             'id': int,
-        //             'tit': String
+        //             'topic_id': int,
+        //             'topic_tit': String
         //         }
         //     ]
         // }
@@ -59,7 +59,7 @@
 </div>
 
 <div class="operation">
-    <a class="btn-2">View Detail</a>
+<%--    <a class="btn-2">View Detail</a>--%>
     <a id="submit-surveys" class="btn-4">Save</a>
 </div>
 

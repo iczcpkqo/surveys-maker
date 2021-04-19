@@ -72,7 +72,7 @@ function onSurveysPageLoad(p_data){
     });
 
     // Init tit
-    surTit.setAttribute('value', p_data.surveys_name);
+    surTit.setAttribute('value', p_data.surveys_tit || '');
     // Init select list
     console.log(p_data.topics);
     for(let i in p_data.sels){
@@ -85,51 +85,47 @@ function onSurveysPageLoad(p_data){
 /**
  *
  * @param p_data = {
- *                      'surveys_name': String,
- *                      // 主题库中的所有主题
- *                      'topics': [
- *                          {
- *                              'id': int,
- *                              'tit': String
- *                          }
- *                      ],
- *                      // 该问卷已经选择的主题
- *                      'sels': [
- *                          {
- *                              'id': int,
- *                              'tit': String
- *                          }
- *                      ]
- *
+ *              'surveys_tit': String,
+ *              // 主题库中的所有主题
+ *              'topics': [
+ *                  {
+ *                      'topic_id': int,
+ *                      'topic_tit': String
  *                  }
+ *              ],
+ *              // 该问卷已经选择的主题们
+ *              'sels': [
+ *                  {
+ *                      'topic_id': int,
+ *                      'topic_tit': String
+ *                  }
+ *              ]
+ *          }
  */
 window.onload = function(){
-    let p_data = {
-        'surveys_name': 'Corporate Employee Happiness Survey.',
-        'topics': [
-            {
-                'id': 111,
-                'tit': 'dfsdfsdfsdfsd'
-            }, {
-                'id': 222,
-                'tit': 'hhhhh'
-            }
-        ],
-        'sels': [
-            {
-                'id': 222,
-                'tit': 'dfsdfsdfsdfsd'
-            }, {
-                'id': 111,
-                'tit': 'hhhhh'
-            }, {
-                'id': 222,
-                'tit': 'dfsdfsdfsdfsd'
-            }
-        ]
-    }
     let _jsp = g_jsp_data;
     let p_stat = new DataDetail(_jsp);
-    p_data = p_stat.p_data;
+    let p_data = p_stat.p_data;
     onSurveysPageLoad(p_data);
+}
+
+
+
+let test_data =
+    {
+    "topics"
+:
+    [{
+        "topic_tit": "Legal Compliance",
+        "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+        "topic_id": "5ce874b7-612a-499d-949d-ff041d9eeec0",
+        "time": {"seconds": 1618857625, "nanos": 772000000},
+        "id": "5ce874b7-612a-499d-949d-ff041d9eeec0"
+    }, {
+        "topic_tit": "Legal Compliance2",
+        "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+        "time": {"seconds": 1618857642, "nanos": 138000000},
+        "topic_id": "a162d43e-9b9d-4695-83e4-a5f79b958bf1",
+        "id": "a162d43e-9b9d-4695-83e4-a5f79b958bf1"
+    }]
 }
