@@ -157,8 +157,8 @@ class Dob {
      */
     static clSurveys(obj){
         let surveys = new Surveys();
-        surveys.id = obj.id;
-        surveys.tit = obj.surveyTitle;
+        surveys.id = obj.surveys_id;
+        surveys.tit = obj.surveys_tit;
         surveys.idx = '';
         surveys.topics = (function(topics){
             let arr = [];
@@ -166,7 +166,7 @@ class Dob {
             for (let i in topics)
                 arr.push(Dob.clTopic(topics[i], ++j));
             return arr;
-        })(obj.selectedTopic);
+        })(obj.sels_topic);
         surveys.data = (function(topics){
             let d = {
                 green: 0,
