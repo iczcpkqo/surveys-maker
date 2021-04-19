@@ -61,13 +61,9 @@ window.onload = function(){
 
     // 原始数据
     let _jsp = g_jsp_data;
-    console.log(_jsp);
     //页面数据
     let p_data = new TopicList(_jsp);
 
-    console.log(p_data);
-    console.log(p_data.topics);
-
     // initPage(try_jsp_data);
-    initPage(try_jsp_data);
+    initPage(p_data);
 }
