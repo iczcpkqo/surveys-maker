@@ -87,36 +87,7 @@ public class SurveyController {
         return "surveys/surveys-list";
     }
 
-    @RequestMapping("surveys/startAnswer")
-    public String startAnswer(HttpServletRequest request, HttpServletResponse response) {
-        String surveyId = request.getParameter("survey-id");
-        if (StringUtils.isEmpty(surveyId)) {
-            return null;
-        }
-        Result result = surveyService.startAnswer(surveyId);
-        try {
-            request.getRequestDispatcher("surveys/surveys-answer").forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-        return "surveys/surveys-answer";
-    }
 
-
-    @RequestMapping("surveys/surveySubmit")
-    public String surveySubmit(HttpServletRequest request) {
-        String clientId = request.getParameter("client-id");
-        String topicIndex = request.getParameter("topic-index");
-        String answers = request.getParameter("answers");
-        String[] answersArray = answers.split(",");
-        if (StringUtils.isEmpty(clientId) || StringUtils.isEmpty(topicIndex) || answersArray == null || answersArray.length <= 0) {
-            return null;
-        }
-        Result result = surveyService.surveySummit(clientId, topicIndex, answersArray);
-        request.getSession().setAttribute("topic-index", topicIndex);
-        return "surveys/surveySubmit";
-    }
 
     @RequestMapping("surveys/surveys-delete")
     public String surveyDelete(HttpServletRequest request) {
