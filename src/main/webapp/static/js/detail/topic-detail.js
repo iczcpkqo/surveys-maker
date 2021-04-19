@@ -16,8 +16,9 @@ function createQuizInput(tit) {
     delBtn = addClass(delBtn, 'btn-1');
 
     li.innerHTML += '<div class="detail-input">'
-        + '<input name="quiz-tit" class="txt-1" type="text" placeholder="Please input your Question." value="'+ tit +'">'
-        + '</div>';
+        + '<input name="quiz-tit" class="txt-1" type="text" placeholder="Please input your Question." value="'
+        + tit
+        +'"></div>';
     delBtn.innerHTML = 'Delete';
     delBtn.addEventListener('click', delItem);
 

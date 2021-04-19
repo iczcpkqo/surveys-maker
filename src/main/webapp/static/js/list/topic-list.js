@@ -1,12 +1,6 @@
-function btnGetShareLink(){
-    let shareLink = 'share.html?id=' + this.id;
-    let msg = 'The link has been copied to the clipboard.';
-    copyToClip(shareLink, msg);
-}
-
-function getSurveysItem(sur, idx){
-    let jumpLink = 'surveys/surveys-detail';
-    let delLink = 'surveys/surveys-delete'
+function getTopicsItem(sur, idx){
+    let jumpLink = 'topic/topic-detail';
+    let delLink = 'topic/topic-delete'
     let jumpPares = {
         id: sur.id
     };
@@ -22,24 +16,24 @@ function getSurveysItem(sur, idx){
                     + sur.tit
                     + '</a> </div> <a class="tr-r-del" href="'
                     + linkMaker(delLink, delPares)
-                    + '"></a> <div class="tr-r-share share-button" id="'
-                    + sur.id
-                    + '"></div> </div> </div> </div>';
+                    + '"></a></div></div></div>';
 }
 
-function addSurveysList(sures){
+function addTopicsList(sures){
     for (let i in sures)
-        $('#surveys-box').innerHTML+=getSurveysItem(sures[i], Number(i)+1);
-    let shareBox = $('.share-button');
-    for (let i=0; i<shareBox.length; i++)
-        shareBox[i].addEventListener('click', btnGetShareLink);
+        $('#topics-box').innerHTML += getTopicsItem(sures[i], Number(i)+1);
 }
 
-
+function addNewTopic(){
+    $('#new-topic').addEventListener('click',()=>{
+        window.location.href = "topic-detail";
+    });
+}
 
 function initPage(data){
-    addSurveysList(data.surveys);
+    addTopicsList(data.topics);
     addPaging(data.page, data.page_amount);
+    addNewTopic();
 }
 
 /**
@@ -51,9 +45,9 @@ function initPage(data){
  */
 window.onload = function(){
     let try_jsp_data = {
-        page: 3,
-        page_amount: 7,
-        surveys:[{
+        page: 24,
+        page_amount: 48,
+        topics:[{
             tit: 'surrrr1111111',
             id: 'dfslkj3ljdsljfls'
         },{
@@ -74,5 +68,5 @@ window.onload = function(){
     console.log(p_data);
 
     // initPage(try_jsp_data);
-    initPage(p_data);
+    initPage(try_jsp_data);
 }
