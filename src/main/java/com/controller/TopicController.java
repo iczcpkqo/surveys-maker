@@ -26,9 +26,10 @@ public class TopicController {
             page = "1";
         }
         Result result = surveyService.queryAllDocumentPage("topics", Integer.valueOf(page), 10);
-        request.getSession().setAttribute("status", result.getStatus());
-        request.getSession().setAttribute("message", result.getMessage());
-        request.getSession().setAttribute("data", result.getData());
+        JsonObject data = (JsonObject) gson.toJsonTree(result.getData());
+        request.getSession().setAttribute("pageAmount", data.get("pageAmount"));
+        request.getSession().setAttribute("page", Integer.valueOf(page));
+        request.getSession().setAttribute("topics", data.get("data"));
         return "topic/topic-list";
     }
 
