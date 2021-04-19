@@ -1,12 +1,15 @@
-function btnGetShareLink(){
-    let shareLink = 'share.html?id=' + this.id;
+function btnGetShareLink(btn, host){
+    // let shareLink = 'share.html?id=' + this.id;
+    let shareLink = linkMaker(host, btn.id);
     let msg = 'The link has been copied to the clipboard.';
     copyToClip(shareLink, msg);
 }
 
 function getSurveysItem(sur, idx){
-    let jumpLink = 'surveys/surveys-detail';
-    let delLink = 'surveys/surveys-delete'
+    console.log(sur);
+    console.log(idx);
+    let jumpLink = 'surveys-view';
+    let delLink = 'surveys-delete'
     let jumpPares = {
         id: sur.id
     };
@@ -27,18 +30,16 @@ function getSurveysItem(sur, idx){
                     + '"></div> </div> </div> </div>';
 }
 
-function addSurveysList(sures){
+function addSurveysList(sures, host){
     for (let i in sures)
         $('#surveys-box').innerHTML+=getSurveysItem(sures[i], Number(i)+1);
     let shareBox = $('.share-button');
     for (let i=0; i<shareBox.length; i++)
-        shareBox[i].addEventListener('click', btnGetShareLink);
+        shareBox[i].addEventListener('click', ()=>{ btnGetShareLink(shareBox[i], host); });
 }
 
-
-
 function initPage(data){
-    addSurveysList(data.surveys);
+    addSurveysList(data.surveys, data.host);
     addPaging(data.page, data.page_amount);
 }
 
@@ -67,11 +68,8 @@ window.onload = function(){
 
     // 原始数据
     let _jsp = g_jsp_data;
-    console.log(_jsp);
     //页面数据
     let p_data = new DataList(_jsp);
-
-    console.log(p_data);
 
     // initPage(try_jsp_data);
     initPage(p_data);

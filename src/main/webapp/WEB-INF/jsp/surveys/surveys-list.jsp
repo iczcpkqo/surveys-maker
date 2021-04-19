@@ -28,7 +28,7 @@
         let g_jsp_data = {
             page: <%= currentPage%>,
             page_amount:<%= pageAmount%>,
-            surveys:<%= data%>
+            surveys:<%= data%>,
         };
     </script>
 </head>

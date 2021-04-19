@@ -241,6 +241,7 @@ class DataBase{
 
 class DataLogin {}
 
+//only using in surveys list please
 class DataList extends DataBase {
     constructor(jsp_data = '') {
         super();
@@ -248,6 +249,7 @@ class DataList extends DataBase {
         // this.topic_idx = jsp_data.topic_idx;
         this.page = jsp_data.page;
         this.page_amount = jsp_data.page_amount;
+        this.host = jsp_data.host;
     }
 }
 
