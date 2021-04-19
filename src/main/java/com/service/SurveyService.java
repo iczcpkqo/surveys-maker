@@ -105,7 +105,7 @@ public class SurveyService {
         docData.put("time", new Date());
         Result result = firebaseUtil.saveDocument("surveys", uuid.toString(), docData);
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("id", uuid.toString());
+        jsonObject.addProperty("surveys_id", uuid.toString());
         result.setData(jsonObject);
         return result;
     }
