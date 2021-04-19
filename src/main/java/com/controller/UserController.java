@@ -74,4 +74,9 @@ public class UserController {
     public void register(HttpServletRequest request){
 
     }
+
+    @RequestMapping("client/transit")
+    public void transit(HttpServletRequest request){
+
+    }
 }
