@@ -262,9 +262,9 @@ class DataDetail extends DataBase {
     }
     get p_data(){
         return {
-            surveys_name: this.surveys[0].tit,
-            topics: this.topics,
-            sels: this.surveys[0].topics
+            // surveys_name: this.surveys[0].tit || '',
+            topics: this.topics
+            // sels: this.surveys[0].topics || ''
         }
     }
 }
