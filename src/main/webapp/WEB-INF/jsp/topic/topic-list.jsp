@@ -40,8 +40,8 @@
     <p class="tit">Surveys Maker System</p>
     <div class="account">Xiang.Mao@outlook.com</div>
     <div class="nav-con">
-        <a class="nav-li sel">Surveys List</a>
-        <a class="nav-li">Topic List</a>
+        <a class="nav-li" href="../surveys/surveys-list">Surveys List</a>
+        <a class="nav-li sel" href="topic-list">Topic List</a>
     </div>
 </div>
 

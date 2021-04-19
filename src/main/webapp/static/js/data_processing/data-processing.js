@@ -157,8 +157,8 @@ class Dob {
      */
     static clSurveys(obj){
         let surveys = new Surveys();
-        surveys.id = obj.id;
-        surveys.tit = obj.surveyTitle;
+        surveys.id = obj.surveys_id;
+        surveys.tit = obj.surveys_tit;
         surveys.idx = '';
         surveys.topics = (function(topics){
             let arr = [];
@@ -166,7 +166,7 @@ class Dob {
             for (let i in topics)
                 arr.push(Dob.clTopic(topics[i], ++j));
             return arr;
-        })(obj.selectedTopic);
+        })(obj.sels_topic);
         surveys.data = (function(topics){
             let d = {
                 green: 0,
@@ -241,6 +241,7 @@ class DataBase{
 
 class DataLogin {}
 
+//only using in surveys list please
 class DataList extends DataBase {
     constructor(jsp_data = '') {
         super();
@@ -248,6 +249,7 @@ class DataList extends DataBase {
         // this.topic_idx = jsp_data.topic_idx;
         this.page = jsp_data.page;
         this.page_amount = jsp_data.page_amount;
+        this.host = jsp_data.host;
     }
 }
 

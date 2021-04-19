@@ -45,8 +45,8 @@ function initPage(data){
  */
 window.onload = function(){
     let try_jsp_data = {
-        page: 24,
-        page_amount: 48,
+        page: 1,
+        page_amount: 2,
         topics:[{
             topic_tit: 'surrrr1111111',
             topic_id: 'dfslkj3ljdsljfls'
@@ -61,6 +61,7 @@ window.onload = function(){
 
     // 原始数据
     let _jsp = g_jsp_data;
+    // let _jsp = try_jsp_data;
     //页面数据
     let p_data = new TopicList(_jsp);
 

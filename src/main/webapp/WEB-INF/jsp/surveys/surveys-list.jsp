@@ -48,7 +48,7 @@
 
 <div class="operation">
     <a class="label-3">Surveys List</a>
-    <a class="btn-7" href="">New Surveys</a>
+    <a class="btn-7" href="surveys-detail">New Surveys</a>
 </div>
 
 <!--列表-->
@@ -144,26 +144,26 @@
 
             </div>
             <div id="page-num" class="paging-con">
-                <div class="paging-li sel">
-                    <a>
-                        1
-                    </a>
-                </div>
-                <div class="paging-li">
-                    <a>
-                        2
-                    </a>
-                </div>
-                <div class="paging-li">
-                    <a>
-                        3
-                    </a>
-                </div>
-                <div class="paging-li">
-                    <a>
-                        4
-                    </a>
-                </div>
+<%--                <div class="paging-li sel">--%>
+<%--                    <a>--%>
+<%--                        1--%>
+<%--                    </a>--%>
+<%--                </div>--%>
+<%--                <div class="paging-li">--%>
+<%--                    <a>--%>
+<%--                        2--%>
+<%--                    </a>--%>
+<%--                </div>--%>
+<%--                <div class="paging-li">--%>
+<%--                    <a>--%>
+<%--                        3--%>
+<%--                    </a>--%>
+<%--                </div>--%>
+<%--                <div class="paging-li">--%>
+<%--                    <a>--%>
+<%--                        4--%>
+<%--                    </a>--%>
+<%--                </div>--%>
             </div>
             <div class="paging-next">
 
