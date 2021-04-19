@@ -322,4 +322,8 @@ public class SurveyService {
     public Result deleteSurvey(String surveyId) {
         return firebaseUtil.delete("surveys",surveyId);
     }
+
+    public Result deleteTopic(String topicId){
+        return firebaseUtil.delete("topics",topicId);
+    }
 }
