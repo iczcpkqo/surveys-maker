@@ -1,6 +1,9 @@
 function btnGetShareLink(btn, host){
-    // let shareLink = 'share.html?id=' + this.id;
-    let shareLink = linkMaker(host, btn.id);
+    host += '/client/transit'
+    let par = {
+        survey_id: btn.id
+    }
+    let shareLink = linkMaker(host, par);
     let msg = 'The link has been copied to the clipboard.';
     copyToClip(shareLink, msg);
 }
@@ -11,10 +14,10 @@ function getSurveysItem(sur, idx){
     let jumpLink = 'surveys-view';
     let delLink = 'surveys-delete'
     let jumpPares = {
-        id: sur.id
+        survey_id: sur.id
     };
     let delPares = {
-        id: sur.id
+        survey_id: sur.id
     };
 
     return '<div class="tr-li"><div class="tr-left"><a>'
