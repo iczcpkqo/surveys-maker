@@ -68,6 +68,7 @@ public class SurveyService {
         for (QueryDocumentSnapshot document : topics.getDocuments()) {
             Map<String, Object> data = document.getData();
             data.put("id", document.getId());
+            data.put("tit",data.get("topicTitle"));
             resultArray.add(data);
         }
         String s = gson.toJson(resultArray);

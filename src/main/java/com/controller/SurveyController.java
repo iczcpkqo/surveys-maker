@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 @Controller
 public class SurveyController {
 
@@ -76,7 +75,7 @@ public class SurveyController {
         return "surveys/downloadPDF";
     }
 
-    @RequestMapping("surveys/surveysList")
+    @RequestMapping("surveys/surveys-list")
     public String surveysList(HttpServletRequest request) {
         String page = request.getParameter("page");
         if (StringUtils.isEmpty(page)) {
