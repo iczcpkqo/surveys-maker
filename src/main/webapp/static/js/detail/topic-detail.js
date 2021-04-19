@@ -49,10 +49,10 @@ function onTopicPageLoad(p_data){
     });
 
     // Init tit
-    topicTit.setAttribute('value', p_data.topic_name);
+    topicTit.setAttribute('value', p_data.topic_tit || '');
     // Init select list
     for(let i in p_data.quizes){
-        let li = createQuizInput(p_data.quizes[i].tit);
+        let li = createQuizInput(p_data.quizes[i]);
         liBox.appendChild(li);
     }
 
@@ -73,24 +73,16 @@ function onTopicPageLoad(p_data){
  *                  }
  */
 window.onload = function(){
-    let p_data = {
-        'topic_name': 'Legal Compliance',
-        'quizes':[
-            {
-                'id': 1,
-                'tit': 'Legal Compliance-1'
-            }, {
-                'id': 2,
-                'tit': 'Hours of Work and Leave-2'
-            }, {
-                'id': 3,
-                'tit': 'Legal Compliance-3'
-            }, {
-                'id': 4,
-                'tit': 'Hours of Work and Leave-4'
-            }
-        ]
-    }
+    let p_data = g_jsp_data;
+    // let p_data = {
+    //     topic_id: 'sdfsds323sdf',
+    //     topic_tit: 'Legal Compliance',
+    //     quizes: ['Legal Compliance-1', 'Hours of Work and Leave-2',
+    //         'Legal Compliance-3', 'Hours of Work and Leave-4'],
+    //     topic_time: 'sdfsd'
+    // };
+
+
 
     onTopicPageLoad(p_data);
 }

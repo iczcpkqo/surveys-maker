@@ -21,13 +21,10 @@
 
     <script type="text/javascript">
         // var g_jsp_data = {
-        //     'topic_name': String,
-        //     'quizes':[
-        //         {
-        //             'id': int,
-        //             'tit': String,
-        //         }
-        //     ]
+        //     'topic_id': String,
+        //     'topic_tit': String,
+        //     'quizes':[String]
+        //     'topic_time':String
         // }
     </script>
 </head>
