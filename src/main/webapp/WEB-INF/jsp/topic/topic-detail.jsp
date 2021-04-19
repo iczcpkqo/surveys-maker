@@ -51,8 +51,8 @@
     <a class="tit" href="../index.html">Surveys Maker System</a>
     <div class="account">Xiang.Mao@outlook.com</div>
     <div class="nav-con">
-        <a class="nav-li sel" href="../surveys/surveys-detail.html">Surveys List</a>
-        <a class="nav-li" href="../topic/topic-detail.html">Topic List</a>
+    <a class="nav-li" href="../surveys/surveys-list">Surveys List</a>
+    <a class="nav-li sel" href="topic-list">Topic List</a>
     </div>
 </div>
 

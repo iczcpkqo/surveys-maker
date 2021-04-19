@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%
-        Object data = request.getSession().getAttribute("data");
-        Object currentPage = Integer.valueOf(request.getSession().getAttribute("page").toString());
-        Object pageAmount = Integer.valueOf(request.getSession().getAttribute("pageAmount").toString());
-    %>
     <meta charset="UTF-8">
     <title>Title</title>
     <!--    control-->
@@ -23,13 +18,74 @@
     <!--    script-->
     <script src="../../../static/js/xiang_control/base.js"></script>
     <script src="../../../static/js/data_processing/data-processing.js"></script>
-    <script src="../../../static/js/list/surveys-list.js"></script>
+    <script src="../../../static/js/list/topic-list.js"></script>
     <script type="text/javascript">
-        let g_jsp_data = {
-            page: <%= currentPage%>,
-            page_amount:<%= pageAmount%>,
-            surveys:<%= data%>
+        var g_jsp_data = {
+            page: 8,
+            page_amount: 60,
+            "surveys": [{
+                "selectedTopic": {
+                    "wQfAHUCsfFrRGCA7md": {
+                        "topicId": "wsfsQfUCtPFrRGCA7md",
+                        "createTime": {"seconds": 1617490800, "nanos": 0},
+                        "questions": [{"red": 0, "green": 3, "questionTitle": "question1", "amber": 1}],
+                        "topicTitle": "top222222222"
+                    }
+                },
+                "createTime": {"seconds": 1617490800, "nanos": 0},
+                "id": "ebJcAKNLV52a0okYrXFw",
+                "surveyTitle": "survey1 js"
+            },{
+                "selectedTopic": {
+                    "wQAHUCtFrRsdfCA7md": {
+                        "topicId": "wfAHCtPsdfsrRGCA7md",
+                        "createTime": {"seconds": 1617490800, "nanos": 0},
+                        "questions": [{"red": 0, "green": 3, "questionTitle": "question1", "amber": 1}],
+                        "topicTitle": "top222222222"
+                    }
+                },
+                "createTime": {"seconds": 1617490800, "nanos": 0},
+                "id": "ebJcAKNLV52ahhhoksdfYrXFw",
+                "surveyTitle": "survey22222222222"
+            },{
+                "selectedTopic": {
+                    "wQfAsdfsfHUtrGC7md": {
+                        "topicId": "wQfAHUPsdfsfRGCA7md",
+                        "createTime": {"seconds": 1617490800, "nanos": 0},
+                        "questions": [{"red": 0, "green": 3, "questionTitle": "question1", "amber": 1}],
+                        "topicTitle": "top222222222"
+                    }
+                },
+                "createTime": {"seconds": 1617490800, "nanos": 0},
+                "id": "ebJcAsdfsV2krXFw",
+                "surveyTitle": "surveysdfs33333333333"
+            },{
+                "selectedTopic": {
+                    "wQfAsdfsdHrRGCA7md": {
+                        "topicId": "wQfHUtFRsfsCA7md",
+                        "createTime": {"seconds": 1617490800, "nanos": 0},
+                        "questions": [{"red": 0, "green": 3, "questionTitle": "question1", "amber": 1}],
+                        "topicTitle": "top222222222"
+                    }
+                },
+                "createTime": {"seconds": 1617490800, "nanos": 0},
+                "id": "ebJcAKNLV52sdfsfw",
+                "surveyTitle": "surve444444444444"
+            },{
+                "selectedTopic": {
+                    "wQfAsdfsfsdfCrmd": {
+                        "topicId": "wfHCPrGsdfs92A7md",
+                        "createTime": {"seconds": 1617490800, "nanos": 0},
+                        "questions": [{"red": 0, "green": 3, "questionTitle": "question1", "amber": 1}],
+                        "topicTitle": "top222222222"
+                    }
+                },
+                "createTime": {"seconds": 1617490800, "nanos": 0},
+                "id": "ebJcsdfsdfsfAKN2w",
+                "surveyTitle": "surveyt555555555555555"
+            }]
         };
+
     </script>
 </head>
 <body class="xiang-control list">
@@ -39,21 +95,21 @@
     <p class="tit">Surveys Maker System</p>
     <div class="account">Xiang.Mao@outlook.com</div>
     <div class="nav-con">
-    <a class="nav-li sel" href="surveys-list">Surveys List</a>
-    <a class="nav-li" href="../topic/topic-list">Topic List</a>
+        <a class="nav-li sel">Surveys List</a>
+        <a class="nav-li">Topic List</a>
     </div>
 </div>
 
 <div class="operation">
-    <a class="label-3">Surveys List</a>
-    <a class="btn-7" href="">New Surveys</a>
+    <a class="label-3">Topics List</a>
+    <a id="new-topic" class="btn-7" >New Topics</a>
 </div>
 
 <!--列表-->
 <div class="con-list">
 
     <div class="table-con">
-        <div id="surveys-box" class="tr-con">
+        <div id="topics-box" class="tr-con">
 
 <!--            <div class="tr-li">-->
 <!--                <div class="tr-left">-->
@@ -142,26 +198,14 @@
 
             </div>
             <div id="page-num" class="paging-con">
-                <div class="paging-li sel">
-                    <a>
-                        1
-                    </a>
-                </div>
-                <div class="paging-li">
-                    <a>
-                        2
-                    </a>
-                </div>
-                <div class="paging-li">
-                    <a>
-                        3
-                    </a>
-                </div>
-                <div class="paging-li">
-                    <a>
-                        4
-                    </a>
-                </div>
+
+                <!--页码结构-->
+                <!--<div class="paging-li sel">-->
+                <!--    <a href="surveys-list?page=1">-->
+                <!--        1-->
+                <!--    </a>-->
+                <!--</div>-->
+
             </div>
             <div class="paging-next">
 
