@@ -105,7 +105,7 @@ public class firebaseUtil {
         File tempFile;
         try {
             tempFile = File.createTempFile(fileName, ".pdf");
-            Blob blob = service.get(BlobId.of(storageBucket, bucket + "/" + fileName ));
+            Blob blob = service.get(BlobId.of(storageBucket, bucket + "/" + fileName));
             blob.downloadTo(Paths.get(tempFile.getAbsolutePath()));
         } catch (IOException e) {
             return new Result("false", "failed to create file", null);
@@ -169,7 +169,7 @@ public class firebaseUtil {
             e.printStackTrace();
             return new Result("failed to save document", "", null);
         }
-        return new Result("register successful", "", null);
+        return new Result("successful", "", null);
     }
 
 
@@ -203,5 +203,10 @@ public class firebaseUtil {
             transaction.update(docRef, updateFiled, value);
             return null;
         });
+    }
+
+    public Result delete(String collection, String documentId) {
+        db.collection(collection).document(documentId).delete();
+        return new Result("successful", "", null);
     }
 }

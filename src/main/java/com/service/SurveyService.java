@@ -321,4 +321,8 @@ public class SurveyService {
         firebaseUtil.updateDocument("personalSurveys", clientId, "selectedTopics", updateFiled);
         return new Result("true", "update successful", null);
     }
+
+    public Result deleteSurvey(String surveyId) {
+        return firebaseUtil.delete("surveys",surveyId);
+    }
 }

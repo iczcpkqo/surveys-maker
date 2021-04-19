@@ -54,8 +54,10 @@ public class UserController {
 
         request.getSession().setAttribute("tit", result.getStatus());
         request.getSession().setAttribute("des", result.getMessage());
+
         if ("login successful".equals(result.getStatus())) {
-            request.getSession().setAttribute("type", "../surveys/surveysList");
+            request.getSession().setAttribute("type", "../surveys/surveys-list");
+            request.getSession().setAttribute("email",email);
         }else{
             request.getSession().setAttribute("type", "../register/register");
         }

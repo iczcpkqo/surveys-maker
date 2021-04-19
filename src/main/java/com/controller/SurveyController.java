@@ -48,13 +48,11 @@ public class SurveyController {
             return "surveys/surveys-detail";
         }
         Result result = surveyService.saveSurvey(surveyName, topicIds);
-        try {
-            request.getRequestDispatcher("surveys/surveys-view").forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "surveys/surveys-detail";
-        }
-        return "surveys/surveys-view";
+        request.getSession().setAttribute("tit", result.getStatus());
+        request.getSession().setAttribute("des", result.getMessage());
+        request.getSession().setAttribute("type", "../surveys/surveys-view");
+        request.getSession().setAttribute("pares", result.getData());
+        return "jump/tip";
     }
 
 
@@ -118,5 +116,17 @@ public class SurveyController {
         Result result = surveyService.surveySummit(clientId, topicIndex, answersArray);
         request.getSession().setAttribute("topic-index", topicIndex);
         return "surveys/surveySubmit";
+    }
+
+    @RequestMapping("surveys/surveys-delete")
+    public String surveyDelete(HttpServletRequest request) {
+        String surveyId = request.getParameter("survey-id");
+        if (StringUtils.isEmpty(surveyId)) {
+            request.getSession().setAttribute("type", "../surveys/surveys-list");
+            request.getSession().setAttribute("tit", "please enter survey id");
+            return "jump/tip";
+        }
+        surveyService.deleteSurvey(surveyId);
+        return "surveys-list";
     }
 }
