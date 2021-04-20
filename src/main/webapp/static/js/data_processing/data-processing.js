@@ -167,18 +167,18 @@ class Dob {
                 arr.push(Dob.clTopic(topics[i], ++j));
             return arr;
         })(obj.sels_topic);
-        surveys.data = (function(topics){
-            let d = {
-                green: 0,
-                amber: 0,
-                red: 0
-            }
-            for (let i in topics)
-                for (let j in topics[i].data) {
-                    d[j] += topics[i].data[j];
-                }
-            return d;
-        })(surveys.topics);
+        // surveys.data = (function(topics){
+        //     let d = {
+        //         green: 0,
+        //         amber: 0,
+        //         red: 0
+        //     }
+        //     for (let i in topics)
+        //         for (let j in topics[i].data) {
+        //             d[j] += topics[i].data[j];
+        //         }
+        //     return d;
+        // })(surveys.topics);
         // surveys.data = {
         //   green: 100,
         //   amber: 333,
@@ -257,17 +257,8 @@ class DataListView extends DataBase {
     constructor(jsp_data = '') {
         super();
         this.jsp_surveys = jsp_data.surveys;
-        console.log(this.jsp_surveys);
-        this.survey = this.jsp_surveys[0];
-    }
-    set survey(sur){
-        this._survey = sur;
-    }
-    get survey(){
-        return this._survey;
     }
 }
-
 
 class TopicList extends DataBase {
     constructor(jsp_data = '') {
