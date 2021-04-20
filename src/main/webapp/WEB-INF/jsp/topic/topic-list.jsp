@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <%
-        Object topics = request.getSession().getAttribute("topics");
-        Object currentPage = Integer.valueOf(request.getSession().getAttribute("page").toString());
-        Object pageAmount = Integer.valueOf(request.getSession().getAttribute("pageAmount").toString());
+        Object topics = request.getAttribute("topics");
+        Object currentPage = Integer.valueOf(request.getAttribute("page").toString());
+        Object pageAmount = Integer.valueOf(request.getAttribute("pageAmount").toString());
     %>
     <meta charset="UTF-8">
     <title>Title</title>

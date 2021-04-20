@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <%
-        Object data = request.getSession().getAttribute("data");
+        Object data = request.getAttribute("data");
     %>
 
 <!--    control-->

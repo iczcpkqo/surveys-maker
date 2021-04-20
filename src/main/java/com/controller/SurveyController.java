@@ -25,9 +25,9 @@ public class SurveyController {
     @RequestMapping("surveys/surveys-detail")
     public String surveysDetail(HttpServletRequest request) {
         Result result = surveyService.getSurveyByIdandTopics("");
-        request.getSession().setAttribute("data", result.getData());
-        request.getSession().setAttribute("status", result.getStatus());
-        request.getSession().setAttribute("message", result.getMessage());
+        request.setAttribute("data", result.getData());
+        request.setAttribute("status", result.getStatus());
+        request.setAttribute("message", result.getMessage());
         return "surveys/surveys-detail";
     }
 
@@ -35,9 +35,9 @@ public class SurveyController {
     public String surveysView(HttpServletRequest request) {
         String surveyId = request.getParameter("survey-id");
         Result result = surveyService.getSurveyByIdandTopics(surveyId);
-        request.getSession().setAttribute("data", result.getData());
-        request.getSession().setAttribute("status", result.getStatus());
-        request.getSession().setAttribute("message", result.getMessage());
+        request.setAttribute("data", result.getData());
+        request.setAttribute("status", result.getStatus());
+        request.setAttribute("message", result.getMessage());
         return "surveys/surveys-view";
     }
 
@@ -47,20 +47,22 @@ public class SurveyController {
         String surveyName = request.getParameter("surveys-tit");
         String[] topicIds = request.getParameterValues("sel-topic");
         if (StringUtils.isEmpty(surveyName)) {
-            request.getSession().setAttribute("tit", "please enter survey name");
-            request.getSession().setAttribute("type", "../surveys/surveys-detail");
-            return "surveys/surveys-detail";
+            request.setAttribute("tit", "please enter survey name");
+            request.setAttribute("type", "../surveys/surveys-detail");
+            request.setAttribute("des", "");
+            return "jump/tip";
         }
         if (topicIds == null) {
-            request.getSession().setAttribute("tit", "please choose at least one topic");
-            request.getSession().setAttribute("type", "../surveys/surveys-detail");
-            return "surveys/surveys-detail";
+            request.setAttribute("tit", "please choose at least one topic");
+            request.setAttribute("type", "../surveys/surveys-detail");
+            request.setAttribute("des", "");
+            return "jump/tip";
         }
         Result result = surveyService.saveSurvey(surveyName, topicIds);
-        request.getSession().setAttribute("tit", result.getStatus());
-        request.getSession().setAttribute("des", result.getMessage());
-        request.getSession().setAttribute("type", "../surveys/surveys-view");
-        request.getSession().setAttribute("pares", result.getData());
+        request.setAttribute("tit", result.getStatus());
+        request.setAttribute("des", result.getMessage());
+        request.setAttribute("type", "../surveys/surveys-view");
+        request.setAttribute("pares", result.getData());
         return "jump/tip";
     }
 
@@ -72,12 +74,12 @@ public class SurveyController {
             return "surveys/downloadPDF";
         }
         Result result = surveyService.getPersonalPDF(id);
-        request.getSession().setAttribute("status", result.getStatus());
-        request.getSession().setAttribute("message", result.getMessage());
+        request.setAttribute("status", result.getStatus());
+        request.setAttribute("message", result.getMessage());
         if (result.getData() != null) {
             JsonObject jsonObject = (JsonObject) gson.toJsonTree(result.getData());
-            request.getSession().setAttribute("filePath", jsonObject.get("filePath"));
-            request.getSession().setAttribute("fileName", jsonObject.get("fileName"));
+            request.setAttribute("filePath", jsonObject.get("filePath"));
+            request.setAttribute("fileName", jsonObject.get("fileName"));
         }
         return "surveys/downloadPDF";
     }
@@ -90,9 +92,9 @@ public class SurveyController {
         }
         Result result = surveyService.queryAllDocumentPage("surveys", Integer.valueOf(page), 20);
         JsonObject data = (JsonObject) gson.toJsonTree(result.getData());
-        request.getSession().setAttribute("pageAmount", data.get("pageAmount"));
-        request.getSession().setAttribute("page", Integer.valueOf(page));
-        request.getSession().setAttribute("data", data.get("data"));
+        request.setAttribute("pageAmount", data.get("pageAmount"));
+        request.setAttribute("page", Integer.valueOf(page));
+        request.setAttribute("data", data.get("data"));
         String localAddr = null;
         try {
             localAddr = InetAddress.getLocalHost().getHostAddress();
@@ -100,7 +102,7 @@ public class SurveyController {
             e.printStackTrace();
         }
         int serverPort = request.getServerPort();
-        request.getSession().setAttribute("host", "http://" + localAddr + ":" + serverPort);
+        request.setAttribute("host", "http://" + localAddr + ":" + serverPort);
         return "surveys/surveys-list";
     }
 
@@ -109,11 +111,14 @@ public class SurveyController {
     public String surveyDelete(HttpServletRequest request) {
         String surveyId = request.getParameter("survey_id");
         if (StringUtils.isEmpty(surveyId)) {
-            request.getSession().setAttribute("type", "../surveys/surveys-list");
-            request.getSession().setAttribute("tit", "please enter survey id");
+            request.setAttribute("type", "../surveys/surveys-list");
+            request.setAttribute("tit", "please enter survey id");
             return "jump/tip";
         }
         surveyService.deleteSurvey(surveyId);
-        return "surveys/surveys-list";
+        request.setAttribute("type", "../surveys/surveys-list");
+        request.setAttribute("tit", "delete successful");
+        request.setAttribute("des", "");
+        return "jump/tip";
     }
 }

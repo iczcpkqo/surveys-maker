@@ -25,7 +25,7 @@ public class ClientController {
         String surveyId = request.getParameter("surveys_id");
         Result result = surveyService.startAnswer(surveyId);
         JsonObject jsonObject = (JsonObject) gson.toJsonTree(result.getData());
-        request.getSession().setAttribute("client-id", jsonObject.get("id"));
+        request.setAttribute("client-id", jsonObject.get("id"));
         return "client/client-view";
     }
 
@@ -40,7 +40,7 @@ public class ClientController {
             return null;
         }
         Result result = surveyService.surveySummit(clientId, topicIndex, answersArray);
-        request.getSession().setAttribute("topic-index", topicIndex);
+        request.setAttribute("topic-index", topicIndex);
         return "surveys/surveySubmit";
     }
 
