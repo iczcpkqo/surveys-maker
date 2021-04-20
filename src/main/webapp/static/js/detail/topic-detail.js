@@ -45,7 +45,7 @@ function onTopicPageLoad(p_data){
         addQuiz();
     });
     subTopic.addEventListener('click',function(){
-        $('#topic-id').value = getPar('topic_id') || 'null';
+        $('#topic-id').value = getPar('topic_id') || ' ';
         document.getElementById('topic-form').submit();
     });
 
