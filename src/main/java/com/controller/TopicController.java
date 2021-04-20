@@ -37,7 +37,7 @@ public class TopicController {
     @RequestMapping("topic/topic-detail")
     public String topicView(HttpServletRequest request) {
         String topicId = request.getParameter("topic_id");
-        if(StringUtils.isEmpty(topicId)){
+        if (StringUtils.isEmpty(topicId)) {
             return "topic/topic-detail";
         }
         Result result = surveyService.getTopicById(topicId);
@@ -48,21 +48,30 @@ public class TopicController {
     }
 
     @RequestMapping("topic/save-topic")
-    public String saveTopic(HttpServletRequest request){
+    public String saveTopic(HttpServletRequest request) {
         String topicName = request.getParameter("topic-tit");
-        String[] questions = request.getParameterValues("quiz-tit");
-        request.getSession().setAttribute("des", "");
         if (StringUtils.isEmpty(topicName)) {
             request.getSession().setAttribute("type", "../topic/topic-detail");
             request.getSession().setAttribute("tit", "please enter topic name");
             return "jump/tip";
         }
 
-        Result result = surveyService.saveTopic(topicName,questions);
-        if("save successful".equals(result.getStatus())){
+        String[] questions = request.getParameterValues("quiz-tit");
+        if (questions == null) {
+            request.getSession().setAttribute("type", "../topic/topic-detail");
+            request.getSession().setAttribute("tit", "please enter quesions");
+            return "jump/tip";
+        }
+
+        String topicId = request.getParameter("topic_id");
+
+        Result result = surveyService.saveOrUpdateTopic(topicId,topicName, questions);
+
+
+        if ("save successful".equals(result.getStatus())) {
             request.getSession().setAttribute("type", "../topic/topic-list");
             request.getSession().setAttribute("tit", result.getStatus());
-        }else {
+        } else {
             request.getSession().setAttribute("type", "../topic/topic-detail");
             request.getSession().setAttribute("tit", result.getStatus());
         }
@@ -71,13 +80,13 @@ public class TopicController {
 
     @RequestMapping("topic/topic-delete")
     public String surveyDelete(HttpServletRequest request) {
-        String surveyId = request.getParameter("topic-id");
+        String surveyId = request.getParameter("topic_id");
         if (StringUtils.isEmpty(surveyId)) {
             request.getSession().setAttribute("type", "topic/topic-delete");
             request.getSession().setAttribute("tit", "please enter topic id");
             return "jump/tip";
         }
         surveyService.deleteTopic(surveyId);
-        return "topic-list";
+        return "topic/topic-list";
     }
 }

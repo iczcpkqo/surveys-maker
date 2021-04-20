@@ -92,7 +92,7 @@ public class SurveyService {
     }
 
     public Result saveSurvey(String surveyName, String[] topicIds) {
-        List<Map<String, Object>> dataByField = firebaseUtil.getDataByField("surveys", "surveyTitle", surveyName);
+        List<Map<String, Object>> dataByField = firebaseUtil.getDataByField("surveys", "surveys_tit", surveyName);
         if (dataByField.size() > 0) {
             surveyName = surveyName + "(" + (dataByField.size() + 1) + ")";
         }
@@ -250,26 +250,7 @@ public class SurveyService {
         return new Result("true", "query successful", gson.toJsonTree(topic));
     }
 
-    public Result saveTopic(String topicName, String[] questions) {
-        List<Map<String, Object>> dataByField = firebaseUtil.getDataByField("topics", "topicTitle", topicName);
-        if (dataByField.size() > 0) {
-            topicName = topicName + "(" + (dataByField.size() + 1) + ")";
-        }
 
-        List<String> quesionList = new ArrayList<>(Arrays.asList(questions));
-
-        UUID uuid = UUID.randomUUID();
-        Map<String, Object> docData = new HashMap<>();
-        docData.put("topic_tit", topicName);
-        docData.put("quizes", quesionList);
-        docData.put("topic_id", uuid.toString());
-        docData.put("time", new Date());
-        Result result = firebaseUtil.saveDocument("topics", uuid.toString(), docData);
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("id", uuid.toString());
-        result.setData(jsonObject);
-        return new Result("save successful", "save successful", jsonObject);
-    }
 
     public Result startAnswer(String surveyId) {
         Map<String, Object> survey = firebaseUtil.getByDocumentId("surveys", surveyId);
@@ -326,4 +307,34 @@ public class SurveyService {
     public Result deleteTopic(String topicId){
         return firebaseUtil.delete("topics",topicId);
     }
+
+    public Result saveOrUpdateTopic(String topicId, String topicName, String[] questions) {
+
+        if(StringUtils.isEmpty(topicId)){
+            List<Map<String, Object>> dataByField = firebaseUtil.getDataByField("topics", "topic_tit", topicName);
+            if (dataByField.size() > 0) {
+                topicName = topicName + "(" + (dataByField.size() + 1) + ")";
+            }
+            List<String> quesionList = new ArrayList<>(Arrays.asList(questions));
+
+            UUID uuid = UUID.randomUUID();
+            Map<String, Object> docData = new HashMap<>();
+            docData.put("topic_tit", topicName);
+            docData.put("quizes", quesionList);
+            docData.put("topic_id", uuid.toString());
+            docData.put("time", new Date());
+            Result result = firebaseUtil.saveDocument("topics", uuid.toString(), docData);
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("id", uuid.toString());
+            result.setData(jsonObject);
+            return new Result("save successful", "save successful", jsonObject);
+        }else {
+
+            return null;
+        }
+
+    }
+
+
+
 }

@@ -107,13 +107,13 @@ public class SurveyController {
 
     @RequestMapping("surveys/surveys-delete")
     public String surveyDelete(HttpServletRequest request) {
-        String surveyId = request.getParameter("survey-id");
+        String surveyId = request.getParameter("survey_id");
         if (StringUtils.isEmpty(surveyId)) {
             request.getSession().setAttribute("type", "../surveys/surveys-list");
             request.getSession().setAttribute("tit", "please enter survey id");
             return "jump/tip";
         }
         surveyService.deleteSurvey(surveyId);
-        return "surveys-list";
+        return "surveys/surveys-list";
     }
 }
