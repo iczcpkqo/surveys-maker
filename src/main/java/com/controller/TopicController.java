@@ -53,6 +53,7 @@ public class TopicController {
         if (StringUtils.isEmpty(topicName)) {
             request.setAttribute("type", "../topic/topic-detail");
             request.setAttribute("tit", "please enter topic name");
+            request.setAttribute("des", "");
             return "jump/tip";
         }
 
@@ -60,18 +61,22 @@ public class TopicController {
         if (questions == null) {
             request.setAttribute("type", "../topic/topic-detail");
             request.setAttribute("tit", "please enter quesions");
+            request.setAttribute("des", "");
             return "jump/tip";
         }
 
         String topicId = request.getParameter("topic_id");
+
         Result result = surveyService.saveOrUpdateTopic(topicId, topicName, questions);
         if ("save successful".equals(result.getStatus())) {
             request.setAttribute("type", "../topic/topic-list");
             request.setAttribute("tit", result.getStatus());
+            request.setAttribute("des", "");
         } else {
             request.setAttribute("type", "../topic/topic-detail");
             request.setAttribute("tit", result.getStatus());
             request.setAttribute("pares", result.getData());
+            request.setAttribute("des", "");
         }
         return "jump/tip";
     }
