@@ -63,6 +63,7 @@
 <!--详情-->
 <div class="con-detail">
     <form id="topic-form" class="box-detail" action="save-topic">
+        <input id="topic-id" name="topic_id" type="hidden" value="">
         <div class="tit">
             <input name="topic-tit" id="topic-tit" class="txt-2" type="text" placeholder="Please input topic name.">
         </div>
