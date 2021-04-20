@@ -253,6 +253,21 @@ class DataList extends DataBase {
     }
 }
 
+class DataListView extends DataBase {
+    constructor(jsp_data = '') {
+        super();
+        this.jsp_surveys = jsp_data.surveys;
+        console.log(this.jsp_surveys);
+        this.survey = this.jsp_surveys[0];
+    }
+    set survey(sur){
+        this._survey = sur;
+    }
+    get survey(){
+        return this._survey;
+    }
+}
+
 
 class TopicList extends DataBase {
     constructor(jsp_data = '') {
