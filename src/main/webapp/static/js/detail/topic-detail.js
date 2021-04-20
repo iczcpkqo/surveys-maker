@@ -46,7 +46,7 @@ function onTopicPageLoad(p_data){
     });
     subTopic.addEventListener('click',function(){
         $('#topic-id').value = getPar('topic_id') || 'null';
-        // document.getElementById('topic-form').submit();
+        document.getElementById('topic-form').submit();
     });
 
     // Init tit
