@@ -3,9 +3,6 @@ window.onload = function(){
 
     let p_data = new DataListView(_jsp);
 
+    console.log(p_data);
 }
-
-
-
-
 

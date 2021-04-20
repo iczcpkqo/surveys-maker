@@ -25,7 +25,7 @@
     <script src="../../../static/js/data_processing/data-processing.js"></script>
     <script src="../../../static/js/list/topic-list.js"></script>
     <script type="text/javascript">
-        var g_jsp_data = {
+        let g_jsp_data = {
             page: <%=currentPage %>,
             page_amount: <%=pageAmount %>,
             topics: <%=topics %>
