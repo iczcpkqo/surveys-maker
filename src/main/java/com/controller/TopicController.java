@@ -64,16 +64,14 @@ public class TopicController {
         }
 
         String topicId = request.getParameter("topic_id");
-
-        Result result = surveyService.saveOrUpdateTopic(topicId,topicName, questions);
-
-
+        Result result = surveyService.saveOrUpdateTopic(topicId, topicName, questions);
         if ("save successful".equals(result.getStatus())) {
             request.getSession().setAttribute("type", "../topic/topic-list");
             request.getSession().setAttribute("tit", result.getStatus());
         } else {
             request.getSession().setAttribute("type", "../topic/topic-detail");
             request.getSession().setAttribute("tit", result.getStatus());
+            request.getSession().setAttribute("pares", result.getData());
         }
         return "jump/tip";
     }

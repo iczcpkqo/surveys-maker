@@ -71,7 +71,7 @@ public class SurveyService {
         for (QueryDocumentSnapshot document : topics.getDocuments()) {
             Map<String, Object> data = document.getData();
             data.put("id", document.getId());
-            data.put("tit",data.get("topicTitle"));
+            data.put("tit", data.get("topicTitle"));
             resultArray.add(data);
         }
         String s = gson.toJson(resultArray);
@@ -251,7 +251,6 @@ public class SurveyService {
     }
 
 
-
     public Result startAnswer(String surveyId) {
         Map<String, Object> survey = firebaseUtil.getByDocumentId("surveys", surveyId);
         if (survey.size() <= 0) {
@@ -301,16 +300,16 @@ public class SurveyService {
     }
 
     public Result deleteSurvey(String surveyId) {
-        return firebaseUtil.delete("surveys",surveyId);
+        return firebaseUtil.delete("surveys", surveyId);
     }
 
-    public Result deleteTopic(String topicId){
-        return firebaseUtil.delete("topics",topicId);
+    public Result deleteTopic(String topicId) {
+        return firebaseUtil.delete("topics", topicId);
     }
 
     public Result saveOrUpdateTopic(String topicId, String topicName, String[] questions) {
 
-        if(StringUtils.isEmpty(topicId)){
+        if (StringUtils.isEmpty(topicId)) {
             List<Map<String, Object>> dataByField = firebaseUtil.getDataByField("topics", "topic_tit", topicName);
             if (dataByField.size() > 0) {
                 topicName = topicName + "(" + (dataByField.size() + 1) + ")";
@@ -328,13 +327,22 @@ public class SurveyService {
             jsonObject.addProperty("id", uuid.toString());
             result.setData(jsonObject);
             return new Result("save successful", "save successful", jsonObject);
-        }else {
-
-            return null;
+        } else {
+            List<Map<String, Object>> dataByField = firebaseUtil.getDataByField("topics", "topic_tit", topicName);
+            if (dataByField.size() == 1) {
+                if (!topicId.equals(dataByField.get(0).get("topic_id"))) {
+                    topicName = topicName + "(" + (dataByField.size() + 1) + ")";
+                    firebaseUtil.updateDocument("topics", topicId, "topic_tit", topicName);
+                }
+                List<String> quesionList = new ArrayList<>(Arrays.asList(questions));
+                firebaseUtil.updateDocument("topics", topicId, "quizes", quesionList);
+            }
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("id", topicId);
+            return new Result("update successful", "update successful", jsonObject);
         }
 
     }
-
 
 
 }
