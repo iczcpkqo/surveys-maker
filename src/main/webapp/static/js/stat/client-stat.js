@@ -55,6 +55,8 @@ function setPageText(txt){
 
     surTit.innerHTML = txt.surveys_name;
     topicTit.innerHTML = txt.topic_name;
+    topicIdx.innerHTML = txt.idx+1;
+    topicAmt.innerHTML = txt.amount;
 }
 
 function initPage(data){
