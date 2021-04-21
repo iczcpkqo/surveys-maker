@@ -61,22 +61,26 @@ function bindOperation(txt, chosen){
 
     let par = {
         topic_idx: txt.idx,
-        topic_res: ''
+        topic_res: '',
+        jump_type: ''
     };
 
     btnPrev.addEventListener('click', ()=>{
         par.topic_idx -= 1;
         par.topic_res = getChosen();
+        par.jump_type = 'prev'
         window.location.href = linkMaker(linkPrev, par);
     });
     btnNext.addEventListener('click', ()=>{
         par.topic_idx += 1;
         par.topic_res = getChosen();
+        par.jump_type = 'next'
         window.location.href = linkMaker(linkNext, par);
     });
     btnSub.addEventListener('click', ()=>{
         par.topic_idx += 1;
         par.topic_res = getChosen();
+        par.jump_type = 'sub'
         window.location.href = linkMaker(linkSub, par);
     });
 }
