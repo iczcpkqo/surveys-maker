@@ -60,10 +60,13 @@ function bindOperation(txt, chosen){
     let linkSub = linkPrev;
 
     let par = {
+        client_id: txt.client_id,
         topic_idx: txt.idx,
         topic_res: '',
         jump_type: ''
     };
+
+    // TODO: 判断选择数量，截断操作
 
     btnPrev.addEventListener('click', ()=>{
         par.topic_idx -= 1;
@@ -108,6 +111,7 @@ window.onload = function(){
 
     // 原始数据
     let _jsp = g_jsp_data;
+    _jsp.client_id = _jsp.client_id || '';
 
     //页面数据
     let p_data = new DataView(_jsp);
