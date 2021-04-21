@@ -37,13 +37,14 @@ function loadJS(src, o=false) {
 
 function $(id){
     let model = id.slice(0,1);
-    id = id.slice(1);
+    let name = id.slice(1);
     switch(model){
         case '#':
-            return document.getElementById(id);
+            return document.getElementById(name);
         case '.':
-            return document.getElementsByClassName(id);
-
+            return document.getElementsByClassName(name);
+        default:
+            return document.getElementsByTagName(id);
     }
 }
 

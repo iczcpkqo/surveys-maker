@@ -57,6 +57,7 @@
 </div>
 
 <div class="operation">
+    <a class="btn-back-1" onClick="javascript:window.history.back();">Back</a>
     <a id="submit-topic" class="btn-4">Save</a>
 </div>
 

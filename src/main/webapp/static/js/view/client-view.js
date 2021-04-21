@@ -137,4 +137,5 @@ window.onload = function(){
     let p_data = new DataView(_jsp);
 
     initPage(p_data);
+    $('body')[0].style.display = 'block';
 }
