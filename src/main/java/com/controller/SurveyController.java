@@ -33,7 +33,7 @@ public class SurveyController {
 
     @RequestMapping("surveys/surveys-view")
     public String surveysView(HttpServletRequest request) {
-        String surveyId = request.getParameter("survey-id");
+        String surveyId = request.getParameter("survey_id");
         Result result = surveyService.getSurveyByIdandTopics(surveyId);
         request.setAttribute("data", result.getData());
         request.setAttribute("status", result.getStatus());
