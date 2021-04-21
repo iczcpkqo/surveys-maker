@@ -50,7 +50,7 @@ function getChosen(){
     return result;
 }
 
-function bindOperation(txt, chosen){
+function bindOperation(txt){
     let btnPrev = $('#opera-btn-prev');
     let btnNext = $('#opera-btn-next');
     let btnSub = $('#opera-btn-submit');
