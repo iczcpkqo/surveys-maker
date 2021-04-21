@@ -55,7 +55,23 @@
     float: right;
 }
 
+/* survey view */
+.view.survey {
 
+}
+.view.survey .page-contain .content-contain .surveys-con .topic-con {
+    margin-bottom: 48px;
+}
+.view.survey .page-contain .content-contain .surveys-con .topic-con .quiz-con .quiz-list {
+    counter-reset: num;
+}
+.view.survey .page-contain .content-contain .surveys-con .topic-con .quiz-con .quiz-list .quiz-li {
+    padding-bottom: 48px;
+}
+.view.survey .page-contain .content-contain .surveys-con .topic-con .quiz-con .quiz-list .quiz-li a:before {
+    counter-increment: num;
+    content: counter(num) ". " ;
+}
 
 
 

@@ -1,3 +1,8 @@
+// TODO:
+//      - [ ] 1. 根据新数据格式清洗数据
+//      - [ ] 2. 修改quiz格式
+//      - [ ] 3. 查看影响范围
+
 class Quiz {
     constructor() {
         this.id = this.idMaker();
@@ -107,7 +112,7 @@ class Dob {
      */
     static clQuiz(obj, idx=0){
         let quiz = new Quiz();
-        quiz.tit = obj.questionTitle;
+        quiz.tit = obj.quiz_tit;
         quiz.idx = idx;
         quiz.green = obj.green.toString() !== '0';
         quiz.amber = obj.amber.toString() !== '0';
@@ -123,13 +128,13 @@ class Dob {
      */
     static clTopic(obj, idx=0){
         let topic = new Topic();
-        topic.id = obj.topicId;
-        topic.tit = obj.topicTitle;
+        topic.id = obj.topic_id;
+        topic.tit = obj.topic_tit;
         topic.idx = idx;
         topic.quizes = (function(){
             let qs = [];
-            for (let i in obj.questions)
-                qs.push(Dob.clQuiz(obj.questions[i]));
+            for (let i in obj.quizes)
+                qs.push(Dob.clQuiz(obj.quizes[i]));
             return qs;
         })(obj);
         topic.data = (function(qs){
@@ -332,6 +337,7 @@ class DataStat extends DataBase {
         // 获得 surveys
         this.jsp_surveys = jsp_data.surveys;
         // TODO: 第一个主题统计结果，需修改为当前页面展示的。
+        console.log(this.surveys);
         this.topic = this.surveys[0].topics[0];
     }
     get stat(){
