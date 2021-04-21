@@ -8,7 +8,8 @@
 .xiang-control .btn-4,
 .xiang-control .btn-5,
 .xiang-control .btn-6,
-.xiang-control .btn-7 {
+.xiang-control .btn-7,
+.xiang-control .btn-back-1 {
     border-radius: 5px;
     cursor: pointer;
     display: block;
@@ -24,7 +25,8 @@
     user-select: none;
 }
 
-.xiang-control .btn-1 {
+.xiang-control .btn-1,
+.xiang-control .btn-back-1 {
     background-color: var(--v1-clr-a2);
     border: 0;
     color: #fff;
@@ -102,6 +104,22 @@
 .xiang-control .btn-7:before {
     content: '➕';
 }
+
+.xiang-control .btn-back-1 {
+    background-color: var(--v1-clr-e3);
+    color: var(--v1-clr-a2);
+    display: inline-block;
+}
+.xiang-control .btn-back-1:hover {
+    background-color: var(--v1-clr-a2);
+    color: white;
+}
+.xiang-control .btn-back-1:before {
+    content: '<';
+    float: left;
+    margin-left: 24px;
+}
+
 
 .xiang-control .paging-1 {
 

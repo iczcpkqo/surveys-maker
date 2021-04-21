@@ -59,6 +59,13 @@
 .view.survey {
 
 }
+.view.survey .page-contain .operation {
+    height: 48px;
+    margin: 48px 0;
+}
+.view.survey .page-contain .operation .button {
+    float: right;
+}
 .view.survey .page-contain .content-contain .surveys-con .topic-con {
     margin-bottom: 48px;
 }

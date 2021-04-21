@@ -25,6 +25,18 @@ function getTopic(topic, tit, idx, amount){
         + '</div>' + '</div>' + '</div>';
 }
 
+function bindCopySurveys(sur){
+    let btnCopy = $('#copy-surveys');
+    let linkCopy = 'surveys-copy';
+    let parCopy = {
+        surveys_id: sur.id
+    }
+
+    btnCopy.addEventListener('click',()=>{
+        window.location.href = linkMaker(linkCopy, parCopy);
+    });
+}
+
 function initPage(sur){
     let sur_tit  = $('#surveys-tit');
     let sur_con = $('#survey-con');
@@ -38,7 +50,7 @@ function initPage(sur){
 
     sur_con.innerHTML = str_html;
 
-
+    bindCopySurveys(sur);
 }
 
 window.onload = function(){
@@ -46,6 +58,7 @@ window.onload = function(){
     let p_data = new DataListView(_jsp);
 
     initPage(p_data.surveys[0]);
+    $('body')[0].style.display = 'block';
 }
 //
 // <div className="quiz-li">

@@ -123,16 +123,20 @@
         // }
     </script>
 </head>
-<body class="xiang-control view survey">
+<body class="xiang-control view survey" style="display: none;">
 <div class="page-contain">
     <div class="bar-top-2 tit-contain">
         <div class="tit tit-bar">
             <div class="tit-label">
                 <p id="surveys-tit">
-                    Corporate Employee Happiness Survey.
                 </p>
             </div>
         </div>
+    </div>
+
+    <div class="operation">
+        <a class="btn-back-1" onClick="javascript:window.history.back();">Back</a>
+        <a id="copy-surveys" class="btn-7 button">Copy</a>
     </div>
 
     <div class="content-contain">

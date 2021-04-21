@@ -28,6 +28,7 @@
     <script src="../../../static/js/stat/client-stat.js"></script>
     <script>
         let g_jsp_data = {
+            client_id: 'sdfs324sdfs',
             topic_idx: 1,
             surveys: [{
                 "surveys_id": "06dfddfa-dfb9-49d3-b588-69f043d4682e",
@@ -136,7 +137,7 @@
         </div>
         <div class="opera-contain">
             <div class="opera-download">
-                <a class="btn-5">
+                <a id="stat-download" class="btn-5" target="_blank">
                     Download
                 </a>
             </div>
@@ -188,10 +189,10 @@
                         </div>
                         <div class="opera-quiz">
                             <div class="previous-opera">
-                                <a class="btn-6">Previous</a>
+                                <a id="opera-btn-prev" class="btn-6">Previous</a>
                             </div>
                             <div class="next-opera">
-                                <a class="btn-6">Next</a>
+                                <a id="opera-btn-next" class="btn-6">Next</a>
                             </div>
                         </div>
                     </div>

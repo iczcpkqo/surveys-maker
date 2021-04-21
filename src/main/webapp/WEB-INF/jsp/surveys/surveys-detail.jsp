@@ -53,13 +53,13 @@
     <a class="tit" href="../index.html">Surveys Maker System</a>
     <div class="account">Xiang.Mao@</div>
     <div class="nav-con">
-        <a class="nav-li sel" href="../surveys/surveys-detail">Surveys List</a>
-        <a class="nav-li" href="../topic/topic-detail">Topic List</a>
+        <a class="nav-li sel" href="surveys-list">Surveys List</a>
+        <a class="nav-li" href="../topic/topic-list">Topic List</a>
     </div>
 </div>
 
 <div class="operation">
-<%--    <a class="btn-2">View Detail</a>--%>
+    <a class="btn-back-1" onClick="javascript:window.history.back();">Back</a>
     <a id="submit-surveys" class="btn-4">Save</a>
 </div>
 

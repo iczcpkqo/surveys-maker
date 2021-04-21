@@ -55,6 +55,45 @@ function setPageText(txt){
 
     surTit.innerHTML = txt.surveys_name;
     topicTit.innerHTML = txt.topic_name;
+    topicIdx.innerHTML = txt.idx+1;
+    topicAmt.innerHTML = txt.amount;
+}
+
+function bindOperation(txt){
+    let btnPrev = $('#opera-btn-prev');
+    let btnNext = $('#opera-btn-next');
+    let btnDown = $('#stat-download');
+
+    let linkPrev = 'client-stat';
+    let linkNext = linkPrev;
+    let linkDown = 'client-down'
+
+    let par = {
+        surveys_id: txt.surveys_id,
+        client_id: txt.client_id,
+        topic_idx: txt.idx,
+        jump_type: ''
+    };
+
+    btnDown.href = linkMaker(linkDown, par);
+    btnPrev.addEventListener('click', ()=>{
+        par.topic_idx -= 1;
+        par.jump_type = 'prev'
+
+        window.location.href = linkMaker(linkPrev, par);
+    });
+    btnNext.addEventListener('click', ()=>{
+        par.topic_idx += 1;
+        par.jump_type = 'next'
+
+        window.location.href = linkMaker(linkNext, par);
+    });
+
+    if(!txt.idx)
+        btnPrev.style.display = 'none';
+     else if(txt.idx === txt.amount-1)
+        btnPrev.style.display = 'none';
+
 }
 
 function initPage(data){
@@ -75,6 +114,7 @@ function initPage(data){
 
     setStat(stat);
     setPageText(txt);
+    bindOperation(txt);
 }
 
 /**

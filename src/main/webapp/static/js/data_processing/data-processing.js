@@ -321,6 +321,7 @@ class DataView extends DataBase {
             surveys_id: this.surveys[0].id,
             surveys_name: this.surveys[0].tit,
             amount: this.topic_amount,
+            q_amount: this.surveys[0].topics[this.topic_idx].quizes.length,
             idx: this.topic_idx,
             topic_id: this.surveys[0].topics[this.topic_idx].id,
             topic_name: this.surveys[0].topics[this.topic_idx].tit
@@ -340,6 +341,10 @@ class DataStat extends DataBase {
         super();
         // 获得 surveys
         this.jsp_surveys = jsp_data.surveys;
+        this.client_id = jsp_data.client_id;
+        this.topic_amount = this.surveys[0].topics.length;
+        this.topic_idx = jsp_data.topic_idx;
+
         // TODO: 第一个主题统计结果，需修改为当前页面展示的。
         console.log(this.surveys);
         this.topic = this.surveys[0].topics[0];
@@ -349,12 +354,21 @@ class DataStat extends DataBase {
     }
     get txt(){
         return {
+            client_id: this.client_id,
+            surveys_id: this.surveys[0].id,
             surveys_name: this.surveys[0].tit,
-            amount: this.surveys[0].topics.length,
-            idx: Dob.getTopicIdx(this.topic, this.surveys[0].topics)+1,
-            topic_name: this.topic.tit
+            amount: this.topic_amount,
+            // idx: Dob.getTopicIdx(this.topic, this.surveys[0].topics)+1,
+            idx: this.topic_idx,
+            topic_id: this.surveys[0].topics[this.topic_idx].id,
+            topic_name: this.surveys[0].topics[this.topic_idx].tit,
+            q_amount: this.surveys[0].topics[this.topic_idx].quizes.length
         }
     }
+
+
+
+
 }
 
 

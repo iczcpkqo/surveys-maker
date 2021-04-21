@@ -50,7 +50,7 @@ function getChosen(){
     return result;
 }
 
-function bindOperation(txt, chosen){
+function bindOperation(txt){
     let btnPrev = $('#opera-btn-prev');
     let btnNext = $('#opera-btn-next');
     let btnSub = $('#opera-btn-submit');
@@ -66,26 +66,46 @@ function bindOperation(txt, chosen){
         jump_type: ''
     };
 
-    // TODO: 判断选择数量，截断操作
+    o = ()=>{
+        return getChosen().length === txt.q_amount;
+    };
 
     btnPrev.addEventListener('click', ()=>{
         par.topic_idx -= 1;
         par.topic_res = getChosen();
         par.jump_type = 'prev'
-        window.location.href = linkMaker(linkPrev, par);
+        if (!o())
+            alert('Please answer all questions!')
+        else
+            window.location.href = linkMaker(linkPrev, par);
     });
     btnNext.addEventListener('click', ()=>{
         par.topic_idx += 1;
         par.topic_res = getChosen();
         par.jump_type = 'next'
-        window.location.href = linkMaker(linkNext, par);
+        if (!o())
+            alert('Please answer all questions!')
+        else
+            window.location.href = linkMaker(linkNext, par);
     });
     btnSub.addEventListener('click', ()=>{
         par.topic_idx += 1;
         par.topic_res = getChosen();
         par.jump_type = 'sub'
+        if (!o())
+            alert('Please answer all questions!')
+        else
         window.location.href = linkMaker(linkSub, par);
     });
+
+    if(!txt.idx) {
+        btnPrev.style.display = 'none';
+        btnSub.style.display = 'none';
+    } else if(txt.idx === txt.amount-1){
+        btnPrev.style.display = 'none';
+        btnNext.style.display = 'none';
+    } else
+        btnSub.style.display = 'none';
 }
 
 function initPage(data){
@@ -117,4 +137,5 @@ window.onload = function(){
     let p_data = new DataView(_jsp);
 
     initPage(p_data);
+    $('body')[0].style.display = 'block';
 }
