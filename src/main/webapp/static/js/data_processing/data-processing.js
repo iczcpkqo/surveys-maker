@@ -111,12 +111,13 @@ class Dob {
      * @returns {Quiz}
      */
     static clQuiz(obj, idx=0){
+        let type = typeof obj == 'object';
         let quiz = new Quiz();
-        quiz.tit = obj.quiz_tit;
+        quiz.tit = type? obj.quiz_tit: obj;
         quiz.idx = idx;
-        quiz.green = obj.green.toString() !== '0';
-        quiz.amber = obj.amber.toString() !== '0';
-        quiz.red = obj.red.toString() !== '0';
+        quiz.green = type? obj.green.toString() !== '0': 0;
+        quiz.amber = type? obj.amber.toString() !== '0': 0;
+        quiz.red = type? obj.red.toString() !== '0': 0;
 
         return quiz;
     }
@@ -412,3 +413,154 @@ class DataStat extends DataBase {
 //         "topicTitle": "top222222222"
 //     }]
 // };
+
+
+
+
+// let g_jsp_data = {
+//     page: 1,
+//     page_amount:1,
+//     surveys: [{
+//         "surveys_id": "bea93c62-14b0-4084-be48-d180f1664c79",
+//         "sels_topic": [{
+//             "topic_tit": "topic2",
+//             "quizes": ["1", "12", "123"],
+//             "topic_id": "f4a50ce4-10ae-4cf5-ba8a-2905532bbea8",
+//             "time": {"seconds": 1618865337, "nanos": 351000000}
+//         }, {
+//             "topic_tit": "Legal Compliance2",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "topic_id": "a162d43e-9b9d-4695-83e4-a5f79b958bf1",
+//             "time": {"seconds": 1618857642, "nanos": 138000000}
+//         }, {
+//             "topic_tit": "Legal Compliance",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "topic_id": "5ce874b7-612a-499d-949d-ff041d9eeec0",
+//             "time": {"seconds": 1618857625, "nanos": 772000000}
+//         }],
+//         "surveys_tit": "3242342",
+//         "time": {"seconds": 1618871140, "nanos": 551000000}
+//     }, {
+//         "surveys_id": "4b95afbf-c169-4ab3-98e7-cbf8b7141553",
+//         "sels_topic": [{
+//             "topic_tit": "Legal Compliance",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "topic_id": "5ce874b7-612a-499d-949d-ff041d9eeec0",
+//             "time": {"seconds": 1618857625, "nanos": 772000000}
+//         }],
+//         "surveys_tit": "survey1",
+//         "time": {"seconds": 1618870957, "nanos": 631000000}
+//     }, {
+//         "surveys_id": "47fe4dbf-2ba9-4cf0-b1f0-fd8d1f5c5dcc",
+//         "sels_topic": [{
+//             "topic_tit": "Legal Compliance",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "topic_id": "5ce874b7-612a-499d-949d-ff041d9eeec0",
+//             "time": {"seconds": 1618857625, "nanos": 772000000}
+//         }, {
+//             "topic_tit": "Legal Compliance2",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "topic_id": "a162d43e-9b9d-4695-83e4-a5f79b958bf1",
+//             "time": {"seconds": 1618857642, "nanos": 138000000}
+//         }],
+//         "surveys_tit": "324234",
+//         "time": {"seconds": 1618870882, "nanos": 642000000}
+//     }, {
+//         "surveys_id": "fb65eb72-f1fc-4f98-a50b-8b2ca6570986",
+//         "sels_topic": [{
+//             "topic_tit": "Legal Compliance",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "time": {"seconds": 1618857625, "nanos": 772000000},
+//             "topic_id": "5ce874b7-612a-499d-949d-ff041d9eeec0"
+//         }, {
+//             "topic_tit": "Legal Compliance2",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "topic_id": "a162d43e-9b9d-4695-83e4-a5f79b958bf1",
+//             "time": {"seconds": 1618857642, "nanos": 138000000}
+//         }],
+//         "time": {"seconds": 1618870854, "nanos": 505000000},
+//         "surveys_tit": "32234"
+//     }, {
+//         "surveys_id": "fb9f6bca-ca69-4806-9144-120377a48a8e",
+//         "sels_topic": [{
+//             "topic_tit": "Legal Compliance",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "topic_id": "5ce874b7-612a-499d-949d-ff041d9eeec0",
+//             "time": {"seconds": 1618857625, "nanos": 772000000}
+//         }],
+//         "time": {"seconds": 1618870780, "nanos": 437000000},
+//         "surveys_tit": "fdfsdfsdfsf"
+//     }, {
+//         "surveys_id": "501c9d24-fc35-472b-855c-d338f5098aac",
+//         "sels_topic": [{
+//             "topic_tit": "Legal Compliance",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "time": {"seconds": 1618857625, "nanos": 772000000},
+//             "topic_id": "5ce874b7-612a-499d-949d-ff041d9eeec0"
+//         }],
+//         "surveys_tit": "survey1",
+//         "time": {"seconds": 1618870668, "nanos": 78000000}
+//     }, {
+//         "surveys_id": "1b5591a9-1550-4a75-a164-8a7d92c2bb7a",
+//         "sels_topic": [{
+//             "topic_tit": "Legal Compliance",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "time": {"seconds": 1618857625, "nanos": 772000000},
+//             "topic_id": "5ce874b7-612a-499d-949d-ff041d9eeec0"
+//         }],
+//         "time": {"seconds": 1618870605, "nanos": 511000000},
+//         "surveys_tit": "survey1"
+//     }, {
+//         "surveys_id": "3b5fe450-5179-4ef0-9d25-85e42edad081",
+//         "sels_topic": [{
+//             "topic_tit": "Legal Compliance2",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "topic_id": "a162d43e-9b9d-4695-83e4-a5f79b958bf1",
+//             "time": {"seconds": 1618857642, "nanos": 138000000}
+//         }],
+//         "surveys_tit": "Do you like 3333",
+//         "time": {"seconds": 1618870496, "nanos": 493000000}
+//     }, {
+//         "surveys_id": "68183315-39f0-4d5a-946b-6a591b9c889e",
+//         "sels_topic": [{
+//             "topic_tit": "Legal Compliance2",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "time": {"seconds": 1618857642, "nanos": 138000000},
+//             "topic_id": "a162d43e-9b9d-4695-83e4-a5f79b958bf1"
+//         }],
+//         "time": {"seconds": 1618870220, "nanos": 44000000},
+//         "surveys_tit": "Do you like 3333"
+//     }, {
+//         "surveys_id": "9ea580aa-ca0f-414e-8b94-de1a9ed0368a",
+//         "sels_topic": [{
+//             "topic_tit": "Legal Compliance",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "time": {"seconds": 1618857625, "nanos": 772000000},
+//             "topic_id": "5ce874b7-612a-499d-949d-ff041d9eeec0"
+//         }, {
+//             "topic_tit": "Legal Compliance2",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "time": {"seconds": 1618857642, "nanos": 138000000},
+//             "topic_id": "a162d43e-9b9d-4695-83e4-a5f79b958bf1"
+//         }],
+//         "time": {"seconds": 1618870155, "nanos": 273000000},
+//         "surveys_tit": "1231"
+//     }, {
+//         "surveys_id": "0ac42bee-796c-4a2e-bc63-685f36ebc46e",
+//         "sels_topic": [{
+//             "topic_tit": "Legal Compliance2",
+//             "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//             "time": {"seconds": 1618857642, "nanos": 138000000},
+//             "topic_id": "a162d43e-9b9d-4695-83e4-a5f79b958bf1"
+//         }, {
+//             "topic_tit": "topic2",
+//             "quizes": ["1", "12", "123"],
+//             "topic_id": "f4a50ce4-10ae-4cf5-ba8a-2905532bbea8",
+//             "time": {"seconds": 1618865337, "nanos": 351000000}
+//         }],
+//         "time": {"seconds": 1618870092, "nanos": 493000000},
+//         "surveys_tit": "Do you 2222"
+//     }],
+//     host:"http://149.157.104.166:8080"
+// };
+//
