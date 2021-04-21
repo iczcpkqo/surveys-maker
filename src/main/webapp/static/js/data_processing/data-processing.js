@@ -304,6 +304,7 @@ class DataView extends DataBase {
         this.jsp_surveys = jsp_data.surveys;
         this.topic_idx = jsp_data.topic_idx;
         this.topic_amount = this.surveys[0].topics.length;
+        this.client_id = jsp_data.client_id;
     }
 
     get quizes(){
@@ -316,13 +317,10 @@ class DataView extends DataBase {
 
     get txt(){
         return {
+            client_id: this.client_id,
             surveys_id: this.surveys[0].id,
             surveys_name: this.surveys[0].tit,
-            amount: (function (s) {
-                let i = 0;
-                for (; i < s.topics.length; i++) ;
-                return i;
-            })(this.surveys[0]),
+            amount: this.topic_amount,
             idx: this.topic_idx,
             topic_id: this.surveys[0].topics[this.topic_idx].id,
             topic_name: this.surveys[0].topics[this.topic_idx].tit
