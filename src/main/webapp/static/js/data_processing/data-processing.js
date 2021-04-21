@@ -247,7 +247,7 @@ class DataBase{
 
 class DataLogin {}
 
-//only using in surveys list please
+// Only using in surveys list please
 class DataList extends DataBase {
     constructor(jsp_data = '') {
         super();
@@ -259,6 +259,7 @@ class DataList extends DataBase {
     }
 }
 
+// Only using  in surveys view
 class DataListView extends DataBase {
     constructor(jsp_data = '') {
         super();
@@ -296,11 +297,13 @@ class DataDetail extends DataBase {
     }
 }
 
+// Only using  in client view
 class DataView extends DataBase {
     constructor(jsp_data = '') {
         super();
         this.jsp_surveys = jsp_data.surveys;
         this.topic_idx = jsp_data.topic_idx;
+        this.topic_amount = this.surveys[0].topics.length;
     }
 
     get quizes(){
@@ -313,13 +316,15 @@ class DataView extends DataBase {
 
     get txt(){
         return {
+            surveys_id: this.surveys[0].id,
             surveys_name: this.surveys[0].tit,
             amount: (function (s) {
                 let i = 0;
                 for (; i < s.topics.length; i++) ;
                 return i;
             })(this.surveys[0]),
-            idx: this.topic_idx+1,
+            idx: this.topic_idx,
+            topic_id: this.surveys[0].topics[this.topic_idx].id,
             topic_name: this.surveys[0].topics[this.topic_idx].tit
         }
     }

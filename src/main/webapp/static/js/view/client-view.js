@@ -22,10 +22,9 @@ function pourList(quizes){
 }
 
 function initText(txt){
-    console.log(txt);
     $('#surveys-tit').innerHTML = txt.surveys_name;
     $('#cur-topic-tit').innerHTML = txt.topic_name;
-    $('#cur-index').innerHTML = txt.idx;
+    $('#cur-index').innerHTML = txt.idx+1;
     $('#topics-amount').innerHTML = txt.amount;
 }
 
@@ -41,15 +40,52 @@ function bindSelsClick(){
         }
 }
 
-function updateLinkNext(){
+function getChosen(){
     let sels_li = $('.sel-radio');
     let result = [];
     for (let i=0; i<sels_li.length; i++){
         let cls = sels_li[i].children[0].children[0].className;
         result.push(cls.split('-')[2]);
     }
-    // TODO: 根据格式，传参，设置跳转链接。
-    // $('#opera-btn-next').href = 'client-view?surver-id='+ ;
+    return result;
+}
+
+function bindOperation(txt, chosen){
+    let btnPrev = $('#opera-btn-prev');
+    let btnNext = $('#opera-btn-next');
+    let btnSub = $('#opera-btn-submit');
+
+    let linkPrev = 'client-view';
+    let linkNext = linkPrev;
+    let linkSub = linkPrev;
+
+    let par = {
+        topic_idx: txt.idx,
+        topic_res: ''
+    };
+
+    btnPrev.addEventListener('click', ()=>{
+        par.topic_idx -= 1;
+        par.topic_res = getChosen();
+        window.location.href = linkMaker(linkPrev, par);
+    });
+    btnNext.addEventListener('click', ()=>{
+        par.topic_idx += 1;
+        par.topic_res = getChosen();
+        window.location.href = linkMaker(linkNext, par);
+    });
+    btnSub.addEventListener('click', ()=>{
+        par.topic_idx += 1;
+        par.topic_res = getChosen();
+        window.location.href = linkMaker(linkSub, par);
+    });
+}
+
+function initPage(data){
+    pourList(data.quizes);
+    initText(data.txt);
+    bindSelsClick();
+    bindOperation(data.txt, getChosen().toString());
 }
 
 /**
@@ -59,7 +95,7 @@ window.onload = function(){
     let _p_data = {
         quizes: ['quiztitle1111111', 'quiz 2222222222222222', 'quiz33333333333333', 'quiz444444444444444'],
         txt: {
-            surveys_name: 'Corporate Employee Happiness Survey.',
+            surveys_name: 'Corpor==sdate Employee Happiness Survey.',
             amount: 2,
             idx: 1,
             topic_name: 'Hours of Work and Leave'
@@ -72,9 +108,5 @@ window.onload = function(){
     //页面数据
     let p_data = new DataView(_jsp);
 
-    console.log(p_data.txt);
-    pourList(p_data.quizes);
-    initText(p_data.txt);
-    bindSelsClick();
-    // initPage(p_data);
+    initPage(p_data);
 }
