@@ -27,9 +27,9 @@ public class TopicController {
         }
         Result result = surveyService.queryAllDocumentPage("topics", Integer.valueOf(page), 10);
         JsonObject data = (JsonObject) gson.toJsonTree(result.getData());
-        request.getSession().setAttribute("pageAmount", data.get("pageAmount"));
-        request.getSession().setAttribute("page", Integer.valueOf(page));
-        request.getSession().setAttribute("topics", data.get("data"));
+        request.setAttribute("pageAmount", data.get("pageAmount"));
+        request.setAttribute("page", Integer.valueOf(page));
+        request.setAttribute("topics", data.get("data"));
         return "topic/topic-list";
     }
 
@@ -42,8 +42,8 @@ public class TopicController {
         }
         Result result = surveyService.getTopicById(topicId);
         JsonObject jsonObject = (JsonObject) gson.toJsonTree(result.getData());
-        request.getSession().setAttribute("topic_name", jsonObject.get("topic_tit"));
-        request.getSession().setAttribute("quizes", jsonObject.get("quizes"));
+        request.setAttribute("topic_name", jsonObject.get("topic_tit"));
+        request.setAttribute("quizes", jsonObject.get("quizes"));
         return "topic/topic-detail";
     }
 
@@ -51,27 +51,32 @@ public class TopicController {
     public String saveTopic(HttpServletRequest request) {
         String topicName = request.getParameter("topic-tit");
         if (StringUtils.isEmpty(topicName)) {
-            request.getSession().setAttribute("type", "../topic/topic-detail");
-            request.getSession().setAttribute("tit", "please enter topic name");
+            request.setAttribute("type", "../topic/topic-detail");
+            request.setAttribute("tit", "please enter topic name");
+            request.setAttribute("des", "");
             return "jump/tip";
         }
 
         String[] questions = request.getParameterValues("quiz-tit");
         if (questions == null) {
-            request.getSession().setAttribute("type", "../topic/topic-detail");
-            request.getSession().setAttribute("tit", "please enter quesions");
+            request.setAttribute("type", "../topic/topic-detail");
+            request.setAttribute("tit", "please enter quesions");
+            request.setAttribute("des", "");
             return "jump/tip";
         }
 
         String topicId = request.getParameter("topic_id");
+
         Result result = surveyService.saveOrUpdateTopic(topicId, topicName, questions);
         if ("save successful".equals(result.getStatus())) {
-            request.getSession().setAttribute("type", "../topic/topic-list");
-            request.getSession().setAttribute("tit", result.getStatus());
+            request.setAttribute("type", "../topic/topic-list");
+            request.setAttribute("tit", result.getStatus());
+            request.setAttribute("des", "");
         } else {
-            request.getSession().setAttribute("type", "../topic/topic-detail");
-            request.getSession().setAttribute("tit", result.getStatus());
-            request.getSession().setAttribute("pares", result.getData());
+            request.setAttribute("type", "../topic/topic-detail");
+            request.setAttribute("tit", result.getStatus());
+            request.setAttribute("pares", result.getData());
+            request.setAttribute("des", "");
         }
         return "jump/tip";
     }
@@ -80,8 +85,8 @@ public class TopicController {
     public String surveyDelete(HttpServletRequest request) {
         String surveyId = request.getParameter("topic_id");
         if (StringUtils.isEmpty(surveyId)) {
-            request.getSession().setAttribute("type", "topic/topic-delete");
-            request.getSession().setAttribute("tit", "please enter topic id");
+            request.setAttribute("type", "topic/topic-delete");
+            request.setAttribute("tit", "please enter topic id");
             return "jump/tip";
         }
         surveyService.deleteTopic(surveyId);

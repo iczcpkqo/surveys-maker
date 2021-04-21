@@ -15,8 +15,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <%
-        Object fileName = request.getSession().getAttribute("fileName");
-        Object filePathObj = request.getSession().getAttribute("filePath");
+        Object fileName = request.getAttribute("fileName");
+        Object filePathObj = request.getAttribute("filePath");
         String filePath = null;
         if(filePathObj!=null){
             filePath = filePathObj.toString();

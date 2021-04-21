@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <%
-        Object type = request.getSession().getAttribute("type");
-        Object tit = request.getSession().getAttribute("tit");
-        Object des = request.getSession().getAttribute("des");
-        Object pares = request.getSession().getAttribute("pares");
+        Object type = request.getAttribute("type");
+        Object tit = request.getAttribute("tit");
+        Object des = request.getAttribute("des");
+        Object pares = request.getAttribute("pares");
     %>
     <!--    control-->
     <link rel="stylesheet" href="/static/css/xiang_control/base.css">

@@ -174,7 +174,7 @@ public class firebaseUtil {
 
 
     public List<Map<String, Object>> getAllDocuments(String collection) {
-        ApiFuture<QuerySnapshot> future = db.collection(collection).orderBy("time").get();
+        ApiFuture<QuerySnapshot> future = db.collection(collection).orderBy("time", Query.Direction.DESCENDING).get();
         List<Map<String, Object>> result = new ArrayList<>();
         List<QueryDocumentSnapshot> documents;
         try {

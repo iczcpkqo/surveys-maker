@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <%
-        Object data = request.getSession().getAttribute("data");
-        Object currentPage = Integer.valueOf(request.getSession().getAttribute("page").toString());
-        Object pageAmount = Integer.valueOf(request.getSession().getAttribute("pageAmount").toString());
-        Object host = request.getSession().getAttribute("host");
+        Object data = request.getAttribute("data");
+        Object currentPage = Integer.valueOf(request.getAttribute("page").toString());
+        Object pageAmount = Integer.valueOf(request.getAttribute("pageAmount").toString());
+        Object host = request.getAttribute("host");
     %>
     <meta charset="UTF-8">
     <title>Title</title>

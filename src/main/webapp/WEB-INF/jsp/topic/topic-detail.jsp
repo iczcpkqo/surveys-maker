@@ -3,8 +3,8 @@
 <head>
 
     <%
-        Object topic_name = request.getSession().getAttribute("topic_name");
-        Object quizes = request.getSession().getAttribute("quizes");
+        Object topic_name = request.getAttribute("topic_name");
+        Object quizes = request.getAttribute("quizes");
         if (topic_name == null) {
             topic_name = "";
         }
