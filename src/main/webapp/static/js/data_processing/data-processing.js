@@ -111,13 +111,12 @@ class Dob {
      * @returns {Quiz}
      */
     static clQuiz(obj, idx=0){
-        let type = typeof obj == 'object';
         let quiz = new Quiz();
-        quiz.tit = type? obj.quiz_tit: obj;
+        quiz.tit = obj.answer === undefined? obj: obj.quiz_tit;
         quiz.idx = idx;
-        quiz.green = type? obj.green.toString() !== '0': 0;
-        quiz.amber = type? obj.amber.toString() !== '0': 0;
-        quiz.red = type? obj.red.toString() !== '0': 0;
+        quiz.green = (obj.answer === 'green')? obj.answer.toString() !== '0': 0;
+        quiz.amber = (obj.answer === 'amber')? obj.answer.toString() !== '0': 0;
+        quiz.red = (obj.answer === 'red')? obj.answer.toString() !== '0': 0;
 
         return quiz;
     }
