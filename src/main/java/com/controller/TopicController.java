@@ -85,11 +85,14 @@ public class TopicController {
     public String surveyDelete(HttpServletRequest request) {
         String surveyId = request.getParameter("topic_id");
         if (StringUtils.isEmpty(surveyId)) {
-            request.setAttribute("type", "topic/topic-delete");
+            request.setAttribute("type", "../topic/topic-delete");
             request.setAttribute("tit", "please enter topic id");
             return "jump/tip";
         }
         surveyService.deleteTopic(surveyId);
-        return "topic/topic-list";
+        request.setAttribute("type", "../topic/topic-list");
+        request.setAttribute("tit", "successful");
+        request.setAttribute("des", "");
+        return "jump/tip";
     }
 }

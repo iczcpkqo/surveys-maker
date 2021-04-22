@@ -79,22 +79,11 @@ public class SurveyService {
         return jsonElement;
     }
 
-    private JsonElement getSurveysElement(QuerySnapshot surveys) {
-        List<Map<String, Object>> resultArray = new ArrayList<>();
-        for (QueryDocumentSnapshot document : surveys.getDocuments()) {
-            Map<String, Object> data = document.getData();
-            data.put("id", document.getId());
-            resultArray.add(data);
-        }
-        String s = gson.toJson(resultArray);
-        JsonElement jsonElement = jsonParser.parseString(s);
-        return jsonElement;
-    }
 
     public Result saveSurvey(String surveyName, String[] topicIds) {
         List<Map<String, Object>> dataByField = firebaseUtil.getDataByField("surveys", "surveys_tit", surveyName);
         if (dataByField.size() > 0) {
-            surveyName = surveyName + "(" + (dataByField.size() + 1) + ")";
+            surveyName = surveyName + "(" + UUID.randomUUID().toString().substring(0, 4) + ")";
         }
         List<String> topicIdsList = Arrays.stream(topicIds).distinct().collect(Collectors.toList());
         List<Map<String, Object>> topics = firebaseUtil.getDocumentContains("topics", topicIdsList);
@@ -215,7 +204,7 @@ public class SurveyService {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("total", results.size());
             jsonObject.addProperty("pageAmount", results.size() / 20 + 1);
-            return new Result("false", "no data", new JsonObject());
+            return new Result("false", "no data", jsonObject);
         }
 
         if (number == null || results.size() <= number) {
@@ -254,7 +243,7 @@ public class SurveyService {
     public Result startAnswer(String surveyId) {
         Map<String, Object> survey = firebaseUtil.getByDocumentId("surveys", surveyId);
         if (survey.size() <= 0) {
-            return new Result("false", "no survey", null);
+            return new Result("no survey", "", null);
         }
 
         UUID uuid = UUID.randomUUID();
@@ -262,41 +251,36 @@ public class SurveyService {
         survey.put("time", new Date());
         Result result = firebaseUtil.saveDocument("personalSurveys", uuid.toString(), survey);
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("id", uuid.toString());
+        jsonObject.addProperty("client_id", uuid.toString());
         result.setData(jsonObject);
-        return new Result("true", "save successful", jsonObject);
+        return new Result("successful", "", jsonObject);
     }
 
-    public Result surveySummit(String clientId, String topicIndex, String[] answers) {
+    public Result surveySummit(String clientId, Integer topicIndex, String[] answers) {
         Map<String, Object> personalSurveys = firebaseUtil.getByDocumentId("personalSurveys", clientId);
         if (personalSurveys.size() <= 0) {
-            return new Result("false", "no survey", null);
+            return new Result("no survey", "", null);
         }
-        Object selectedTopics = personalSurveys.get("selectedTopics");
-        List topicsList = gson.fromJson(selectedTopics.toString(), List.class);
+        Object selectedTopics = personalSurveys.get("sels_topic");
+        List<Map<String, Object>> topicsList = gson.fromJson(gson.toJson(selectedTopics), List.class);
         if (topicsList == null || topicsList.size() <= 0) {
-            return new Result("false", "no topics", null);
+            return new Result("no topics", "", null);
         }
-        Object topic = topicsList.get(Integer.valueOf(topicIndex));
-        JsonObject topicJson = (JsonObject) gson.toJsonTree(topic);
-        List quesionList = gson.fromJson(topicJson.get("questions"), List.class);
-        if (topicsList == null || topicsList.size() <= 0) {
-            return new Result("false", "no questions", null);
+        Map<String, Object> topic = topicsList.get(topicIndex);
+        List<Map<String, Object>> quesionList = gson.fromJson(gson.toJson(topic.get("quizes")), List.class);
+        if (quesionList == null || quesionList.size() <= 0) {
+            return new Result("no questions", "", null);
         }
-        List<JsonObject> saveQuestions = new ArrayList<>();
+        List<Map<String, Object>> saveQuestions = new ArrayList<>();
         for (int i = 0; i < quesionList.size(); i++) {
-            Object o = quesionList.get(i);
-            JsonObject jsonObject = (JsonObject) gson.toJsonTree(o);
-            jsonObject.addProperty("answer", answers[i]);
-            saveQuestions.add(jsonObject);
+            Map<String, Object> question = quesionList.get(i);
+            question.put("answer", answers[i]);
+            saveQuestions.add(question);
         }
-        topicJson.add("questions", gson.toJsonTree(saveQuestions));
-        topicsList.remove(Integer.valueOf(topicIndex));
-        Object object = topicJson;
-        topicsList.add(Integer.valueOf(topicIndex), object);
+        topic.put("quizes", saveQuestions);
         Object updateFiled = topicsList;
-        firebaseUtil.updateDocument("personalSurveys", clientId, "selectedTopics", updateFiled);
-        return new Result("true", "update successful", null);
+        firebaseUtil.updateDocument("personalSurveys", clientId, "sels_topic", updateFiled);
+        return new Result("update successful", "", null);
     }
 
     public Result deleteSurvey(String surveyId) {
@@ -312,10 +296,9 @@ public class SurveyService {
         if (StringUtils.isEmpty(topicId)) {
             List<Map<String, Object>> dataByField = firebaseUtil.getDataByField("topics", "topic_tit", topicName);
             if (dataByField.size() > 0) {
-                topicName = topicName + "(" + (dataByField.size() + 1) + ")";
+                topicName = topicName + "(" + UUID.randomUUID().toString().substring(0, 4) + ")";
             }
-            List<String> quesionList = new ArrayList<>(Arrays.asList(questions));
-
+            List<Map<String, Object>> quesionList = questionsToJson(questions);
             UUID uuid = UUID.randomUUID();
             Map<String, Object> docData = new HashMap<>();
             docData.put("topic_tit", topicName);
@@ -344,5 +327,24 @@ public class SurveyService {
 
     }
 
+    private List<Map<String, Object>> questionsToJson(String[] questions) {
+        List<Map<String, Object>> result = new ArrayList<>();
+        for (String question : questions) {
+            Map<String, Object> object = new HashMap<>();
+            object.put("quiz_tit", question);
+            result.add(object);
+        }
+        return result;
+    }
 
+
+    public Result getPersonalSurveyById(String clientId) {
+        Map<String, Object> personalSurveys = firebaseUtil.getByDocumentId("personalSurveys", clientId);
+        JsonObject resultData = new JsonObject();
+        List<Map<String, Object>> data = new ArrayList<>();
+        data.add(personalSurveys);
+        resultData.add("surveys", gson.toJsonTree(data));
+        resultData.addProperty("client_id", personalSurveys.get("client_id").toString());
+        return new Result("successful", "", resultData);
+    }
 }

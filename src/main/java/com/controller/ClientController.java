@@ -20,32 +20,47 @@ public class ClientController {
     @Autowired
     private SurveyService surveyService;
 
-    @RequestMapping("client/client-view")
-    public String startAnswer(HttpServletRequest request, HttpServletResponse response) {
-        String surveyId = request.getParameter("surveys_id");
-        Result result = surveyService.startAnswer(surveyId);
-        JsonObject jsonObject = (JsonObject) gson.toJsonTree(result.getData());
-        request.setAttribute("client-id", jsonObject.get("id"));
-        return "client/client-view";
-    }
-
-
-    @RequestMapping("surveys/surveySubmit")
-    public String surveySubmit(HttpServletRequest request) {
-        String clientId = request.getParameter("client-id");
-        String topicIndex = request.getParameter("topic-index");
-        String answers = request.getParameter("answers");
-        String[] answersArray = answers.split(",");
-        if (StringUtils.isEmpty(clientId) || StringUtils.isEmpty(topicIndex) || answersArray == null || answersArray.length <= 0) {
-            return null;
-        }
-        Result result = surveyService.surveySummit(clientId, topicIndex, answersArray);
-        request.setAttribute("topic-index", topicIndex);
-        return "surveys/surveySubmit";
-    }
 
     @RequestMapping("client/transit")
     public void transit(HttpServletRequest request) {
 
+    }
+
+    @RequestMapping("client/client-view")
+    public void client(HttpServletRequest request) {
+        String clientId = request.getParameter("client_id");
+        String topicIdx = request.getParameter("topic_idx");
+        Integer topicIndex = null;
+        if (StringUtils.isEmpty(topicIdx) || Integer.valueOf(topicIdx) < 0) {
+            topicIndex = 0;
+        } else {
+            topicIndex = Integer.valueOf(topicIdx);
+        }
+
+        String jumpType = request.getParameter("jump_type");
+        if (StringUtils.isNotEmpty(jumpType) && "next".equals(jumpType)) {
+            String topicRes = request.getParameter("topic_res");
+            if (StringUtils.isNotEmpty(topicRes)) {
+                String[] answers = topicRes.split(",");
+                surveyService.surveySummit(clientId, topicIndex - 1, answers);
+            }
+        }
+
+        Result result = surveyService.getPersonalSurveyById(clientId);
+        JsonObject jsonObject = (JsonObject) gson.toJsonTree(result.getData());
+        request.setAttribute("surveys", jsonObject.get("surveys"));
+        request.setAttribute("client_id", jsonObject.get("client_id"));
+        request.setAttribute("topic_idx", topicIndex);
+    }
+
+    @RequestMapping("client/start")
+    public String start(HttpServletRequest request) {
+        String surveysId = request.getParameter("surveys_id");
+        Result result = surveyService.startAnswer(surveysId);
+        request.setAttribute("type", "../client/client-view");
+        request.setAttribute("tit", result.getStatus());
+        request.setAttribute("pares", result.getData());
+        request.setAttribute("des", "");
+        return "jump/tip";
     }
 }

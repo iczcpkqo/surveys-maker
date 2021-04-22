@@ -9,6 +9,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
 import com.google.firebase.cloud.StorageClient;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.po.Result;
 import org.apache.commons.lang3.ArrayUtils;
@@ -32,6 +33,8 @@ public class firebaseUtil {
     private static Storage service;
 
     private static Firestore db;
+
+    private static Gson gson = new Gson();
 
     static {
 
@@ -195,14 +198,11 @@ public class firebaseUtil {
     }
 
     public void updateDocument(String collection, String id, String updateFiled, Object value) {
+        WriteBatch batch = db.batch();
         DocumentReference docRef = db.collection(collection).document(id);
 
-        ApiFuture<Void> futureTransaction = db.runTransaction(transaction -> {
-            // retrieve document and increment population field
-            DocumentSnapshot snapshot = transaction.get(docRef).get();
-            transaction.update(docRef, updateFiled, value);
-            return null;
-        });
+        batch.update(docRef, updateFiled, value);
+        batch.commit();
     }
 
     public Result delete(String collection, String documentId) {

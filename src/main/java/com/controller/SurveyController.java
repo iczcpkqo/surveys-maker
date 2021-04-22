@@ -43,7 +43,7 @@ public class SurveyController {
 
 
     @RequestMapping("surveys/saveSurvey")
-    public String saveSurvey(HttpServletRequest request, HttpServletResponse response) {
+    public String saveSurvey(HttpServletRequest request) {
         String surveyName = request.getParameter("surveys-tit");
         String[] topicIds = request.getParameterValues("sel-topic");
         if (StringUtils.isEmpty(surveyName)) {
@@ -69,7 +69,7 @@ public class SurveyController {
 
     @RequestMapping("surveys/downloadPDF")
     public String downloadPDF(HttpServletRequest request) {
-        String id = request.getParameter("client-id");
+        String id = request.getParameter("client_id");
         if (StringUtils.isEmpty(id)) {
             return "surveys/downloadPDF";
         }
@@ -109,7 +109,7 @@ public class SurveyController {
 
     @RequestMapping("surveys/surveys-delete")
     public String surveyDelete(HttpServletRequest request) {
-        String surveyId = request.getParameter("survey_id");
+        String surveyId = request.getParameter("surveys_id");
         if (StringUtils.isEmpty(surveyId)) {
             request.setAttribute("type", "../surveys/surveys-list");
             request.setAttribute("tit", "please enter survey id");
