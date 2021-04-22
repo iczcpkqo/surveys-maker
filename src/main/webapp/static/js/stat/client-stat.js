@@ -94,7 +94,7 @@ function bindOperation(txt){
     if(!txt.idx)
         btnPrev.style.display = 'none';
      else if(txt.idx === txt.amount-1)
-        btnPrev.style.display = 'none';
+        btnNext.style.display = 'none';
 
 }
 

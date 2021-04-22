@@ -1,4 +1,5 @@
-loadJS('/surveys/src/main/webapp/static/js/xiang_control/chart.lib.js');
+// loadJS('/surveys/src/main/webapp/static/js/xiang_control/chart.lib.js');
+loadJS('../../../static/js/xiang_control/chart.lib.js');
 
 window.onload = function(){
 }

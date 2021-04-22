@@ -349,7 +349,7 @@ class DataStat extends DataBase {
 
         // TODO: 第一个主题统计结果，需修改为当前页面展示的。
         console.log(this.surveys);
-        this.topic = this.surveys[0].topics[0];
+        this.topic = this.surveys[0].topics[this.topic_idx];
     }
     get stat(){
         return this.topic;
@@ -580,3 +580,32 @@ class DataStat extends DataBase {
 //     host:"http://149.157.104.166:8080"
 // };
 //
+
+
+// let g_jsp_data = {
+//     client_id:"f7bcee57-b1cc-4001-9237-81669ad9fc44",
+//     topic_idx:1,
+//     surveys: [{
+//         "surveys_id": "744fc91a-536b-48eb-9429-a2a0c7b6192e",
+//         "sels_topic": [{
+//             "topic_tit": "topic",
+//             "quizes": [
+//                 {"answer": "green", "quiz_tit": "1"},
+//                 {"answer": "green", "quiz_tit": "2"}, {
+//                 "answer": "green",
+//                 "quiz_tit": "3"
+//             }],
+//             "topic_id": "aa304ad1-08db-4ccb-bff7-5deeb1c8a637",
+//             "time": {"seconds": 1.619047572E9, "nanos": 1.6E8}
+//         }, {
+//             "topic_tit": "topic(c194)",
+//             "quizes": [
+//                 {"answer": "amber", "quiz_tit": "2"},
+//                 {"answer": "amber", "quiz_tit": "3"}],
+//             "time": {"seconds": 1.619047585E9, "nanos": 8.66E8},
+//             "topic_id": "df7f50a3-d007-403e-9b82-af731c4d6c78"
+//         }],
+//         "surveys_tit": "survey",
+//         "time": {"seconds": 1619056569, "nanos": 396000000},
+//         "client_id": "f7bcee57-b1cc-4001-9237-81669ad9fc44"
+//     }]
