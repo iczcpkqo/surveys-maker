@@ -111,12 +111,13 @@ class Dob {
      * @returns {Quiz}
      */
     static clQuiz(obj, idx=0){
+        let type = typeof obj == 'object';
         let quiz = new Quiz();
-        quiz.tit = obj.answer === undefined? obj: obj.quiz_tit;
+        quiz.tit = type? obj.quiz_tit: obj;
         quiz.idx = idx;
-        quiz.green = (obj.answer === 'green')? obj.answer.toString() !== '0': 0;
-        quiz.amber = (obj.answer === 'amber')? obj.answer.toString() !== '0': 0;
-        quiz.red = (obj.answer === 'red')? obj.answer.toString() !== '0': 0;
+        quiz.green = obj.answer === 'green';
+        quiz.amber = obj.answer === 'amber';
+        quiz.red = obj.answer === 'red';
 
         return quiz;
     }
@@ -304,6 +305,8 @@ class DataView extends DataBase {
         this.topic_idx = jsp_data.topic_idx;
         this.topic_amount = this.surveys[0].topics.length;
         this.client_id = jsp_data.client_id;
+
+        console.log(this.surveys);
     }
 
     get quizes(){
