@@ -317,7 +317,7 @@ public class SurveyService {
                     topicName = topicName + "(" + (dataByField.size() + 1) + ")";
                     firebaseUtil.updateDocument("topics", topicId, "topic_tit", topicName);
                 }
-                List<String> quesionList = new ArrayList<>(Arrays.asList(questions));
+                List<Map<String, Object>> quesionList = questionsToJson(questions);
                 firebaseUtil.updateDocument("topics", topicId, "quizes", quesionList);
             }
             JsonObject jsonObject = new JsonObject();
