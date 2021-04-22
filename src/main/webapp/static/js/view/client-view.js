@@ -11,8 +11,8 @@
 //         - [x] 4. 设置文本
 //         - [x] 5. 事件绑定
 //         - [x] 6. 选项点击切换
-//         - [ ] 7. 跳转内容计算
-//         - [ ] 8. 跳转内容执行
+//         - [x] 7. 跳转内容计算
+//         - [x] 8. 跳转内容执行
 
 function pourList(quizes){
     for (let i in quizes)
@@ -85,8 +85,10 @@ function bindOperation(txt){
         par.jump_type = 'next'
         if (!o())
             alert('Please answer all questions!')
-        else
+        else{
             window.location.href = linkMaker(linkNext, par);
+            // console.log(linkMaker(linkNext, par));;
+        }
     });
     btnSub.addEventListener('click', ()=>{
         par.topic_idx += 1;
@@ -95,17 +97,15 @@ function bindOperation(txt){
         if (!o())
             alert('Please answer all questions!')
         else
-        window.location.href = linkMaker(linkSub, par);
+            window.location.href = linkMaker(linkSub, par);
     });
 
-    if(!txt.idx) {
-        btnPrev.style.display = 'none';
-        btnSub.style.display = 'none';
-    } else if(txt.idx === txt.amount-1){
-        btnPrev.style.display = 'none';
-        btnNext.style.display = 'none';
-    } else
-        btnSub.style.display = 'none';
+    if(txt.idx)
+        btnPrev.style.display = 'block';
+    if(txt.idx === txt.amount-1)
+        btnSub.style.display = 'block';
+    else
+        btnNext.style.display = 'block';
 }
 
 function initPage(data){

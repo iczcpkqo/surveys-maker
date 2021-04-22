@@ -136,3 +136,7 @@ function getPar(par_name)
     }
     return false;
 }
+
+function xiangLog(txt){
+    let log = $('#xiang-log')
+}
