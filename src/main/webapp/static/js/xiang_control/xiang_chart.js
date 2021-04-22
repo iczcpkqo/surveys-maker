@@ -156,14 +156,16 @@ class PieChart extends ChartBase{
                             value: 735,
                             name: 'R',
                             label: {
-                                color: '#FF3366'
-                                ,show: false
+                                backgroundColor: '#fff',
+                                color: '#FF3366',
+                                show: false
                             }
                         },
                         {
                             value: 580,
                             name: 'A',
                             label: {
+                                backgroundColor: '#fff',
                                 color: '#FF9966'
                             }
 
@@ -172,6 +174,7 @@ class PieChart extends ChartBase{
                             value: 484,
                             name: 'G',
                             label: {
+                                backgroundColor: '#fff',
                                 color: '#00CC99'
                             }
                         },
