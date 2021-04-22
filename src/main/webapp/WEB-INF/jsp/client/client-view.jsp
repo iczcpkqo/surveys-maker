@@ -135,7 +135,6 @@
         <div class="tit tit-bar">
             <div class="tit-label">
                 <p id="surveys-tit">
-                    Corporate Employee Happiness Survey.
                 </p>
             </div>
         </div>
@@ -143,16 +142,15 @@
 
     <div class="content-contain">
         <div class="surveys-con">
-            <div id="chart-0" class="topic-con con-stat red">
+            <div id="chart-0" class="topic-con con-stat">
                 <div class="tit-topic tit">
                     <div class="label-tit-topic label">
                         <p id="cur-topic-tit">
-                            Hours of Work and Leave
                         </p>
                     </div>
                     <div class="process-tit-topic process">
                         <p>
-                            <a id="cur-index">1</a>/<a id="topics-amount">8</a>
+                            <a id="cur-index"></a>/<a id="topics-amount"></a>
                         </p>
                     </div>
                 </div>

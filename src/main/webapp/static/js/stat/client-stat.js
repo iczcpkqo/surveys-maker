@@ -47,16 +47,18 @@ function setStat(dataBox){
     }
 }
 
-function setPageText(txt){
+function setPageText(txt, color){
     let surTit = $('#surveys-tit');
     let topicTit = $('#cur-topic-tit');
     let topicIdx = $('#cur-index');
     let topicAmt = $('#topics-amount');
+    let charBox = $('#chart-0');
 
     surTit.innerHTML = txt.surveys_name;
     topicTit.innerHTML = txt.topic_name;
     topicIdx.innerHTML = txt.idx+1;
     topicAmt.innerHTML = txt.amount;
+    addClass(charBox, color.green>color.amber? (color.green > color.red? 'green': 'red'): (color.amber>color.red? 'amber': 'red'));
 }
 
 function bindOperation(txt){
@@ -113,7 +115,7 @@ function initPage(data){
     let txt = data.txt;
 
     setStat(stat);
-    setPageText(txt);
+    setPageText(txt, stat.data);
     bindOperation(txt);
 }
 
