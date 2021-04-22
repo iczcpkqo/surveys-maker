@@ -7,6 +7,7 @@ function addQuiz() {
 }
 
 function createQuizInput(quiz) {
+    quiz = quiz.quiz_tit || '';
     let li = document.createElement('div');
     let delBox = document.createElement('div');
     let delBtn = document.createElement('a');
@@ -17,7 +18,7 @@ function createQuizInput(quiz) {
 
     li.innerHTML += '<div class="detail-input">'
         + '<input name="quiz-tit" class="txt-1" type="text" placeholder="Please input your Question." value="'
-        + quiz.quiz_tit
+        + quiz
         +'"></div>';
     delBtn.innerHTML = 'Delete';
     delBtn.addEventListener('click', delItem);
