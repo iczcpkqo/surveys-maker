@@ -149,7 +149,7 @@ public class SurveyService {
         }
         for (Object o : topicsList) {
             JsonObject topicObject = (JsonObject) gson.toJsonTree(o);
-            Pair<String, Map<String, Integer>> topicResultPair = new Pair<>(topicObject.get("topicTitle").toString().replace("\"", ""), countAnswers(topicObject.get("questions")));
+            Pair<String, Map<String, Integer>> topicResultPair = new Pair<>(topicObject.get("topic_tit").toString().replace("\"", ""), countAnswers(topicObject.get("quizes")));
             answers.add(topicResultPair);
         }
         return answers;
