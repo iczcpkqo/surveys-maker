@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -64,24 +63,6 @@ public class SurveyController {
         request.setAttribute("type", "../surveys/surveys-view");
         request.setAttribute("pares", result.getData());
         return "jump/tip";
-    }
-
-
-    @RequestMapping("surveys/downloadPDF")
-    public String downloadPDF(HttpServletRequest request) {
-        String id = request.getParameter("client_id");
-        if (StringUtils.isEmpty(id)) {
-            return "surveys/downloadPDF";
-        }
-        Result result = surveyService.getPersonalPDF(id);
-        request.setAttribute("status", result.getStatus());
-        request.setAttribute("message", result.getMessage());
-        if (result.getData() != null) {
-            JsonObject jsonObject = (JsonObject) gson.toJsonTree(result.getData());
-            request.setAttribute("filePath", jsonObject.get("filePath"));
-            request.setAttribute("fileName", jsonObject.get("fileName"));
-        }
-        return "surveys/downloadPDF";
     }
 
     @RequestMapping("surveys/surveys-list")

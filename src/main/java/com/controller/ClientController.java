@@ -27,7 +27,7 @@ public class ClientController {
     }
 
     @RequestMapping("client/client-view")
-    public void client(HttpServletRequest request) {
+    public String client(HttpServletRequest request) {
         String clientId = request.getParameter("client_id");
         String topicIdx = request.getParameter("topic_idx");
         Integer topicIndex = null;
@@ -38,7 +38,7 @@ public class ClientController {
         }
 
         String jumpType = request.getParameter("jump_type");
-        if (StringUtils.isNotEmpty(jumpType) && "next".equals(jumpType)) {
+        if (StringUtils.isNotEmpty(jumpType) && !"prev".equals(jumpType)) {
             String topicRes = request.getParameter("topic_res");
             if (StringUtils.isNotEmpty(topicRes)) {
                 String[] answers = topicRes.split(",");
@@ -51,6 +51,16 @@ public class ClientController {
         request.setAttribute("surveys", jsonObject.get("surveys"));
         request.setAttribute("client_id", jsonObject.get("client_id"));
         request.setAttribute("topic_idx", topicIndex);
+        if ("sub".equals(jumpType)) {
+            request.setAttribute("tit", result.getStatus());
+            request.setAttribute("des", "");
+            request.setAttribute("type", "../client/client-stat");
+            JsonObject subResult = new JsonObject();
+            subResult.addProperty("client_id", jsonObject.get("client_id").toString());
+            request.setAttribute("pares", subResult);
+            return "jump/tip";
+        }
+        return "client/client-view";
     }
 
     @RequestMapping("client/start")
@@ -62,5 +72,40 @@ public class ClientController {
         request.setAttribute("pares", result.getData());
         request.setAttribute("des", "");
         return "jump/tip";
+    }
+
+    @RequestMapping("client/client-stat")
+    public void statistics(HttpServletRequest request) {
+        String id = request.getParameter("client_id");
+        id = id.replace("\"", "");
+        String topicIdx = request.getParameter("topic_idx");
+        Integer topicIndex = null;
+        if (StringUtils.isEmpty(topicIdx) || Integer.valueOf(topicIdx) < 0) {
+            topicIndex = 0;
+        } else {
+            topicIndex = Integer.valueOf(topicIdx);
+        }
+        Result result = surveyService.getPersonalSurveyById(id);
+        JsonObject jsonObject = (JsonObject) gson.toJsonTree(result.getData());
+        request.setAttribute("surveys", jsonObject.get("surveys"));
+        request.setAttribute("topic_idx", topicIndex);
+        request.setAttribute("client_id", id);
+    }
+
+    @RequestMapping("client/client-down")
+    public String downloadPDF(HttpServletRequest request) {
+        String id = request.getParameter("client_id");
+        if (StringUtils.isEmpty(id)) {
+            return "client-down";
+        }
+        Result result = surveyService.getPersonalPDF(id);
+        request.setAttribute("status", result.getStatus());
+        request.setAttribute("message", result.getMessage());
+        if (result.getData() != null) {
+            JsonObject jsonObject = (JsonObject) gson.toJsonTree(result.getData());
+            request.setAttribute("filePath", jsonObject.get("filePath"));
+            request.setAttribute("fileName", jsonObject.get("fileName"));
+        }
+        return "client-down";
     }
 }

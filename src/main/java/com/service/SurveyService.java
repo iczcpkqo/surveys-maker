@@ -104,7 +104,7 @@ public class SurveyService {
     public Result getPersonalPDF(String id) {
         Map<String, Object> personalSurvey = firebaseUtil.getByDocumentId("personalSurveys", id);
         if (personalSurvey.size() <= 0) {
-            return new Result("false", "there is no data", null);
+            return new Result("there is no data", "", null);
         }
 
         Object fileName = personalSurvey.get("fileName");
@@ -118,7 +118,7 @@ public class SurveyService {
     private Result createPDFByPersonalSurvey(Map<String, Object> personalSurvey, String id) {
         List<Pair<String, Map<String, Integer>>> answers = calculateAnswers(personalSurvey);
         if (answers.size() <= 0) {
-            return new Result("false", "no data", null);
+            return new Result("no data", "", null);
         }
 
         List<Pair<String, File>> topicFiles = new ArrayList<>();
@@ -128,7 +128,7 @@ public class SurveyService {
         }
 
         if (topicFiles.size() <= 0) {
-            return new Result("false", "no data", null);
+            return new Result("no data", "", null);
         }
 
         File file = pdfUtil.createPDF(topicFiles);
@@ -137,12 +137,12 @@ public class SurveyService {
         jsonObject.addProperty("fileName", file.getName());
         personalSurvey.put("fileName", file.getName());
         firebaseUtil.updateDocument("personalSurveys", id, "fileName", file.getName());
-        return new Result("true", "create file successful", jsonObject);
+        return new Result("successful", "", jsonObject);
     }
 
     private List<Pair<String, Map<String, Integer>>> calculateAnswers(Map<String, Object> personalSurvey) {
         List<Pair<String, Map<String, Integer>>> answers = new ArrayList<>();
-        Object selectedTopics = personalSurvey.get("selectedTopics");
+        Object selectedTopics = personalSurvey.get("sels_topic");
         List topicsList = gson.fromJson(selectedTopics.toString(), List.class);
         if (topicsList.size() <= 0) {
             return answers;

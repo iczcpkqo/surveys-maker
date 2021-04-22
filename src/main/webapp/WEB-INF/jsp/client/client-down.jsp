@@ -3,8 +3,6 @@
 <%@page import="java.io.FileInputStream" %>
 <%@page import="com.sun.xml.internal.messaging.saaj.util.ByteOutputStream" %>
 <%@page import="java.io.OutputStream" %>
-<%@ page import="java.net.URL" %>
-<%@ page import="java.io.InputStream" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
