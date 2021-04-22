@@ -279,20 +279,24 @@ class TopicList extends DataBase {
     }
 }
 
+//TODO:
+//     - [x] data.topics
+//     - [x] data.surveys_tit
+//     - [x] data.sels
+//     - [x] data.sels[i].id
+
+// surveys detail only
 class DataDetail extends DataBase {
     constructor(jsp_data) {
         super();
         this.jsp_surveys = jsp_data.surveys;
-        this.jsp_topics = jsp_data.topics;
-        this.topics = Dob.clAllTopics(this.jsp_topics);
-        for(let i in this.jsp_surveys)
-            this.surveys.push(Dob.clSurveys(this.jsp_surveys[i]));
+        this.topics = Dob.clAllTopics(jsp_data.topics);
     }
-    get p_data(){
+    get cooker(){
         return {
-            // surveys_name: this.surveys[0].tit==null? '': this.surveys[0].tit,
-            topics: this.topics
-            // sels: this.surveys[0].topics==null? '': this.surveys[0].topics
+            surveys_tit: this.surveys[0].tit==null? '': this.surveys[0].tit,
+            topics: this.topics,
+            sels: this.surveys[0].topics==null? '': this.surveys[0].topics
         }
     }
 }

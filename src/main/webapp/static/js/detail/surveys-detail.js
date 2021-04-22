@@ -50,13 +50,12 @@ function setTopicSel(selObj, val){
     return selObj;
 }
 
-
 /**
  * Page load function
  * @param p_data, json, from page load
  */
-function onSurveysPageLoad(p_data){
-    console.log(p_data);
+function onSurveysPageLoad(data){
+    console.log(data);
     // Get DOM
     let liBox = $('.box-li')[0];
     let btnAddItem = $('.add-topic-btn')[0];
@@ -65,19 +64,18 @@ function onSurveysPageLoad(p_data){
 
     // Bind everything
     btnAddItem.addEventListener('click',function(){
-        addTopic(p_data.topics);
+        addTopic(data.topics);
     });
     subSurveys.addEventListener('click',function(){
         $('#surveys-form').submit();
     });
 
     // Init tit
-    surTit.setAttribute('value', p_data.surveys_tit || '');
+    surTit.setAttribute('value', data.surveys_tit || '');
     // Init select list
-    console.log(p_data.topics);
-    for(let i in p_data.sels){
-        let li = createTopicsSel(p_data.topics);
-        li = setTopicSel(li, p_data.sels[i].id);
+    for(let i in data.sels){
+        let li = createTopicsSel(data.topics);
+        li = setTopicSel(li, data.sels[i].id);
         liBox.appendChild(li);
     }
 }
@@ -104,28 +102,28 @@ function onSurveysPageLoad(p_data){
  */
 window.onload = function(){
     let _jsp = g_jsp_data;
-    let p_stat = new DataDetail(_jsp);
-    let p_data = p_stat.p_data;
-    onSurveysPageLoad(p_data);
+    let data = new DataDetail(_jsp);
+    data = data.cooker;
+    onSurveysPageLoad(data);
 }
 
 
 
-let test_data =
-    {
-    "topics"
-:
-    [{
-        "topic_tit": "Legal Compliance",
-        "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
-        "topic_id": "5ce874b7-612a-499d-949d-ff041d9eeec0",
-        "time": {"seconds": 1618857625, "nanos": 772000000},
-        "id": "5ce874b7-612a-499d-949d-ff041d9eeec0"
-    }, {
-        "topic_tit": "Legal Compliance2",
-        "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
-        "time": {"seconds": 1618857642, "nanos": 138000000},
-        "topic_id": "a162d43e-9b9d-4695-83e4-a5f79b958bf1",
-        "id": "a162d43e-9b9d-4695-83e4-a5f79b958bf1"
-    }]
-}
+// let test_data =
+//     {
+//     "topics"
+// :
+//     [{
+//         "topic_tit": "Legal Compliance",
+//         "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//         "topic_id": "5ce874b7-612a-499d-949d-ff041d9eeec0",
+//         "time": {"seconds": 1618857625, "nanos": 772000000},
+//         "id": "5ce874b7-612a-499d-949d-ff041d9eeec0"
+//     }, {
+//         "topic_tit": "Legal Compliance2",
+//         "quizes": ["Legal Compliance-1", "Hours of Work and Leave-2", "Legal Compliance-3", "Hours of Work and Leave-4"],
+//         "time": {"seconds": 1618857642, "nanos": 138000000},
+//         "topic_id": "a162d43e-9b9d-4695-83e4-a5f79b958bf1",
+//         "id": "a162d43e-9b9d-4695-83e4-a5f79b958bf1"
+//     }]
+// }

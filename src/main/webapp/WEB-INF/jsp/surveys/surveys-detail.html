@@ -20,6 +20,82 @@
     <script src="../../../static/js/detail/detail.js"></script>
     <script src="../../../static/js/detail/surveys-detail.js"></script>
     <script type="text/javascript">
+        let g_jsp_data = {
+            "surveys": [{
+                "surveys_id": "03865eb6-3930-4e87-a8e5-259200c34260",
+                "surveys_tit": "3424324",
+                "sels_topic": [{
+                    "topic_tit": "topic(1597)",
+                    "quizes": [{"quiz_tit": "22"}, {"quiz_tit": "222"}],
+                    "topic_id": "af645da5-5222-466e-bbba-8fa233f4aaa1",
+                    "time": {"seconds": 1619060851, "nanos": 177000000}
+                }, {
+                    "topic_tit": "topic(775b)",
+                    "quizes": ["222", "222222", "dsfsdfsdf"],
+                    "topic_id": "18b50624-5970-474d-8eb4-6f3f23a7402a",
+                    "time": {"seconds": 1619061445, "nanos": 942000000}
+                }, {
+                    "topic_tit": "sdsdfdsf",
+                    "quizes": ["sdfsdf", "sdfsdfsdf", "sdfsdfsdfsd", "sdfsdfsdfsdf"],
+                    "time": {"seconds": 1619061181, "nanos": 495000000},
+                    "topic_id": "52861848-ccc5-49a5-8592-3bca661af011"
+                }],
+                "time": {"seconds": 1619062362, "nanos": 765000000}
+            }],
+            "topics": [{
+                "topic_tit": "234234234",
+                "quizes": [{"quiz_tit": "234234234"}, {"quiz_tit": "234234234"}, {"quiz_tit": "23423423"}],
+                "topic_id": "028ca5a3-c2f9-4c70-a1e4-979742248fda",
+                "time": {"seconds": 1619061466, "nanos": 807000000},
+                "id": "028ca5a3-c2f9-4c70-a1e4-979742248fda"
+            }, {
+                "topic_tit": "topic(775b)",
+                "quizes": ["222", "222222", "dsfsdfsdf"],
+                "topic_id": "18b50624-5970-474d-8eb4-6f3f23a7402a",
+                "time": {"seconds": 1619061445, "nanos": 942000000},
+                "id": "18b50624-5970-474d-8eb4-6f3f23a7402a"
+            }, {
+                "topic_tit": "sdsdfdsf",
+                "quizes": ["sdfsdf", "sdfsdfsdf", "sdfsdfsdfsd", "sdfsdfsdfsdf"],
+                "time": {"seconds": 1619061181, "nanos": 495000000},
+                "topic_id": "52861848-ccc5-49a5-8592-3bca661af011",
+                "id": "52861848-ccc5-49a5-8592-3bca661af011"
+            }, {
+                "topic_tit": "topic(1597)",
+                "quizes": [{"quiz_tit": "22"}, {"quiz_tit": "222"}],
+                "topic_id": "af645da5-5222-466e-bbba-8fa233f4aaa1",
+                "time": {"seconds": 1619060851, "nanos": 177000000},
+                "id": "af645da5-5222-466e-bbba-8fa233f4aaa1"
+            }, {
+                "topic_tit": "topic",
+                "quizes": ["222", "2222"],
+                "time": {"seconds": 1619061423, "nanos": 996000000},
+                "topic_id": "c41bc7a0-30ee-48cd-8e96-f491a1e542c7",
+                "id": "c41bc7a0-30ee-48cd-8e96-f491a1e542c7"
+            }]
+        }
+
+
+        // var g_jsp_data = {
+        //     surveys_name: 'sdfsdf',
+        //     // 主题库中的所有主题
+        //     topics: [
+        //         {
+        //             id: 'sdsdfsdsfd',
+        //             tit: 'sdfsfsdf'
+        //         }
+        //     ],
+        //     // 该问卷已经选择的主题们
+        //     sels: [
+        //         {
+        //             id: 'sdfsdf',
+        //             tit: 'sdfsdfsdf33242'
+        //         }
+        //     ]
+        // }
+
+
+
         // var g_jsp_data = {
         //     'surveys_name': String,
         //     // 主题库中的所有主题
@@ -38,7 +114,7 @@
         //     ]
         // }
 
-        var g_jsp_data = {
+        // var g_jsp_data = {
             // "surveys": [{
             //     "selectedTopic": [{
             //             "topicId": "wQfAHUCtPFrRGCA7md",
@@ -60,18 +136,18 @@
             //     "id": "ebJcAKNLV52a0okYrXFw",
             //     "surveyTitle": "survey1 js"
             // }],
-            "topics": [{
-                "createTime": {"seconds": 1617490800, "nanos": 0},
-                "questions": [{"questionTitle": "question1"}],
-                "id": "wQm8fAHUCtPFrRGCA7md",
-                "topicTitle": "topic1"
-            },{
-                "createTime": {"seconds": 1617490800, "nanos": 0},
-                "questions": [{"questionTitle": "question1"}],
-                "id": "wQfAHUCtPFrRGCA7md",
-                "topicTitle": "top222222222"
-            }]
-        };
+            // "topics": [{
+            //     "createTime": {"seconds": 1617490800, "nanos": 0},
+            //     "questions": [{"questionTitle": "question1"}],
+            //     "id": "wQm8fAHUCtPFrRGCA7md",
+            //     "topicTitle": "topic1"
+            // },{
+            //     "createTime": {"seconds": 1617490800, "nanos": 0},
+            //     "questions": [{"questionTitle": "question1"}],
+            //     "id": "wQfAHUCtPFrRGCA7md",
+            //     "topicTitle": "top222222222"
+            // }]
+        // };
 
 
         // var g_jasp_data = {
