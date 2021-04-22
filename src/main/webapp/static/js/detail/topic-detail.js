@@ -6,7 +6,7 @@ function addQuiz() {
     document.documentElement.scrollTop = document.documentElement.scrollHeight;
 }
 
-function createQuizInput(tit) {
+function createQuizInput(quiz) {
     let li = document.createElement('div');
     let delBox = document.createElement('div');
     let delBtn = document.createElement('a');
@@ -17,7 +17,7 @@ function createQuizInput(tit) {
 
     li.innerHTML += '<div class="detail-input">'
         + '<input name="quiz-tit" class="txt-1" type="text" placeholder="Please input your Question." value="'
-        + tit
+        + quiz.quiz_tit
         +'"></div>';
     delBtn.innerHTML = 'Delete';
     delBtn.addEventListener('click', delItem);
