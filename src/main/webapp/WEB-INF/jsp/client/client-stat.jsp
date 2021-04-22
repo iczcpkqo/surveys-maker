@@ -33,7 +33,7 @@
     <script src="../../../static/js/stat/client-stat.js"></script>
     <script>
         let g_jsp_data = {
-            client_id:<%=clientId %>,
+            client_id:"<%=clientId %>",
             topic_idx:<%=topicIdx %>,
             surveys:<%=surveys %>
         }
