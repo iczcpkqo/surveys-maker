@@ -23,7 +23,8 @@ public class SurveyController {
 
     @RequestMapping("surveys/surveys-detail")
     public String surveysDetail(HttpServletRequest request) {
-        Result result = surveyService.getSurveyByIdandTopics("");
+        String surveyId = request.getParameter("surveys_id");
+        Result result = surveyService.getSurveyByIdandTopics(surveyId);
         request.setAttribute("data", result.getData());
         request.setAttribute("status", result.getStatus());
         request.setAttribute("message", result.getMessage());
@@ -100,6 +101,18 @@ public class SurveyController {
         request.setAttribute("type", "../surveys/surveys-list");
         request.setAttribute("tit", "delete successful");
         request.setAttribute("des", "");
+        return "jump/tip";
+    }
+
+    @RequestMapping("surveys/surveys-copy")
+    public String surveyCopy(HttpServletRequest request){
+        String surveyId = request.getParameter("surveys_id");
+        request.setAttribute("tit", "copy successful");
+        request.setAttribute("type", "../surveys/surveys-detail");
+        request.setAttribute("des", "");
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("surveys_id",surveyId);
+        request.setAttribute("pares", jsonObject);
         return "jump/tip";
     }
 }
