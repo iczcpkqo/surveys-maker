@@ -30,12 +30,21 @@ public class PDFUtil {
             Paragraph paragraph = new Paragraph("survey report", new Font(baseFont, 36, Font.BOLD));
             paragraph.setAlignment(Element.ALIGN_CENTER);
             document.add(paragraph);
+            int i = 0;
             for (Pair<String, File> topicFile : topicFiles) {
+                if (i > 0) {
+                    document.newPage();
+                }
                 Paragraph p = new Paragraph(topicFile.getKey(), new Font(baseFont, 24, Font.BOLD));
                 paragraph.setAlignment(Element.ALIGN_CENTER);
                 document.add(p);
                 Image image = Image.getInstance(topicFile.getValue().getAbsolutePath());
+//                image.scaleToFit(PageSize.A4.getWidth(), PageSize.A4.getHeight());
+                float x = (PageSize.A4.getWidth() - image.getScaledWidth()) / 2;
+                float y = (PageSize.A4.getHeight() - image.getScaledHeight()) / 2;
+                image.setAbsolutePosition(x, y);
                 document.add(image);
+                i++;
             }
             document.close();
             firebaseUtil.uploadFile("pdfs", tempFile.getAbsolutePath(), tempFile.getName());

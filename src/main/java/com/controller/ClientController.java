@@ -106,6 +106,6 @@ public class ClientController {
             request.setAttribute("filePath", jsonObject.get("filePath"));
             request.setAttribute("fileName", jsonObject.get("fileName"));
         }
-        return "client-down";
+        return "client/client-down";
     }
 }
