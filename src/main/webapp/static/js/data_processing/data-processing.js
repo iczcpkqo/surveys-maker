@@ -293,10 +293,11 @@ class DataDetail extends DataBase {
         this.topics = Dob.clAllTopics(jsp_data.topics);
     }
     get cooker(){
+            // surveys_tit: typeof(this.surveys[0].tit) === 'undefined'? '': this.surveys[0].tit,
         return {
-            surveys_tit: this.surveys[0].tit==null? '': this.surveys[0].tit,
+            surveys_tit: this.surveys.length ? this.surveys[0].tit: '',
             topics: this.topics,
-            sels: this.surveys[0].topics==null? '': this.surveys[0].topics
+            sels: this.surveys.length? this.surveys[0].topics: ''
         }
     }
 }
