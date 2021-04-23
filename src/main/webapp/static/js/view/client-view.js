@@ -78,6 +78,7 @@ function bindOperation(txt){
             alert('Please answer all questions!')
         else
             window.location.href = linkMaker(linkPrev, par);
+        par.topic_idx = txt.client_id;
     });
     btnNext.addEventListener('click', ()=>{
         par.topic_idx += 1;
@@ -85,10 +86,9 @@ function bindOperation(txt){
         par.jump_type = 'next'
         if (!o())
             alert('Please answer all questions!')
-        else{
+        else
             window.location.href = linkMaker(linkNext, par);
-            // console.log(linkMaker(linkNext, par));;
-        }
+        par.topic_idx = txt.client_id;
     });
     btnSub.addEventListener('click', ()=>{
         par.topic_idx += 1;
@@ -98,6 +98,7 @@ function bindOperation(txt){
             alert('Please answer all questions!')
         else
             window.location.href = linkMaker(linkSub, par);
+        par.topic_idx = txt.client_id;
     });
 
     if(txt.idx)
