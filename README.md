@@ -4,6 +4,12 @@
 
 > CS335 Questionnaire Survey System
 
+## The URL Addresses of Remote Repositories of This Project
+
+`HTTPS URL` : https://gitlab.cs.nuim.ie/u210251/cs335-surveys_maker.git
+
+`SSH URL` : git@gitlab.cs.nuim.ie:u210251/cs335-surveys_maker.git
+
 ## Directory 
 
 * `design`. pictures, photos, prototypes, sketches...
@@ -23,5 +29,4 @@
 
 * Everyone should only play on their own branch
 * Always in sync with the master branch
-
 * If you need to merge your work into the master branch immediately, please contact Xiang Mao immediately.
